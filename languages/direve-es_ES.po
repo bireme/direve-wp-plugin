@@ -1,0 +1,260 @@
+# Copyright (C) 2013 LIS
+# This file is distributed under the same license as the LIS package.
+msgid ""
+msgstr ""
+"Project-Id-Version: LIS 0.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/direve\n"
+"POT-Creation-Date: 2013-11-18 19:33:09+00:00\n"
+"PO-Revision-Date: 2013-11-18 17:40-0300\n"
+"Last-Translator: Vinicius Andrade <vinicius.andrade@bireme.org>\n"
+"Language-Team: RedDes <reddes@gmail.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: SPAIN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: direve.php:81
+msgid "DirEVE Settings"
+msgstr "DirEVE - Ajustes"
+
+#: direve.php:81
+msgid "DirEVE"
+msgstr ""
+
+#: direve.php:131
+msgid "DirEVE sidebar"
+msgstr "DirEVE area de destacados"
+
+#: lib/Paginator.php:38
+#: lib/Paginator.php:39
+#: lib/Paginator.php:50
+#: lib/Paginator.php:56
+#: lib/Paginator.php:65
+#: lib/Paginator.php:66
+#: lib/Paginator.php:72
+#: lib/Paginator.php:73
+msgid "go to page"
+msgstr "ir para pagina"
+
+#: settings.php:9
+msgid "DirEve Plugin Options"
+msgstr "DirEVE - Opciones del plugin"
+
+#: settings.php:18
+msgid "Service URL"
+msgstr "URL del servicio"
+
+#: settings.php:22
+msgid "Plugin page"
+msgstr "Pagina del plugin"
+
+#: settings.php:27
+msgid "Filter query"
+msgstr "Filtro de búsqueda"
+
+#: settings.php:31
+msgid "Search form"
+msgstr "Formulario de búsqueda"
+
+#: settings.php:34
+msgid "Show search form"
+msgstr "Mostrar formulario de búsqueda"
+
+#: settings.php:38
+msgid "Disqus shortname"
+msgstr "Disqus identificador"
+
+#: settings.php:42
+msgid "AddThis profile ID"
+msgstr "AddThis identificador"
+
+#: settings.php:49
+msgid "Save Changes"
+msgstr "Guardar Cambios"
+
+#: template/detail.php:33
+#: template/home.php:57
+#: template/suggest-site-details.php:29
+#: template/suggest-site.php:17
+msgid "Home"
+msgstr "Inicio"
+
+#: template/detail.php:34
+#: template/home.php:59
+#: template/home.php:61
+msgid "Events Directory"
+msgstr "Directorio de eventos"
+
+#: template/detail.php:35
+msgid "Resource"
+msgstr "Recurso"
+
+#: template/detail.php:41
+#: template/detail.php:42
+#: template/home.php:69
+#: template/home.php:70
+msgid "Search"
+msgstr "Buscar"
+
+#: template/detail.php:47
+#: template/home.php:75
+#: template/suggest-site-details.php:31
+#: template/suggest-site-details.php:36
+#: template/suggest-site.php:19
+#: template/suggest-site.php:24
+msgid "Suggest a site"
+msgstr "Sugerir un sitio"
+
+#: template/detail.php:68
+#: template/home.php:127
+msgid "Date"
+msgstr "Fecha"
+
+#: template/detail.php:89
+#: template/home.php:140
+msgid "Available languages"
+msgstr "Idiomas disponibles"
+
+#: template/detail.php:127
+msgid "Report error"
+msgstr "Informar un error"
+
+#: template/home.php:62
+msgid "Search result"
+msgstr "Resultado de la búsqueda"
+
+#: template/home.php:81
+msgid "No results found"
+msgstr "No se encontraron resultados"
+
+#: template/home.php:85
+msgid "Resources found"
+msgstr "Recursos encontrados"
+
+#: template/home.php:87
+msgid "Next events"
+msgstr "Próximos eventos"
+
+#: template/home.php:94
+#: template/home.php:95
+#: template/home.php:96
+msgid "resources"
+msgstr "recursos"
+
+#: template/home.php:100
+msgid "Order by"
+msgstr "Ordenar por"
+
+#: template/home.php:101
+msgid "More relevant"
+msgstr "Más relevantes"
+
+#: template/home.php:102
+msgid "Most recent"
+msgstr "Más recientes"
+
+#: template/home.php:134
+msgid "See more details"
+msgstr "Ver más detalles"
+
+#: template/home.php:168
+msgid "Subjects"
+msgstr "Asuntos"
+
+#: template/suggest-site-details.php:30
+#: template/suggest-site.php:18
+msgid "Health Information Locator"
+msgstr "Localizador de Información en Salud"
+
+#: template/suggest-site-details.php:43
+#: template/suggest-site.php:30
+msgid "Link"
+msgstr "Enlace"
+
+#: template/suggest-site-details.php:47
+msgid "Title"
+msgstr "Titulo"
+
+#: template/suggest-site-details.php:50
+msgid "Keywords"
+msgstr "Palabras clave"
+
+#: template/suggest-site-details.php:53
+msgid "Abstract"
+msgstr "Resumen"
+
+#: template/suggest-site-details.php:76
+#: template/suggest-site.php:34
+msgid "Send"
+msgstr "Enviar"
+
+#. Plugin Name of the plugin/theme
+msgid "DirEve"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/bireme/direve-wp-plugin/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Events Directory (DirEVE) WordPress plugin"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "BIREME/OPAS/OMS"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://reddes.bvsalud.org/"
+msgstr ""
+
+#~ msgid "LIS"
+#~ msgstr "LIS"
+
+#~ msgid "Resource added in"
+#~ msgstr "Recursos añadido en"
+
+#~ msgid "Author(s)"
+#~ msgstr "Autor(es)"
+
+#~ msgid "Originator(s)"
+#~ msgstr "Creador(es)"
+
+#~ msgid "Objective"
+#~ msgstr "Objetivo"
+
+#~ msgid "Share"
+#~ msgstr "Compartir"
+
+#~ msgid "Suggest tag"
+#~ msgstr "Sugerir asunto"
+
+#~ msgid "Suggestions"
+#~ msgstr "Sugerencias"
+
+#~ msgid "Separated by comma"
+#~ msgstr "Separados por comas"
+
+#~ msgid "Thank you for your suggestion."
+#~ msgstr "Gracias por sus sugerencias."
+
+#~ msgid "Communication problem. Please try again later."
+#~ msgstr "Problema de Comunicación. Por favor inténte más tarde."
+
+#~ msgid "Related"
+#~ msgstr "Relacionados"
+
+#~ msgid "Create a Health Information Locator Site"
+#~ msgstr "Crear un pagina del Localizador de Información en Salud"
+
+#~ msgid "Comments"
+#~ msgstr "Comentarios"
+
+#~ msgid "Previous"
+#~ msgstr "Anteriores"
+
+#~ msgid "Next"
+#~ msgstr "Próximos"
