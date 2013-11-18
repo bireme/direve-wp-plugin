@@ -84,7 +84,7 @@ $pages->paginate($page_url_params);
                         <?php if ( ( $query != '' || $user_filter != '' ) && strval($total) > 0) :?>
     					   <h1 class="h1-header"><?php _e('Resources found','direve'); ?>: <?php echo $total; ?></h1>
                         <?php else: ?>
-                           <h1 class="h1-header"><?php _e('Most recent','direve'); ?></h1>
+                           <h1 class="h1-header"><?php _e('Next events','direve'); ?></h1>
                         <?php endif; ?>
                         <!-- Not implemented yet
                         <div class="pull-right">
@@ -109,23 +109,31 @@ $pages->paginate($page_url_params);
     				<div class="row-fluid">
                         <?php foreach ( $event_list as $resource) { ?>
     					    <article class="conteudo-loop">
+
         						<div class="row-fluid">
         							<h2 class="h2-loop-tit"><?php echo $resource->title; ?></h2>
         						</div>
         						<div class="conteudo-loop-rates">
         							<div class="star" data-score="1"></div>
         						</div>
+
+                                <?php if ($resource->city || $resource->country): ?>
+                                    <div class="row-fluid">
+                                        <?php echo $resource->city . ' - ' . $resource->country ;?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <div id="conteudo-loop-data" class="row-fluid margintop05">
+                                    <span class="conteudo-loop-data-tit"><?php _e('Date','direve'); ?>:</span>
+                                    <?php echo print_formated_date($resource->start_date); ?> - 
+                                    <?php echo print_formated_date($resource->end_date); ?>
+                                </div>
+
         						<p class="row-fluid">
         							<?php echo ( strlen($resource->abstract) > 200 ? substr($resource->abstract,0,200) . '...' : $resource->abstract); ?><br/>
         							<span class="more"><a href="<?php echo home_url($eve_plugin_slug); ?>/resource/<?php echo $resource->django_id; ?>"><?php _e('See more details','direve'); ?></a></span>
         						</p>
 
-                                <?php if ($resource->created_date): ?>
-            						<div id="conteudo-loop-data" class="row-fluid margintop05">
-            							<span class="conteudo-loop-data-tit"><?php _e('Resource added in','direve'); ?>:</span>
-            							<?php echo print_formated_date($resource->created_date); ?>
-            						</div>
-                                <?php endif; ?>
 
                                 <?php if ($resource->source_language_display): ?>
             						<div id="conteudo-loop-idiomas" class="row-fluid">

@@ -58,19 +58,31 @@ if ($response){
                             <div class="star" data-score="1"></div>
                         </div>
                         
-                        <?php if ($resource->link): ?>
+                        <?php if ($resource->city || $resource->country): ?>
+                            <div class="row-fluid">
+                                <?php echo $resource->city . ' ' . $resource->country ;?>
+                            </div>
+                        <?php endif; ?>
+
+                        <div id="conteudo-loop-data" class="row-fluid margintop05">
+                            <span class="conteudo-loop-data-tit"><?php _e('Date','direve'); ?>:</span>
+                            <?php echo print_formated_date($resource->start_date); ?> - 
+                            <?php echo print_formated_date($resource->end_date); ?>
+                        </div>
+
+                        <?php if ($resource->link[0]): ?>
                             <p class="row-fluid margintop05">
-                                <a href="<?php echo $link; ?>"><?php echo $link; ?></a><br/>
+                                <a href="<?php echo $resource->link[0]; ?>"><?php echo $resource->link[0]; ?></a><br/>
+                            </p>
+                        <?php endif; ?>
+
+                        <?php if ($resource->contact_info): ?>
+                            <p class="row-fluid margintop05">
+                                <?php echo $resource->contact_info; ?>
                             </p>
                         <?php endif; ?>
 
 
-                        <?php if ($resource->created_date): ?>
-                            <div id="conteudo-loop-data" class="row-fluid margintop05">
-                                <span class="conteudo-loop-data-tit"><?php _e('Resource added in','direve'); ?>:</span>
-                               <?php echo print_formated_date($resource->created_date); ?>                           
-                            </div>
-                        <?php endif; ?>
 
                         <?php if ($resource->source_language_display): ?>
                             <div id="conteudo-loop-idiomas" class="row-fluid">
@@ -91,55 +103,24 @@ if ($response){
                         <?php endif; ?>
 
                         <footer class="row-fluid margintop05">
+
+
+
                             <ul class="conteudo-loop-icons">
-                                <li class="conteudo-loop-icons-li">
-                                    <i class="ico-compartilhar"></i>
-                                    <!-- AddThis Button BEGIN -->
-                                    <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=<?php echo $direve_addthis_id; ?>"><?php _e('Share','direve'); ?></a>
-                                    <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-                                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $direve_addthis_id; ?>"></script>
-                                    <!-- AddThis Button END -->
-                                    <!--
-                                    <a href="#">                                       
-                                        <?php _e('Share','direve'); ?>
-                                    </a>
-                                    -->
-                                </li>
-
-                                <li class="conteudo-loop-icons-li">
-                                    <span class="sugerir-tag-open">
-                                        <i class="ico-tag"></i>
-                                        <?php _e('Suggest tag','direve'); ?>
-                                    </span>
-                                    <div class="sugerir-tag">
-                                        <div class="sugerir-form">
-                                            <form action="<?php echo $direve_service_url ?>suggest-tag" id="tagForm">
-                                                <input type="hidden" name="resource_id" value="<?php echo $resource_id; ?>"/>
-                                                <div class="sugerir-tag-close">[X]</div>
-                                                <span class="sugerir-tag-tit"><?php _e('Suggestions','direve'); ?></span>
-                                                    
-                                                <div class="row-fluid margintop05 marginbottom10">
-                                                    <input type="text" name="txtTag" class="sugerir-tag-input" id="txtTag">
-                                                </div>                                                
-
-                                                <div class="row-fluid margintop05">
-                                                    <span class="sugerir-tag-separator"><?php _e('Separated by comma','direve'); ?></span>
-                                                    <button class="pull-right colaboracion-enviar"><?php _e('Send','direve'); ?></button>
-                                                </div>
-                                            </form>
+                                <li class="conteudo-loop-icons-li" style="width: 200px">
+                                        <!-- AddThis Button BEGIN -->
+                                        <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                                            <a class="addthis_button_preferred_1"></a>
+                                            <a class="addthis_button_preferred_2"></a>
+                                            <a class="addthis_button_preferred_3"></a>
+                                            <a class="addthis_button_preferred_4"></a>
+                                            <a class="addthis_button_compact"></a>
                                         </div>
-                                        <div class="sugerir-tag-result">
-                                            <div class="sugerir-tag-close">[X]</div>
-                                            <div id="result-ok">
-                                                <?php _e('Thank you for your suggestion.','direve'); ?>
-                                            </div>
-                                            <div id="result-problem">
-                                                <?php _e('Communication problem. Please try again later.','direve'); ?>
-                                            </div>                                            
-                                        </div>
-                                    </div>
-                                </li>
+                                        <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+                                        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $direve_addthis_id; ?>"></script>
+                                        <!-- AddThis Button END -->
 
+                                </li>
                                 <!--li class="conteudo-loop-icons-li">
                                     <span class="reportar-erro-open">
                                         <i class="ico-reportar"></i>
@@ -208,21 +189,6 @@ if ($response){
                     </article>
                 </div>
             </section>
-
-            <aside id="sidebar">
-                <section class="row-fluid marginbottom25 widget_categories">
-                    <header class="row-fluid border-bottom marginbottom15">
-                        <h1 class="h1-header"><?php _e('Related','direve'); ?></h1>
-                    </header>
-                    <ul>
-                        <?php foreach ( $related_list as $related) { ?>
-                            <li class="cat-item">
-                                <a href="<?php echo home_url($eve_plugin_slug); ?>/resource/<?php echo $related->django_id; ?>"><?php echo $related->title ?></a>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                </section>
-            </aside>
 
         </div>
     </div>

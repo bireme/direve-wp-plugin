@@ -45,7 +45,7 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 
 /* HEALINGS */
 .h1-header{float:left; line-height:30px; font-size:26px; color:rgb(40,54,125); font-weight:normal; text-decoration:none;}
-.h2-loop-tit{font-weight:bold; color:rgb(0,0,0); font-size:20px;width:80%;}
+.h2-loop-tit{font-weight:bold; color:rgb(0,0,0); font-size:20px;width:80%; margin-top: 10px;}
 
 /* ALL */
 .site-main{overflow:auto;}
@@ -88,7 +88,7 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 #conteudo{width:629px; float:left;}
 .conteudo-loop{width:597px; position:relative; float:left; background:rgb(245,245,245); border:1px solid rgb(223,223,223); padding:15px; border-radius:5px; margin-top:15px;}
 .conteudo-loop-rates{position:absolute; right:15px; top:18px; z-index:3;}
-.conteudo-loop-icons{list-style:none; float:left; width:100%; max-height:22px;}
+.conteudo-loop-icons{list-style:none; float:left; width:100%; max-height:22px; padding: 0px;}
 .conteudo-loop-icons-li{float:left; margin:0 18.3px; position:relative;}
 .conteudo-loop-icons-li:first-child{margin:0px 18.3px 0px 0px !important;}
 .conteudo-loop-icons-li:last-child{margin:0px 0px 0px 18.3px !important;}
