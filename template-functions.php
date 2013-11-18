@@ -31,7 +31,11 @@ if ( !function_exists('get_lang_value') ) {
 
 if ( !function_exists('print_formated_date') ) {
     function print_formated_date($string){
-        echo substr($string,6,2)  . '/' . substr($string,4,2) . '/' . substr($string,0,4);
+        if (strpos($string,'-') !== false) {
+            echo substr($string,8,2)  . '/' . substr($string,5,2) . '/' . substr($string,0,4);
+        }else{
+            echo substr($string,6,2)  . '/' . substr($string,4,2) . '/' . substr($string,0,4);
+        }
     }
 }
 

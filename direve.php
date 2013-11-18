@@ -139,8 +139,13 @@ function direve_register_sidebars(){
     register_sidebar( $args );
 }
 
-function direve_page_title(){
-    return 'DirEVE | ';
+function direve_page_title($title){
+    global $wp, $eve_plugin_slug;
+    $pagename = $wp->query_vars["pagename"];
+
+    if ( strpos($pagename, $eve_plugin_slug) === 0 ) { //pagename starts with plugin slug
+        return 'DirEVE | ';        
+    }
 }    
 
 
@@ -151,7 +156,7 @@ add_action( 'wp_head', 'direve_google_analytics_code');
 add_action( 'template_redirect', 'direve_theme_redirect');
 add_action( 'widgets_init', 'direve_register_sidebars' );
 
-add_filter( 'wp_title', 'direve_page_title' );
+add_filter( 'wp_title', 'direve_page_title', 10, 2 );
 add_filter( 'get_search_form', 'direve_search_form' );
 
 ?>
