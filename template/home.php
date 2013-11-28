@@ -29,7 +29,7 @@ if ($direve_initial_filter != ''){
 }
 $start = ($page * $count) - $count;
 
-$direve_service_request = $direve_service_url . 'api/event/search/?q=' . urlencode($query) . '&fq=' .urlencode($filter) . '&start=' . $start;
+$direve_service_request = $direve_service_url . 'api/event/search/?q=' . urlencode($query) . '&fq=' . urlencode($filter) . '&start=' . $start;
 
 //print $direve_service_request;
 
@@ -41,9 +41,10 @@ if ($response){
     $start = $response_json->diaServerResponse[0]->response->start;
     $event_list = $response_json->diaServerResponse[0]->response->docs;
     $descriptor_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptor_filter;
+    $event_type_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->event_type;
 }
 
-$page_url_params = home_url($eve_plugin_slug) . '?q=' . $query . '&filter=' . $user_filter;
+$page_url_params = home_url($eve_plugin_slug) . '?q=' . urlencode($query)  . '&filter=' . urlencode($filter);
 
 $pages = new Paginator($total, $start);
 $pages->paginate($page_url_params);
@@ -176,6 +177,22 @@ $pages->paginate($page_url_params);
                             <?php } ?>
     					</ul>
     				</section>
+                    <section class="row-fluid marginbottom25 widget_categories">
+                        <header class="row-fluid border-bottom marginbottom15">
+                            <h1 class="h1-header"><?php _e('Event type','direve'); ?></h1>
+                        </header>
+                        <ul>
+                            <?php foreach ( $event_type_list as $type) { ?>
+                                <li class="cat-item">
+                                    <a href='?filter=event_type:"<?php echo $type[0]; ?>"'><?php echo print_lang_value($type[0], $site_language); ?></a>
+                                    <span class="cat-item-count"><?php echo $type[1] ?></span>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </section>
+
+
+
                 <?php endif; ?>
 				<?php dynamic_sidebar('direve-home');?>
 			</aside>

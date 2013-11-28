@@ -8,7 +8,7 @@ if ( !function_exists('print_lang_value') ) {
             }
             echo implode(', ', $print_values);
         }else{
-            echo get_lang_value($current_value, $lang_code);
+            echo get_lang_value($value, $lang_code);
         }
         return;
     }
@@ -18,7 +18,7 @@ if ( !function_exists('get_lang_value') ) {
     function get_lang_value($string, $lang_code){
         $lang_value = array();
         $occs = preg_split('/\|/', $string);
-        
+
         foreach ($occs as $occ){
             $lv = preg_split('/\^/', $occ);
             $lang = $lv[0];
