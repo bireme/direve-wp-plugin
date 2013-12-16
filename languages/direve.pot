@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DirEve 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/direve\n"
-"POT-Creation-Date: 2013-11-28 16:56:16+00:00\n"
+"POT-Creation-Date: 2013-12-16 20:32:23+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -66,12 +66,12 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
-#: template/detail.php:33 template/home.php:58
+#: template/detail.php:33 template/home.php:70
 #: template/suggest-site-details.php:29 template/suggest-site.php:17
 msgid "Home"
 msgstr ""
 
-#: template/detail.php:34 template/home.php:60 template/home.php:62
+#: template/detail.php:34 template/home.php:72 template/home.php:75
 msgid "Events Directory"
 msgstr ""
 
@@ -79,22 +79,22 @@ msgstr ""
 msgid "Resource"
 msgstr ""
 
-#: template/detail.php:41 template/detail.php:42 template/home.php:70
-#: template/home.php:71
+#: template/detail.php:41 template/detail.php:42 template/home.php:82
+#: template/home.php:83
 msgid "Search"
 msgstr ""
 
-#: template/detail.php:47 template/home.php:76
+#: template/detail.php:47 template/home.php:88
 #: template/suggest-site-details.php:31 template/suggest-site-details.php:36
 #: template/suggest-site.php:19 template/suggest-site.php:24
 msgid "Suggest a site"
 msgstr ""
 
-#: template/detail.php:68 template/home.php:128
+#: template/detail.php:68 template/home.php:140
 msgid "Date"
 msgstr ""
 
-#: template/detail.php:89 template/home.php:141
+#: template/detail.php:89 template/home.php:153
 msgid "Available languages"
 msgstr ""
 
@@ -102,47 +102,51 @@ msgstr ""
 msgid "Report error"
 msgstr ""
 
-#: template/home.php:63
+#: template/home.php:73
 msgid "Search result"
 msgstr ""
 
-#: template/home.php:82
+#: template/home.php:94
 msgid "No results found"
 msgstr ""
 
-#: template/home.php:86
+#: template/home.php:98
 msgid "Resources found"
 msgstr ""
 
-#: template/home.php:88
+#: template/home.php:100
 msgid "Next events"
 msgstr ""
 
-#: template/home.php:95 template/home.php:96 template/home.php:97
+#: template/home.php:107 template/home.php:108 template/home.php:109
 msgid "resources"
 msgstr ""
 
-#: template/home.php:101
+#: template/home.php:113
 msgid "Order by"
 msgstr ""
 
-#: template/home.php:102
+#: template/home.php:114
 msgid "More relevant"
 msgstr ""
 
-#: template/home.php:103
+#: template/home.php:115
 msgid "Most recent"
 msgstr ""
 
-#: template/home.php:135
+#: template/home.php:147
 msgid "See more details"
 msgstr ""
 
-#: template/home.php:169
+#: template/home.php:173
+msgid "See all events"
+msgstr ""
+
+#: template/home.php:186
 msgid "Subjects"
 msgstr ""
 
-#: template/home.php:182
+#: template/home.php:199
 msgid "Event type"
 msgstr ""
 

@@ -29,17 +29,29 @@ if ($direve_initial_filter != ''){
 }
 $start = ($page * $count) - $count;
 
-$direve_service_request = $direve_service_url . 'api/event/search/?q=' . urlencode($query) . '&fq=' . urlencode($filter) . '&start=' . $start;
+if ($query != ''){
+    $direve_search = $direve_service_url . 'api/event/search/?q=' . urlencode($query) . '&fq=' . urlencode($filter) . '&start=' . $start;
+}else{
+    $direve_next_events = $direve_service_url . 'api/event/next/?fq=' . urlencode($filter);
+    $direve_search = $direve_service_url . 'api/event/search/?fq=' . urlencode($filter) . '&start=' . $start;
+}
 
-//print $direve_service_request;
+#print $direve_service_request;
 
-$response = @file_get_contents($direve_service_request);
+$response = @file_get_contents($direve_search);
 if ($response){
     $response_json = json_decode($response);
     //var_dump($response_json);
     $total = $response_json->diaServerResponse[0]->response->numFound;
     $start = $response_json->diaServerResponse[0]->response->start;
-    $event_list = $response_json->diaServerResponse[0]->response->docs;
+    if ($query != '' || $user_filter != ''){
+        $event_list = $response_json->diaServerResponse[0]->response->docs;
+    }else{
+        $response_next_events =  @file_get_contents($direve_next_events);        
+        $response_next_events_json = json_decode($response_next_events);
+        $event_list = $response_next_events_json->diaServerResponse[0]->response->docs;
+    }
+    
     $descriptor_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptor_filter;
     $event_type_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->event_type;
 }
@@ -56,11 +68,11 @@ $pages->paginate($page_url_params);
 		<div class="ajusta2">
             <div class="row-fluid breadcrumb">                
                 <a href="<?php echo home_url(); ?>"><?php _e('Home','direve'); ?></a> >
-                <?php if ($query == '' && $filter == ''): ?>
-                    <?php _e('Events Directory', 'direve') ?>
-                <?php else: ?>                    
+                <?php if ($query != '' || $user_filter != ''): ?>
                     <a href="<?php echo home_url($eve_plugin_slug); ?>"><?php _e('Events Directory', 'direve') ?> </a> >
-                    <?php _e('Search result', 'direve') ?>
+                    <?php _e('Search result', 'direve') ?>                    
+                <?php else: ?> 
+                    <?php _e('Events Directory', 'direve') ?>
                 <?php endif; ?>
             </div>
 			<div class="row-fluid">
@@ -105,7 +117,7 @@ $pages->paginate($page_url_params);
                             </form>
                         </div>
                         -->
-                        <?php echo $pages->display_pages(); ?>
+                        <?php if ($query != '' || $user_filter != ''){ echo $pages->display_pages(); } ?>
     				</header>
     				<div class="row-fluid">
                         <?php foreach ( $event_list as $resource) { ?>
@@ -156,9 +168,14 @@ $pages->paginate($page_url_params);
 
         					</article>
                         <?php } ?>
+                        <?php if ($query == '' && $user_filter == ''): ?>
+                            <div class="row-fluid">
+                                <h3><a href="?q=*"><?php _e('See all events','direve'); ?></a></h3>
+                            </div>
+                        <?php endif; ?>
     				</div>
                     <div class="row-fluid">
-                        <?php echo $pages->display_pages(); ?>
+                        <?php if ($query != '' || $user_filter != ''){ echo $pages->display_pages(); } ?>
                     </div>
                 <?php endif; ?>
 			</section>

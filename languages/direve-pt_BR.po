@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LIS WP Plugin 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/direve\n"
-"POT-Creation-Date: 2013-11-28 16:56:16+00:00\n"
-"PO-Revision-Date: 2013-11-28 15:01-0300\n"
+"POT-Creation-Date: 2013-12-16 20:32:23+00:00\n"
+"PO-Revision-Date: 2013-12-16 18:33-0300\n"
 "Last-Translator: Vinicius Andrade <vinicius.andrade@bireme.org>\n"
 "Language-Team: BIREME <reddes@gmail.com>\n"
 "Language: \n"
@@ -76,15 +76,15 @@ msgid "Save Changes"
 msgstr "Salvar alterações"
 
 #: template/detail.php:33
-#: template/home.php:58
+#: template/home.php:70
 #: template/suggest-site-details.php:29
 #: template/suggest-site.php:17
 msgid "Home"
 msgstr "Ínicio"
 
 #: template/detail.php:34
-#: template/home.php:60
-#: template/home.php:62
+#: template/home.php:72
+#: template/home.php:75
 msgid "Events Directory"
 msgstr "Diretório de Eventos"
 
@@ -94,13 +94,13 @@ msgstr "Recurso"
 
 #: template/detail.php:41
 #: template/detail.php:42
-#: template/home.php:70
-#: template/home.php:71
+#: template/home.php:82
+#: template/home.php:83
 msgid "Search"
 msgstr "Pesquisa"
 
 #: template/detail.php:47
-#: template/home.php:76
+#: template/home.php:88
 #: template/suggest-site-details.php:31
 #: template/suggest-site-details.php:36
 #: template/suggest-site.php:19
@@ -109,12 +109,12 @@ msgid "Suggest a site"
 msgstr "Sugira um site"
 
 #: template/detail.php:68
-#: template/home.php:128
+#: template/home.php:140
 msgid "Date"
 msgstr "Data"
 
 #: template/detail.php:89
-#: template/home.php:141
+#: template/home.php:153
 msgid "Available languages"
 msgstr "Idiomas disponíveis"
 
@@ -122,49 +122,53 @@ msgstr "Idiomas disponíveis"
 msgid "Report error"
 msgstr "Informar um erro"
 
-#: template/home.php:63
+#: template/home.php:73
 msgid "Search result"
 msgstr "Resultado de pesquisa"
 
-#: template/home.php:82
+#: template/home.php:94
 msgid "No results found"
 msgstr "Nenhum resultado encontrado"
 
-#: template/home.php:86
+#: template/home.php:98
 msgid "Resources found"
 msgstr "Recursos encontrados"
 
-#: template/home.php:88
+#: template/home.php:100
 msgid "Next events"
 msgstr "Próximos eventos"
 
-#: template/home.php:95
-#: template/home.php:96
-#: template/home.php:97
+#: template/home.php:107
+#: template/home.php:108
+#: template/home.php:109
 msgid "resources"
 msgstr "recursos"
 
-#: template/home.php:101
+#: template/home.php:113
 msgid "Order by"
 msgstr "Ordenar por"
 
-#: template/home.php:102
+#: template/home.php:114
 msgid "More relevant"
 msgstr "Mais relevantes"
 
-#: template/home.php:103
+#: template/home.php:115
 msgid "Most recent"
 msgstr "Mais recentes"
 
-#: template/home.php:135
+#: template/home.php:147
 msgid "See more details"
 msgstr "Ver mais detalhes"
 
-#: template/home.php:169
+#: template/home.php:173
+msgid "See all events"
+msgstr "Ver todos os eventos"
+
+#: template/home.php:186
 msgid "Subjects"
 msgstr "Assuntos"
 
-#: template/home.php:182
+#: template/home.php:199
 msgid "Event type"
 msgstr "Tipo de evento"
 
