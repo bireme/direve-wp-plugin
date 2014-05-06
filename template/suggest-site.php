@@ -9,7 +9,7 @@ $site_language = strtolower(get_bloginfo('language'));
 
 ?>
 
-<?php get_header(); ?>
+<?php get_header('direve'); ?>
 
 <div id="content" class="row-fluid">
         <div class="ajusta2">

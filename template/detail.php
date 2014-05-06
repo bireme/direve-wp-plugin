@@ -25,7 +25,7 @@ if ($response){
 
 ?>
 
-<?php get_header(); ?>
+<?php get_header('direve'); ?>
 
 <div id="content" class="row-fluid">
         <div class="ajusta2">

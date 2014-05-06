@@ -63,7 +63,7 @@ $pages->paginate($page_url_params);
 
 ?>
 
-<?php get_header();?>
+<?php get_header('direve');?>
 	<div id="content" class="row-fluid">
 		<div class="ajusta2">
             <div class="row-fluid breadcrumb">                
