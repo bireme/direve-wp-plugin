@@ -1,26 +1,26 @@
-# Copyright (C) 2013 DirEve
+# Copyright (C) 2014 DirEve
 # This file is distributed under the same license as the DirEve package.
 msgid ""
 msgstr ""
 "Project-Id-Version: DirEve 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/direve\n"
-"POT-Creation-Date: 2013-12-16 20:32:23+00:00\n"
+"POT-Creation-Date: 2014-05-08 20:17:31+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: direve.php:81
+#: direve.php:79
 msgid "DirEVE Settings"
 msgstr ""
 
-#: direve.php:81
+#: direve.php:79
 msgid "DirEVE"
 msgstr ""
 
-#: direve.php:131
+#: direve.php:129
 msgid "DirEVE sidebar"
 msgstr ""
 
@@ -66,12 +66,12 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
-#: template/detail.php:33 template/home.php:70
-#: template/suggest-site-details.php:29 template/suggest-site.php:17
+#: template/detail.php:33 template/home.php:70 template/suggest-event.php:41
 msgid "Home"
 msgstr ""
 
 #: template/detail.php:34 template/home.php:72 template/home.php:75
+#: template/suggest-event.php:42
 msgid "Events Directory"
 msgstr ""
 
@@ -85,8 +85,6 @@ msgid "Search"
 msgstr ""
 
 #: template/detail.php:47 template/home.php:88
-#: template/suggest-site-details.php:31 template/suggest-site-details.php:36
-#: template/suggest-site.php:19 template/suggest-site.php:24
 msgid "Suggest a site"
 msgstr ""
 
@@ -150,27 +148,47 @@ msgstr ""
 msgid "Event type"
 msgstr ""
 
-#: template/suggest-site-details.php:30 template/suggest-site.php:18
-msgid "Health Information Locator"
+#: template/suggest-event.php:43 template/suggest-event.php:48
+msgid "Suggest a event"
 msgstr ""
 
-#: template/suggest-site-details.php:43 template/suggest-site.php:30
-msgid "Link"
+#: template/suggest-event.php:57
+msgid "Event title"
 msgstr ""
 
-#: template/suggest-site-details.php:47
-msgid "Title"
+#: template/suggest-event.php:62
+msgid "Start date"
 msgstr ""
 
-#: template/suggest-site-details.php:50
-msgid "Keywords"
+#: template/suggest-event.php:65 template/suggest-event.php:87
+msgid "Day"
 msgstr ""
 
-#: template/suggest-site-details.php:53
-msgid "Abstract"
+#: template/suggest-event.php:71 template/suggest-event.php:93
+msgid "Month"
 msgstr ""
 
-#: template/suggest-site-details.php:76 template/suggest-site.php:34
+#: template/suggest-event.php:77 template/suggest-event.php:99
+msgid "Year"
+msgstr ""
+
+#: template/suggest-event.php:85
+msgid "End date"
+msgstr ""
+
+#: template/suggest-event.php:106
+msgid "Website"
+msgstr ""
+
+#: template/suggest-event.php:109
+msgid "City"
+msgstr ""
+
+#: template/suggest-event.php:112
+msgid "Country"
+msgstr ""
+
+#: template/suggest-event.php:375
 msgid "Send"
 msgstr ""
 

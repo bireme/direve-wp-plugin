@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LIS 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/direve\n"
-"POT-Creation-Date: 2013-11-28 16:56:16+00:00\n"
-"PO-Revision-Date: 2013-11-28 15:02-0300\n"
+"POT-Creation-Date: 2014-05-08 20:17:31+00:00\n"
+"PO-Revision-Date: 2014-05-08 17:24-0300\n"
 "Last-Translator: Vinicius Andrade <vinicius.andrade@bireme.org>\n"
 "Language-Team: RedDes <reddes@gmail.com>\n"
 "Language: \n"
@@ -16,15 +16,15 @@ msgstr ""
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: direve.php:81
+#: direve.php:79
 msgid "DirEVE Settings"
 msgstr "DirEVE - Ajustes"
 
-#: direve.php:81
+#: direve.php:79
 msgid "DirEVE"
 msgstr ""
 
-#: direve.php:131
+#: direve.php:129
 msgid "DirEVE sidebar"
 msgstr "DirEVE area de destacados"
 
@@ -76,15 +76,15 @@ msgid "Save Changes"
 msgstr "Guardar Cambios"
 
 #: template/detail.php:33
-#: template/home.php:58
-#: template/suggest-site-details.php:29
-#: template/suggest-site.php:17
+#: template/home.php:70
+#: template/suggest-event.php:41
 msgid "Home"
 msgstr "Inicio"
 
 #: template/detail.php:34
-#: template/home.php:60
-#: template/home.php:62
+#: template/home.php:72
+#: template/home.php:75
+#: template/suggest-event.php:42
 msgid "Events Directory"
 msgstr "Directorio de eventos"
 
@@ -94,27 +94,23 @@ msgstr "Recurso"
 
 #: template/detail.php:41
 #: template/detail.php:42
-#: template/home.php:70
-#: template/home.php:71
+#: template/home.php:82
+#: template/home.php:83
 msgid "Search"
 msgstr "Buscar"
 
 #: template/detail.php:47
-#: template/home.php:76
-#: template/suggest-site-details.php:31
-#: template/suggest-site-details.php:36
-#: template/suggest-site.php:19
-#: template/suggest-site.php:24
+#: template/home.php:88
 msgid "Suggest a site"
 msgstr "Sugerir un sitio"
 
 #: template/detail.php:68
-#: template/home.php:128
+#: template/home.php:140
 msgid "Date"
 msgstr "Fecha"
 
 #: template/detail.php:89
-#: template/home.php:141
+#: template/home.php:153
 msgid "Available languages"
 msgstr "Idiomas disponibles"
 
@@ -122,76 +118,101 @@ msgstr "Idiomas disponibles"
 msgid "Report error"
 msgstr "Informar un error"
 
-#: template/home.php:63
+#: template/home.php:73
 msgid "Search result"
 msgstr "Resultado de la búsqueda"
 
-#: template/home.php:82
+#: template/home.php:94
 msgid "No results found"
 msgstr "No se encontraron resultados"
 
-#: template/home.php:86
+#: template/home.php:98
 msgid "Resources found"
 msgstr "Recursos encontrados"
 
-#: template/home.php:88
+#: template/home.php:100
 msgid "Next events"
 msgstr "Próximos eventos"
 
-#: template/home.php:95
-#: template/home.php:96
-#: template/home.php:97
+#: template/home.php:107
+#: template/home.php:108
+#: template/home.php:109
 msgid "resources"
 msgstr "recursos"
 
-#: template/home.php:101
+#: template/home.php:113
 msgid "Order by"
 msgstr "Ordenar por"
 
-#: template/home.php:102
+#: template/home.php:114
 msgid "More relevant"
 msgstr "Más relevantes"
 
-#: template/home.php:103
+#: template/home.php:115
 msgid "Most recent"
 msgstr "Más recientes"
 
-#: template/home.php:135
+#: template/home.php:147
 msgid "See more details"
 msgstr "Ver más detalles"
 
-#: template/home.php:169
+#: template/home.php:173
+msgid "See all events"
+msgstr "Ver todos los eventos"
+
+#: template/home.php:186
 msgid "Subjects"
 msgstr "Asuntos"
 
-#: template/home.php:182
+#: template/home.php:199
 msgid "Event type"
 msgstr "Tipo de evento"
 
-#: template/suggest-site-details.php:30
-#: template/suggest-site.php:18
-msgid "Health Information Locator"
-msgstr "Localizador de Información en Salud"
+#: template/suggest-event.php:43
+#: template/suggest-event.php:48
+msgid "Suggest a event"
+msgstr "Sugerir un evento"
 
-#: template/suggest-site-details.php:43
-#: template/suggest-site.php:30
-msgid "Link"
-msgstr "Enlace"
+#: template/suggest-event.php:57
+msgid "Event title"
+msgstr "Nombre del evento"
 
-#: template/suggest-site-details.php:47
-msgid "Title"
-msgstr "Titulo"
+#: template/suggest-event.php:62
+msgid "Start date"
+msgstr "Fecha de ínicio"
 
-#: template/suggest-site-details.php:50
-msgid "Keywords"
-msgstr "Palabras clave"
+#: template/suggest-event.php:65
+#: template/suggest-event.php:87
+msgid "Day"
+msgstr "Dia"
 
-#: template/suggest-site-details.php:53
-msgid "Abstract"
-msgstr "Resumen"
+#: template/suggest-event.php:71
+#: template/suggest-event.php:93
+msgid "Month"
+msgstr "Mes"
 
-#: template/suggest-site-details.php:76
-#: template/suggest-site.php:34
+#: template/suggest-event.php:77
+#: template/suggest-event.php:99
+msgid "Year"
+msgstr "Año"
+
+#: template/suggest-event.php:85
+msgid "End date"
+msgstr "Fecha final"
+
+#: template/suggest-event.php:106
+msgid "Website"
+msgstr "Sitio del evento"
+
+#: template/suggest-event.php:109
+msgid "City"
+msgstr "Ciudad"
+
+#: template/suggest-event.php:112
+msgid "Country"
+msgstr "País"
+
+#: template/suggest-event.php:375
 msgid "Send"
 msgstr "Enviar"
 
@@ -214,6 +235,21 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "http://reddes.bvsalud.org/"
 msgstr ""
+
+#~ msgid "Health Information Locator"
+#~ msgstr "Localizador de Información en Salud"
+
+#~ msgid "Link"
+#~ msgstr "Enlace"
+
+#~ msgid "Title"
+#~ msgstr "Titulo"
+
+#~ msgid "Keywords"
+#~ msgstr "Palabras clave"
+
+#~ msgid "Abstract"
+#~ msgstr "Resumen"
 
 #~ msgid "LIS"
 #~ msgstr "LIS"
