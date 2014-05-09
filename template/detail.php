@@ -44,7 +44,9 @@ if ($response){
                     <?php endif; ?>
                 </section>
                 <div class="pull-right">
-                    <a href="<?php echo home_url($eve_plugin_slug); ?>/suggest-site" class="header-colabore"><?php _e('Suggest a site','direve'); ?></a>
+                    <a href="<?php echo home_url($eve_plugin_slug); ?>/suggest-event">
+                        <img class="header-colabore" src="<?php echo DIREVE_PLUGIN_URL . 'template/images/' . $lang_dir .'/indique.png' ?>" title="<?php _e('Suggest a site','direve'); ?>"/>
+                    </a>
                 </div>   
             </div>
 

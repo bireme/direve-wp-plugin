@@ -10,6 +10,7 @@ $direve_service_url = $direve_config['service_url'];
 $direve_initial_filter = $direve_config['initial_filter'];
 
 $site_language = strtolower(get_bloginfo('language'));
+$lang_dir = substr($site_language,0,2);
 
 $query = ( isset($_GET['s']) ? $_GET['s'] : $_GET['q'] );
 $user_filter = stripslashes($_GET['filter']);
@@ -85,7 +86,9 @@ $pages->paginate($page_url_params);
                     <?php endif; ?>
                 </section>
                 <div class="pull-right">
-                    <a href="<?php echo home_url($eve_plugin_slug); ?>/suggest-event" class="header-colabore"><?php _e('Suggest a site','direve'); ?></a>
+                    <a href="<?php echo home_url($eve_plugin_slug); ?>/suggest-event">
+                        <img class="header-colabore" src="<?php echo DIREVE_PLUGIN_URL . 'template/images/' . $lang_dir .'/indique.png' ?>" title="<?php _e('Suggest a site','direve'); ?>"/>
+                    </a>
                 </div>   
             </div>
 				

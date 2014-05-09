@@ -25,7 +25,7 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 
 /* SPRITE */
 .ico-contato, .ico-compartilhar, .ico-rank, .ico-tag, .ico-tags, .ico-reportar, .ico-comentar, .ico-feeds, .header-logo, .b-search, 
-.header-colabore, .footer-logo, .reportar-erro-btn, .colaboracion-enviar, .ico-fb, .ico-tt, .ico-lk, .ico-at
+.footer-logo, .reportar-erro-btn, .colaboracion-enviar, .ico-fb, .ico-tt, .ico-lk, .ico-at
 {background:url(../images/sprite.png) no-repeat;}
 
 .ico-contato, .ico-compartilhar, .ico-rank, .ico-tag,  .ico-tags, .ico-reportar, .ico-comentar, .ico-feeds, .ico-fb, .ico-tt, .ico-lk, .ico-at{float:left; padding-right:5px;}
@@ -83,6 +83,8 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 .b-search{cursor:pointer; width:101px; height:41px; border:0px; float:left; background-position:0 -118px; margin-left:-1px;}
 .header-colabore{width:282px; height:31px; float:left; background-position:0 -170px; text-indent:-999px; margin:20px 15px;}
 .topMenu .widget{margin-bottom: 0px;}
+
+.header-colabore {text-indent:-999px; margin:20px 15px; width:314px; height:35px; float:left; }
 
 /* CONTENT */
 #conteudo{width:629px; float:left;}
