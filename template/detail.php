@@ -9,6 +9,9 @@ $request_uri = $_SERVER["REQUEST_URI"];
 $request_parts = explode('/', $request_uri);
 $event_id = end($request_parts);
 
+$site_language = strtolower(get_bloginfo('language'));
+$lang_dir = substr($site_language,0,2);
+
 $direve_service_url = $direve_config['service_url'];
 $direve_disqus_id  = $direve_config['disqus_shortname'];
 $direve_addthis_id = $direve_config['addthis_profile_id'];
