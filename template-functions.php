@@ -71,4 +71,32 @@ if ( !function_exists('get_site_meta_tags') ) {
         return $site_meta_tags;
     }
 }
+
+if ( !function_exists('real_site_url') ) {
+    function real_site_url($path = ''){
+
+        $site_url = get_site_url();
+
+        // check for multi-language-framework plugin
+        if ( function_exists('mlf_parseURL') ) {
+            global $mlf_config;
+
+            $current_language = substr( strtolower(get_bloginfo('language')),0,2 );
+
+            if ( $mlf_config['default_language'] != $current_language ){
+                $site_url .= '/' . $current_language;    
+            }
+        }
+        if ($path != ''){
+            $site_url .= '/' . $path;
+        }
+        $site_url .= '/';
+
+
+        return $site_url;
+    }
+}
+
+
+
 ?>

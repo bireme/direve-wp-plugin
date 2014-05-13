@@ -33,21 +33,21 @@ if ($response){
 <div id="content" class="row-fluid">
         <div class="ajusta2">
             <div class="row-fluid breadcrumb">
-                <a href="<?php echo home_url(); ?>"><?php _e('Home','direve'); ?></a> > 
-                <a href="<?php echo home_url($eve_plugin_slug); ?>"><?php _e('Events Directory', 'direve') ?> </a> > 
+                <a href="<?php echo real_site_url(); ?>"><?php _e('Home','direve'); ?></a> > 
+                <a href="<?php echo real_site_url($eve_plugin_slug); ?>"><?php _e('Events Directory', 'direve') ?> </a> > 
                 <?php _e('Resource','direve'); ?>
             </div>
             <div class="row-fluid">
                 <section class="header-search">
                     <?php if ($direve_config['show_form']) : ?>
-                        <form role="search" method="get" id="searchform" action="<?php echo home_url($eve_plugin_slug); ?>">
+                        <form role="search" method="get" id="searchform" action="<?php echo real_site_url($eve_plugin_slug); ?>">
                             <input value="<?php echo $query ?>" name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
                             <input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
                         </form>
                     <?php endif; ?>
                 </section>
                 <div class="pull-right">
-                    <a href="<?php echo home_url($eve_plugin_slug); ?>/suggest-event">
+                    <a href="<?php echo real_site_url($eve_plugin_slug); ?>suggest-event">
                         <img class="header-colabore" src="<?php echo DIREVE_PLUGIN_URL . 'template/images/' . $lang_dir .'/indique.png' ?>" title="<?php _e('Suggest a site','direve'); ?>"/>
                     </a>
                 </div>   
