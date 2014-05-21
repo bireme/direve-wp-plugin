@@ -190,8 +190,18 @@ $pages->paginate($page_url_params);
     					</header>
     					<ul>
                             <?php foreach ( $descriptor_list as $descriptor) { ?>
+                                <?php
+                                    $filter_link = '?';
+                                    if ($query != ''){
+                                        $filter_link .= 'q=' . $query . '&';
+                                    }
+                                    $filter_link .= 'filter=descriptor:"' . $descriptor[0] . '"';
+                                    if ($user_filter != ''){
+                                        $filter_link .= ' AND ' . $user_filter ;
+                                    }
+                                ?>                            
                                 <li class="cat-item">
-                                    <a href='?filter=descriptor:"<?php echo $descriptor[0]; ?>"'><?php echo $descriptor[0] ?></a>
+                                    <a href='<?php echo $filter_link; ?>'><?php echo $descriptor[0] ?></a>
                                     <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
                                 </li>
                             <?php } ?>
@@ -203,8 +213,18 @@ $pages->paginate($page_url_params);
                         </header>
                         <ul>
                             <?php foreach ( $event_type_list as $type) { ?>
+                                <?php
+                                    $filter_link = '?';
+                                    if ($query != ''){
+                                        $filter_link .= 'q=' . $query . '&';
+                                    }
+                                    $filter_link .= 'filter=event_type:"' . $type[0] . '"';
+                                    if ($user_filter != ''){
+                                        $filter_link .= ' AND ' . $user_filter ;
+                                    }
+                                ?>
                                 <li class="cat-item">
-                                    <a href='?filter=event_type:"<?php echo $type[0]; ?>"'><?php echo print_lang_value($type[0], $site_language); ?></a>
+                                    <a href='<?php echo $filter_link; ?>'><?php print_lang_value($type[0], $site_language); ?></a>
                                     <span class="cat-item-count"><?php echo $type[1] ?></span>
                                 </li>
                             <?php } ?>

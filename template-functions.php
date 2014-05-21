@@ -2,6 +2,7 @@
 
 if ( !function_exists('print_lang_value') ) {
     function print_lang_value($value, $lang_code){
+        $lang_code = substr($lang_code,0,2);
         if ( is_array($value) ){
             foreach($value as $current_value){
                 $print_values[] = get_lang_value($current_value, $lang_code);
@@ -21,7 +22,7 @@ if ( !function_exists('get_lang_value') ) {
 
         foreach ($occs as $occ){
             $lv = preg_split('/\^/', $occ);
-            $lang = $lv[0];
+            $lang = substr($lv[0],0,2);
             $value = $lv[1];        
             $lang_value[$lang] = $value;        
         }
@@ -96,7 +97,5 @@ if ( !function_exists('real_site_url') ) {
         return $site_url;
     }
 }
-
-
 
 ?>
