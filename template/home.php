@@ -88,7 +88,7 @@ $pages->paginate($page_url_params);
                 <div class="pull-right">
                     <a href="<?php echo real_site_url($eve_plugin_slug . '/suggest-event'); ?>">
                         <img class="header-colabore" src="<?php echo DIREVE_PLUGIN_URL . 'template/images/' . $lang_dir .'/indique.png' ?>" title="<?php _e('Suggest a site','direve'); ?>"/>
-                        <a href="<?php echo real_site_url($eve_plugin_slug) ?>events-feed" target="blank"><img src="<?php echo LIS_PLUGIN_URL ?>template/images/icon_rss.png"></a>
+                        <a href="<?php echo real_site_url($eve_plugin_slug) ?>events-feed" target="blank"><img src="<?php echo DIREVE_PLUGIN_URL ?>template/images/icon_rss.png"></a>
                     </a>
                 </div>   
             </div>
