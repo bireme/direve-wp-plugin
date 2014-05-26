@@ -71,8 +71,8 @@ if ($response){
 
                         <div id="conteudo-loop-data" class="row-fluid margintop05">
                             <span class="conteudo-loop-data-tit"><?php _e('Date','direve'); ?>:</span>
-                            <?php echo print_formated_date($resource->start_date); ?> - 
-                            <?php echo print_formated_date($resource->end_date); ?>
+                            <?php echo format_date($resource->start_date); ?> - 
+                            <?php echo format_date($resource->end_date); ?>
                         </div>
 
                         <?php if ($resource->link[0]): ?>

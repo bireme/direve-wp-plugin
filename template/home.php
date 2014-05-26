@@ -88,6 +88,7 @@ $pages->paginate($page_url_params);
                 <div class="pull-right">
                     <a href="<?php echo real_site_url($eve_plugin_slug . '/suggest-event'); ?>">
                         <img class="header-colabore" src="<?php echo DIREVE_PLUGIN_URL . 'template/images/' . $lang_dir .'/indique.png' ?>" title="<?php _e('Suggest a site','direve'); ?>"/>
+                        <a href="<?php echo real_site_url($eve_plugin_slug) ?>events-feed" target="blank"><img src="<?php echo LIS_PLUGIN_URL ?>template/images/icon_rss.png"></a>
                     </a>
                 </div>   
             </div>
@@ -141,8 +142,8 @@ $pages->paginate($page_url_params);
 
                                 <div id="conteudo-loop-data" class="row-fluid margintop05">
                                     <span class="conteudo-loop-data-tit"><?php _e('Date','direve'); ?>:</span>
-                                    <?php echo print_formated_date($resource->start_date); ?> - 
-                                    <?php echo print_formated_date($resource->end_date); ?>
+                                    <?php echo format_date($resource->start_date); ?> - 
+                                    <?php echo format_date($resource->end_date); ?>
                                 </div>
 
         						<p class="row-fluid">

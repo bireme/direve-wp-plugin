@@ -32,7 +32,8 @@ function direve_theme_redirect() {
     $pagename = $wp->query_vars["pagename"];
 
     if ($pagename == $eve_plugin_slug || $pagename == $eve_plugin_slug . '/resource' 
-        || $pagename == $eve_plugin_slug . '/suggest-event') {
+        || $pagename == $eve_plugin_slug . '/suggest-event' 
+        || $pagename == $eve_plugin_slug . '/events-feed') {
 
         add_action( 'wp_enqueue_scripts', 'direve_template_styles_scripts' );
 
@@ -40,6 +41,9 @@ function direve_theme_redirect() {
             $template = DIREVE_PLUGIN_PATH . '/template/home.php';
         }elseif ($pagename == $eve_plugin_slug . '/suggest-event'){
             $template = DIREVE_PLUGIN_PATH . '/template/suggest-event.php';
+        }elseif ($pagename == $eve_plugin_slug . '/events-feed'){
+            $template = DIREVE_PLUGIN_PATH . '/template/rss.php';
+
         }else{
             $template = DIREVE_PLUGIN_PATH . '/template/detail.php';
         }
