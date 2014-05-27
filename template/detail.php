@@ -108,69 +108,64 @@ if ($response){
                         <?php endif; ?>
 
                         <footer class="row-fluid margintop05">
-
-
-
                             <ul class="conteudo-loop-icons">
-                                <li class="conteudo-loop-icons-li" style="width: 200px">
-                                        <!-- AddThis Button BEGIN -->
-                                        <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
-                                            <a class="addthis_button_preferred_1"></a>
-                                            <a class="addthis_button_preferred_2"></a>
-                                            <a class="addthis_button_preferred_3"></a>
-                                            <a class="addthis_button_preferred_4"></a>
-                                            <a class="addthis_button_compact"></a>
-                                        </div>
-                                        <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-                                        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $direve_addthis_id; ?>"></script>
-                                        <!-- AddThis Button END -->
-
+                                <li class="conteudo-loop-icons-li">
+                                    <i class="ico-compartilhar"> </i>
+                                    <!-- AddThis Button BEGIN -->
+                                    <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=<?php echo $direve_addthis_id; ?>"><?php _e('Share','direve'); ?></a>
+                                    <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+                                    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $direve_addthis_id; ?>"></script>
+                                    <!-- AddThis Button END -->                                    
                                 </li>
-                                <!--li class="conteudo-loop-icons-li">
+                                <li class="conteudo-loop-icons-li">
                                     <span class="reportar-erro-open">
                                         <i class="ico-reportar"></i>
                                         <?php _e('Report error','direve'); ?>
                                     </span>
 
                                     <div class="reportar-erro"> 
-                                        <form action="">
-                                            <div class="reportar-erro-close">[X]</div>
-                                            <span class="reportar-erro-tit">Motivo</span>
+                                        <div class="erro-form">
+                                            <form action="<?php echo $direve_service_url ?>report-error" id="reportErrorForm">
+                                                <input type="hidden" name="resource_type" value="event"/>
+                                                <input type="hidden" name="resource_id" value="<?php echo $resource_id; ?>"/>
+                                                <div class="reportar-erro-close">[X]</div>
+                                                <span class="reportar-erro-tit"><?php _e('Reason','direve'); ?></span>
 
-                                            <div class="row-fluid margintop05">
-                                                <input type="radio" name="txtMotivo" id="txtMotivo1">
-                                                <label class="reportar-erro-lbl" for="txtMotivo1">Motivo 01</label>
-                                            </div>
+                                                <div class="row-fluid margintop05">
+                                                    <input type="radio" name="code" id="txtMotivo1" value="0">
+                                                    <label class="reportar-erro-lbl" for="txtMotivo1"><?php _e('Invalid Link','direve'); ?></label>
+                                                </div>
 
-                                            <div class="row-fluid">
-                                                <input type="radio" name="txtMotivo" id="txtMotivo2">
-                                                <label class="reportar-erro-lbl" for="txtMotivo2">Motivo 02</label>
-                                            </div>
+                                                <div class="row-fluid">
+                                                    <input type="radio" name="code" id="txtMotivo2" value="1">
+                                                    <label class="reportar-erro-lbl" for="txtMotivo2"><?php _e('Bad content','direve'); ?></label>
+                                                </div>
 
-                                            <div class="row-fluid">
-                                                <input type="radio" name="txtMotivo" id="txtMotivo3">
-                                                <label class="reportar-erro-lbl" for="txtMotivo3">Motivo 03</label>
-                                            </div>
+                                                <div class="row-fluid">
+                                                    <input type="radio" name="code" id="txtMotivo3" value="3">
+                                                    <label class="reportar-erro-lbl" for="txtMotivo3"><?php _e('Other','direve'); ?></label>
+                                                </div>
 
-                                            <div class="row-fluid margintop05">
-                                                <textarea name="txtArea" id="txtArea" class="reportar-erro-area" cols="20" rows="2"></textarea>
-                                            </div>
+                                                <div class="row-fluid margintop05">
+                                                    <textarea name="description" id="txtArea" class="reportar-erro-area" cols="20" rows="2"></textarea>
+                                                </div>
 
-                                            <div class="row-fluid border-bottom2"></div>
+                                                <div class="row-fluid border-bottom2"></div>
 
-                                            <span class="reportar-erro-tit margintop05">Nueva URL (Opcional)</span>
-                                            <div class="row-fluid margintop05">
-                                                <textarea name="txtUrl" id="txtUrl" class="reportar-erro-area" cols="20" rows="2"></textarea>
-                                            </div>
+                                                <span class="reportar-erro-tit margintop05"><?php _e('New Link (Optional)','direve'); ?></span>
+                                                <div class="row-fluid margintop05">
+                                                    <textarea name="new_link" id="txtUrl" class="reportar-erro-area" cols="20" rows="2"></textarea>
+                                                </div>
 
-                                            <div class="row-fluid border-bottom2"></div>
+                                                <div class="row-fluid border-bottom2"></div>
 
-                                            <div class="row-fluid margintop05">
-                                                <button class="pull-right reportar-erro-btn">Enviar</button>
-                                            </div>
-                                        </form>
+                                                <div class="row-fluid margintop05">
+                                                    <button class="pull-right reportar-erro-btn"><?php _e('Send','direve'); ?></button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
-                                </li-->
+                                </li>                                
                             </ul>
                         </footer>
 

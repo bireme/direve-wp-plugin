@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LIS WP Plugin 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/direve\n"
-"POT-Creation-Date: 2014-05-08 20:17:31+00:00\n"
-"PO-Revision-Date: 2014-05-08 17:22-0300\n"
+"POT-Creation-Date: 2014-05-27 19:23:50+00:00\n"
+"PO-Revision-Date: 2014-05-27 16:26-0300\n"
 "Last-Translator: Vinicius Andrade <vinicius.andrade@bireme.org>\n"
 "Language-Team: BIREME <reddes@gmail.com>\n"
 "Language: \n"
@@ -16,15 +16,15 @@ msgstr ""
 "X-Poedit-Country: BRAZIL\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: direve.php:79
+#: direve.php:83
 msgid "DirEVE Settings"
 msgstr "DirEVE Ajustes"
 
-#: direve.php:79
+#: direve.php:83
 msgid "DirEVE"
 msgstr ""
 
-#: direve.php:129
+#: direve.php:133
 msgid "DirEVE sidebar"
 msgstr "DirEve área de destaques"
 
@@ -75,96 +75,130 @@ msgstr "AddThis identificador"
 msgid "Save Changes"
 msgstr "Salvar alterações"
 
-#: template/detail.php:33
-#: template/home.php:70
+#: template/detail.php:36
+#: template/home.php:71
 #: template/suggest-event.php:41
 msgid "Home"
 msgstr "Ínicio"
 
-#: template/detail.php:34
-#: template/home.php:72
-#: template/home.php:75
+#: template/detail.php:37
+#: template/home.php:73
+#: template/home.php:76
+#: template/rss.php:27
 #: template/suggest-event.php:42
 msgid "Events Directory"
 msgstr "Diretório de Eventos"
 
-#: template/detail.php:35
+#: template/detail.php:38
 msgid "Resource"
 msgstr "Recurso"
 
-#: template/detail.php:41
-#: template/detail.php:42
-#: template/home.php:82
+#: template/detail.php:44
+#: template/detail.php:45
 #: template/home.php:83
+#: template/home.php:84
 msgid "Search"
 msgstr "Pesquisa"
 
-#: template/detail.php:47
-#: template/home.php:88
+#: template/detail.php:51
+#: template/home.php:90
 msgid "Suggest a site"
 msgstr "Sugira um site"
 
-#: template/detail.php:68
-#: template/home.php:140
+#: template/detail.php:73
+#: template/home.php:144
+#: template/rss.php:44
 msgid "Date"
 msgstr "Data"
 
-#: template/detail.php:89
-#: template/home.php:153
+#: template/detail.php:94
+#: template/home.php:157
+#: template/rss.php:52
 msgid "Available languages"
 msgstr "Idiomas disponíveis"
 
-#: template/detail.php:127
+#: template/detail.php:115
+msgid "Share"
+msgstr "Compartilhar"
+
+#: template/detail.php:123
 msgid "Report error"
 msgstr "Informar um erro"
 
-#: template/home.php:73
+#: template/detail.php:132
+msgid "Reason"
+msgstr "Motivo"
+
+#: template/detail.php:136
+msgid "Invalid Link"
+msgstr "Link inválido"
+
+#: template/detail.php:141
+msgid "Bad content"
+msgstr "Conteúdo inapropriado"
+
+#: template/detail.php:146
+msgid "Other"
+msgstr "Outro"
+
+#: template/detail.php:155
+msgid "New Link (Optional)"
+msgstr "Novo Link (opcional)"
+
+#: template/detail.php:163
+#: template/suggest-event.php:375
+msgid "Send"
+msgstr "Enviar"
+
+#: template/home.php:74
 msgid "Search result"
 msgstr "Resultado de pesquisa"
 
-#: template/home.php:94
+#: template/home.php:98
 msgid "No results found"
 msgstr "Nenhum resultado encontrado"
 
-#: template/home.php:98
+#: template/home.php:102
 msgid "Resources found"
 msgstr "Recursos encontrados"
 
-#: template/home.php:100
+#: template/home.php:104
+#: template/rss.php:29
 msgid "Next events"
 msgstr "Próximos eventos"
 
-#: template/home.php:107
-#: template/home.php:108
-#: template/home.php:109
+#: template/home.php:111
+#: template/home.php:112
+#: template/home.php:113
 msgid "resources"
 msgstr "recursos"
 
-#: template/home.php:113
+#: template/home.php:117
 msgid "Order by"
 msgstr "Ordenar por"
 
-#: template/home.php:114
+#: template/home.php:118
 msgid "More relevant"
 msgstr "Mais relevantes"
 
-#: template/home.php:115
+#: template/home.php:119
 msgid "Most recent"
 msgstr "Mais recentes"
 
-#: template/home.php:147
+#: template/home.php:151
 msgid "See more details"
 msgstr "Ver mais detalhes"
 
-#: template/home.php:173
+#: template/home.php:177
 msgid "See all events"
 msgstr "Ver todos os eventos"
 
-#: template/home.php:186
+#: template/home.php:190
+#: template/rss.php:60
 msgid "Subjects"
 msgstr "Assuntos"
 
-#: template/home.php:199
+#: template/home.php:213
 msgid "Event type"
 msgstr "Tipo de evento"
 
@@ -211,10 +245,6 @@ msgstr "Cidade"
 #: template/suggest-event.php:112
 msgid "Country"
 msgstr "País"
-
-#: template/suggest-event.php:375
-msgid "Send"
-msgstr "Enviar"
 
 #. Plugin Name of the plugin/theme
 msgid "DirEve"
@@ -265,9 +295,6 @@ msgstr ""
 
 #~ msgid "Objective"
 #~ msgstr "Objetivo"
-
-#~ msgid "Share"
-#~ msgstr "Compartilhar"
 
 #~ msgid "Suggest tag"
 #~ msgstr "Sugerir uma palavra-chave"

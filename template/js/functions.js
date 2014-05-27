@@ -25,16 +25,46 @@ function regExp(){
 }
 
 function reportarErro(){
-	$j(".reportar-erro-open").on("click", function(){
-		$j(".reportar-erro").hide();
-		$j(".compartilhar").hide();
-		$j(".sugerir-tag").hide();
-		$j(this).siblings(".reportar-erro").show();
-	});
+    $j(".reportar-erro-open").on("click", function(){
+        $j(".reportar-erro").hide();
+        $j(".compartilhar").hide();
+        $j(".sugerir-tag").hide();
+        $j(".error-report-result").hide();
+        $j(this).siblings(".reportar-erro").show();
+        $j(".erro-form").show();
+    });
 
-	$j(".reportar-erro-close").on("click", function(){
-		$j(this).parent().parent().hide();
-	});
+    $j(".reportar-erro-close").on("click", function(){
+        $j(".reportar-erro").hide();
+    });
+
+    // Attach a submit handler to the form
+    $j( "#reportErrorForm" ).submit(function( event ) {
+     
+      // Stop form from submitting normally
+      event.preventDefault();
+     
+      // Get some values from elements on the page:
+      var $form = $j( this ),
+        url = $form.attr( "action" );
+     
+      // Send the data using post
+      var posting = $j.post( url, $form.serialize() );
+     
+      // Put the results in a div
+      posting.done(function( data ) {
+        $j(".erro-form").hide();
+
+        if (data == 'True'){       
+            $j(".error-report-result").find('#result-problem').hide();
+        }else{
+            $j(".error-report-result").find('#result-ok').hide();
+        }
+        $j(".error-report-result").show();
+        
+      });
+    });
+    
 }
 
 function sugerirTag(){

@@ -37,7 +37,7 @@ if ($query != ''){
     $direve_search = $direve_service_url . 'api/event/search/?fq=' . urlencode($filter) . '&start=' . $start;
 }
 
-#print $direve_service_request;
+#print $direve_next_events;
 
 $response = @file_get_contents($direve_search);
 if ($response){
