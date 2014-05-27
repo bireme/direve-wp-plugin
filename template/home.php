@@ -31,10 +31,10 @@ if ($direve_initial_filter != ''){
 $start = ($page * $count) - $count;
 
 if ($query != ''){
-    $direve_search = $direve_service_url . 'api/event/search/?q=' . urlencode($query) . '&fq=' . urlencode($filter) . '&start=' . $start;
+    $direve_search = $direve_service_url . 'api/event/search/?q=' . urlencode($query) . '&fq=' . urlencode($filter) . '&start=' . $start . '&lang=' . $lang_dir;
 }else{
-    $direve_next_events = $direve_service_url . 'api/event/next/?fq=' . urlencode($filter);
-    $direve_search = $direve_service_url . 'api/event/search/?fq=' . urlencode($filter) . '&start=' . $start;
+    $direve_next_events = $direve_service_url . 'api/event/next/?fq=' . urlencode($filter) . '&lang=' . $lang_dir;
+    $direve_search = $direve_service_url . 'api/event/search/?fq=' . urlencode($filter) . '&start=' . $start . '&lang=' . $lang_dir;
 }
 
 #print $direve_next_events;
@@ -200,6 +200,7 @@ $pages->paginate($page_url_params);
                                     if ($user_filter != ''){
                                         $filter_link .= ' AND ' . $user_filter ;
                                     }
+                                    $filter_link .= '&lang=' . $lang_dir;
                                 ?>                            
                                 <li class="cat-item">
                                     <a href='<?php echo $filter_link; ?>'><?php echo $descriptor[0] ?></a>
@@ -223,6 +224,7 @@ $pages->paginate($page_url_params);
                                     if ($user_filter != ''){
                                         $filter_link .= ' AND ' . $user_filter ;
                                     }
+                                    $filter_link .= '&lang=' . $lang_dir;
                                 ?>
                                 <li class="cat-item">
                                     <a href='<?php echo $filter_link; ?>'><?php print_lang_value($type[0], $site_language); ?></a>

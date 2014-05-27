@@ -15,7 +15,7 @@ $lang_dir = substr($site_language,0,2);
 $direve_service_url = $direve_config['service_url'];
 $direve_disqus_id  = $direve_config['disqus_shortname'];
 $direve_addthis_id = $direve_config['addthis_profile_id'];
-$direve_service_request = $direve_service_url . 'api/event/search/?id=events.event.' .$event_id . '&op=related';
+$direve_service_request = $direve_service_url . 'api/event/search/?id=events.event.' .$event_id . '&op=related&lang=' . $lang_dir;
 
 $response = @file_get_contents($direve_service_request);
 
