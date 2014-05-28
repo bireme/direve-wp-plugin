@@ -199,8 +199,7 @@ $pages->paginate($page_url_params);
                                     $filter_link .= 'filter=descriptor:"' . $descriptor[0] . '"';
                                     if ($user_filter != ''){
                                         $filter_link .= ' AND ' . $user_filter ;
-                                    }
-                                    $filter_link .= '&lang=' . $lang_dir;
+                                    }                                    
                                 ?>                            
                                 <li class="cat-item">
                                     <a href='<?php echo $filter_link; ?>'><?php echo $descriptor[0] ?></a>
@@ -224,7 +223,6 @@ $pages->paginate($page_url_params);
                                     if ($user_filter != ''){
                                         $filter_link .= ' AND ' . $user_filter ;
                                     }
-                                    $filter_link .= '&lang=' . $lang_dir;
                                 ?>
                                 <li class="cat-item">
                                     <a href='<?php echo $filter_link; ?>'><?php print_lang_value($type[0], $site_language); ?></a>
