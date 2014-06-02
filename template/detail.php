@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: LIS Detail
+Template Name: DirEve Detail
 */
 
 $direve_config = get_option('direve_config');
@@ -37,7 +37,7 @@ if ($response){
                 <a href="<?php echo real_site_url($eve_plugin_slug); ?>"><?php _e('Events Directory', 'direve') ?> </a> > 
                 <?php _e('Resource','direve'); ?>
             </div>
-            <div class="row-fluid">
+            <!-- div class="row-fluid">
                 <section class="header-search">
                     <?php if ($direve_config['show_form']) : ?>
                         <form role="search" method="get" id="searchform" action="<?php echo real_site_url($eve_plugin_slug); ?>">
@@ -51,7 +51,7 @@ if ($response){
                         <img class="header-colabore" src="<?php echo DIREVE_PLUGIN_URL . 'template/images/' . $lang_dir .'/indique.png' ?>" title="<?php _e('Suggest a site','direve'); ?>"/>
                     </a>
                 </div>   
-            </div>
+            </div-->
 
             <section id="conteudo">
                 <header class="row-fluid border-bottom">
@@ -189,7 +189,17 @@ if ($response){
                     </article>
                 </div>
             </section>
-
+		<aside id="sidebar">
+                	<section class="header-search">
+                        	<?php if ($direve_config['show_form']) : ?>
+                        	<form role="search" method="get" id="searchform" action="<?php echo real_site_url($eve_plugin_slug); ?>">
+                	                <input value="<?php echo $query ?>" name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
+                       		        <input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
+                        	</form>
+                        	<?php endif; ?>
+                	</section>
+                	<a href="<?php echo real_site_url($eve_plugin_slug); ?>suggest-event" class="header-colabore"><?php _e('Suggest a site','direve'); ?></a>
+        	</aside>
         </div>
     </div>
 

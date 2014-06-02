@@ -1,5 +1,5 @@
 /*
-	Theme Name: LIS
+	Theme Name: DirEve
 	Theme URI: 
 	Description: Localizador de Informação em Saúde
 	Version: 1.0
@@ -78,13 +78,13 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 .header-contato{float:left; margin:0 90px 0 30px; color:rgb(255,255,255); font-weight:bold; text-decoration:none;}
 .header-contato:hover{text-decoration:underline; color:rgb(255,255,255);}
 .header-logo{width:314px; height:79px; float:left; background-position:0px 0px; text-indent:-999px; font-size:11px; margin:15px 0 0 15px;}
+.breadcrumb{padding:10px 10px 10px 0px !important;}
 .header-search{float:left; margin:15px 15px 15px 0;}
-.input-search{width:350px; min-height:19px; float:left; padding:10px; border-radius:10px 0px 0px 10px; border:1px solid rgb(132,132,132);}
+.input-search{width:195px; min-height:19px; float:left; padding:8px 10px; border-radius:10px 0px 0px 10px; border:1px solid rgb(132,132,132);}
 .b-search{cursor:pointer; width:101px; height:41px; border:0px; float:left; background-position:0 -118px; margin-left:-1px;}
-.header-colabore{width:282px; height:31px; float:left; background-position:0 -170px; text-indent:-999px; margin:20px 15px;}
+.header-colabore{font-size: 170%;text-decoration: none;color: #28367D !important;padding-left:22px;background: url(../images/plus.png) 0px 6px no-repeat;display:inline-block; margin:18px 0 12px 0;}
+.header-colabore:hover{text-decoration:none;}
 .topMenu .widget{margin-bottom: 0px;}
-
-.header-colabore {text-indent:-999px; margin:20px 15px; width:314px; height:35px; float:left; }
 
 /* CONTENT */
 #conteudo{width:629px; float:left;}
@@ -98,6 +98,7 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 .conteudo-loop-icons-li a:hover{text-decoration:underline; color:rgb(0,0,0);}
 #conteudo-loop-idiomas, #conteudo-loop-data{font-weight:bold;}
 .conteudo-loop-idiomas-tit, .conteudo-loop-data-tit{font-style: italic; font-weight:normal;}
+.rss_feed{width:30px;vertical-align:bottom;}
 .more{padding:3px 6px;background:rgb(0,74,142);font-size: 80%;border-radius:4px;}
 .more a{color:rgb(255,255,255);text-decoration:none;}
 .more a:hover{color:rgb(0,153,255);}
