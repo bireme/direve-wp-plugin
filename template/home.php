@@ -76,22 +76,6 @@ $pages->paginate($page_url_params);
                     <?php _e('Events Directory', 'direve') ?>
                 <?php endif; ?>
             </div>
-	<!--div class="row-fluid">
-                <section class="header-search">
-                    <?php if ($direve_config['show_form']) : ?>
-                        <form role="search" method="get" id="searchform" action="<?php echo real_site_url($eve_plugin_slug); ?>">
-                            <input value="<?php echo $query ?>" name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
-                            <input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
-                        </form>
-                    <?php endif; ?>
-                </section>
-                <div class="pull-right">
-                    <a href="<?php echo real_site_url($eve_plugin_slug . '/suggest-event'); ?>">
-                        <img class="header-colabore" src="<?php echo DIREVE_PLUGIN_URL . 'template/images/' . $lang_dir .'/indique.png' ?>" title="<?php _e('Suggest a site','direve'); ?>"/>
-                        <a href="<?php echo real_site_url($eve_plugin_slug) ?>events-feed" target="blank"><img src="<?php echo DIREVE_PLUGIN_URL ?>template/images/icon_rss.png"></a>
-                    </a>
-                </div>   
-            </div-->
 				
 			<section id="conteudo">
                 <?php if ( isset($total) && strval($total) == 0) :?>
@@ -103,10 +87,10 @@ $pages->paginate($page_url_params);
                         <?php else: ?>
                            <h1 class="h1-header"><?php _e('Next events','direve'); ?></h1>
                         <?php endif; ?>
-			<div class="pull-right">
-				<a href="<?php echo real_site_url($eve_plugin_slug) ?>events-feed" target="blank"><img src="<?php echo DIREVE_PLUGIN_URL ?>template/images/icon_rss.png" class="rss_feed" ></a>
+			             <div class="pull-right">
+				            <a href="<?php echo real_site_url($eve_plugin_slug) ?>events-feed" target="blank"><img src="<?php echo DIREVE_PLUGIN_URL ?>template/images/icon_rss.png" class="rss_feed" ></a>
                         </div>
-			<!-- Not implemented yet
+			            <!-- Not implemented yet
                         <div class="pull-right">
                             <a href="#" class="ico-feeds"></a>
                             <form action="">
@@ -195,7 +179,7 @@ $pages->paginate($page_url_params);
                         		</form>
                     		<?php endif; ?>
                 	</section>
-			<a href="<?php echo real_site_url($eve_plugin_slug . '/suggest-event'); ?>" class="header-colabore"><?php _e('Suggest a site','direve'); ?></a>
+			<a href="<?php echo real_site_url($eve_plugin_slug . '/suggest-event'); ?>" class="header-colabore"><?php _e('Suggest a event','direve'); ?></a>
                 <?php if (strval($total) > 0) :?>
     				<section class="row-fluid marginbottom25 widget_categories">
     					<header class="row-fluid border-bottom marginbottom15">
