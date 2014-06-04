@@ -44,7 +44,7 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 .ico-at{background-position:-297px -88px;}
 
 /* HEALINGS */
-.h1-header{float:left; line-height:30px; font-size:26px; color:rgb(40,54,125); font-weight:normal; text-decoration:none;}
+.h1-header{float:left; line-height:30px; font-size:26px; color:rgb(40,54,125); font-weight:normal; text-decoration:none; margin: 0 0 10px 0;}
 .h2-loop-tit{font-weight:bold; color:rgb(0,0,0); font-size:20px;width:80%; margin-top: 10px;}
 
 /* ALL */
@@ -180,7 +180,7 @@ input[type=radio]{float:left; margin:3px 5px 0 0;}
 .cat-item-count{width:36px; font-size:12px !important; line-height:20px !important; position:absolute; right:0; top:1px; overflow:hidden; border-radius:11px; text-align:center; background:rgb(172,172,172); color:rgb(255,255,255);}
 
 /* FOOTER */
-.footer{width:100%; float:left; background:rgb(211,211,211); border-top:1px solid rgb(75,95,120); margin-top:50px;}
+.footer{width:98%; float:left; background:rgb(211,211,211); border-top:1px solid rgb(75,95,120); margin-top:50px;}
 .footer-logo{width:61px; height:62px; float:left; background-position:0 -222px; margin:2px 15px 0 0;}
 .footer-logo-texto{float:left; line-height:18px; color:rgb(0,0,0);}
 
