@@ -149,8 +149,17 @@ if ($response){
                                                 </div>
                                             </form>
                                         </div>
+                                        <div class="error-report-result">
+                                            <div class="reportar-erro-close">[X]</div>
+                                            <div id="result-ok">
+                                                <?php _e('Thank you for your report.','direve'); ?>
+                                            </div>
+                                            <div id="result-problem">
+                                                <?php _e('Communication problem. Please try again later.','direve'); ?>
+                                            </div>
+                                        </div>
                                     </div>
-                                </li>                                
+                                </li>
                             </ul>
                         </footer>
 
