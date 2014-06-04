@@ -57,7 +57,7 @@ function direve_theme_redirect() {
 }
 
 function direve_template_styles_scripts(){
-    wp_enqueue_script('direve-page',  DIREVE_PLUGIN_URL . 'template/js/functions.js');
+    wp_enqueue_script('direve-page',  DIREVE_PLUGIN_URL . 'template/js/functions.js', array( 'jquery' ));
     wp_enqueue_script('jquery-raty',  DIREVE_PLUGIN_URL . 'template/js/jquery.raty.min.js', array( 'jquery' ));
     wp_enqueue_style ('direve-page',  DIREVE_PLUGIN_URL . 'template/css/style.css');
 }

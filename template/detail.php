@@ -112,7 +112,7 @@ if ($response){
                                         <div class="erro-form">
                                             <form action="<?php echo $direve_service_url ?>report-error" id="reportErrorForm">
                                                 <input type="hidden" name="resource_type" value="event"/>
-                                                <input type="hidden" name="resource_id" value="<?php echo $resource_id; ?>"/>
+                                                <input type="hidden" name="resource_id" value="<?php echo $event_id; ?>"/>
                                                 <div class="reportar-erro-close">[X]</div>
                                                 <span class="reportar-erro-tit"><?php _e('Reason','direve'); ?></span>
 
