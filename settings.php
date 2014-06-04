@@ -20,7 +20,7 @@ function direve_page_admin() {
                         </tr>
                         <tr valign="top">
                             <th scope="row"><?php _e('Plugin page', 'direve'); ?>:</th>
-                            <td><input type="text" name="direve_config[plugin_slug]" value="<?php echo ($direve_config[plugin_slug] != '' ? $direve_config[plugin_slug] : 'direve'); ?>" class="regular-text code"></td>
+                            <td><input type="text" name="direve_config[eve_plugin_slug]" value="<?php echo ($direve_config[eve_plugin_slug] != '' ? $direve_config[eve_plugin_slug] : 'direve'); ?>" class="regular-text code"></td>
                         </tr>
 
                         <tr valign="top">
