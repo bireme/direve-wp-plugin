@@ -102,6 +102,7 @@ function direve_google_analytics_code(){
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '<?php echo $direve_config['google_analytics_code'] ?>']);
+  _gaq.push(['_setCookiePath', '/<?php echo $direve_config['eve_plugin_slug'] ?>']);
   _gaq.push(['_trackPageview']);
 
   (function() {
