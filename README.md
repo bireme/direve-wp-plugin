@@ -21,3 +21,9 @@ This plugin creates a search interface for [Virtual Health Library](http://model
     * `Disqus shortname` is optional. If used, it requires a code for the integration with the associated comments service  [Disqus](http://disqus.com/). Notice this requires previous registration within the comments service;
     * `AddThis profile ID` is optional and is provided to allow the integration with sharing tools services [AddThis](http://www.addthis.com/). Notice this requires previous registration within the sharing tools service;
     * `Google Analytics code` is optional and allows the integration of website analytics services provided by Google. Notice this requires previous registration in Google.
+
+## Translations of this document
+
+Español: [Instalación del Plugin DirEve para Wordpress](http://wiki.bireme.org/es/index.php/Instalaci%C3%B3n_del_Plugin_DirEve_para_Wordpress)
+
+Português: [Plugin DirEve para Wordpress](http://wiki.bireme.org/pt/index.php/Plugin_DirEve_para_Wordpress)
