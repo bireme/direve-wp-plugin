@@ -5,6 +5,10 @@ DirEve Plugin for WordPress
 
 This plugin creates a search interface for [Virtual Health Library](http://modelo.bvsalud.org/en/) Events Directory (DirEve) information source.
 
+##Requirements
+
+Wordpress 3.x
+
 ## Install
 
 0. [Download](https://github.com/bireme/direve-wp-plugin/archive/master.zip) the DirEve plugin for Wordpress;
