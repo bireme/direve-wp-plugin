@@ -95,8 +95,15 @@ function direve_register_settings(){
 }
 
 function direve_google_analytics_code(){
+    global $wp, $eve_plugin_slug;
+
+    $pagename = $wp->query_vars["pagename"];
     $direve_config = get_option('direve_config');
-    if ($direve_config['google_analytics_code'] != ''){
+
+    // check if is defined GA code and pagename starts with plugin slug
+    if ($direve_config['google_analytics_code'] != '' 
+        && strpos($pagename, $eve_plugin_slug) === 0){
+
 ?>
 
 <script type="text/javascript">
