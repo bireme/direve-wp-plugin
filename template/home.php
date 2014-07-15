@@ -59,6 +59,7 @@ if ($response){
 }
 
 $page_url_params = real_site_url($eve_plugin_slug) . '?q=' . urlencode($query)  . '&filter=' . urlencode($filter);
+$feed_url = real_site_url($eve_plugin_slug) . 'events-feed?q=' . urlencode($query) . '&filter=' . urlencode($filter);
 
 $pages = new Paginator($total, $start);
 $pages->paginate($page_url_params);
@@ -89,7 +90,7 @@ $pages->paginate($page_url_params);
                            <h1 class="h1-header"><?php _e('Next events','direve'); ?></h1>
                         <?php endif; ?>
 			             <div class="pull-right">
-				            <a href="<?php echo real_site_url($eve_plugin_slug) ?>events-feed" target="blank"><img src="<?php echo DIREVE_PLUGIN_URL ?>template/images/icon_rss.png" class="rss_feed" ></a>
+				            <a href="<?php echo $feed_url ?>" target="blank"><img src="<?php echo DIREVE_PLUGIN_URL ?>template/images/icon_rss.png" class="rss_feed" ></a>
                         </div>
 			            <!-- Not implemented yet
                         <div class="pull-right">

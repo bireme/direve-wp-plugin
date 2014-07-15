@@ -11,9 +11,28 @@ $initial_filter = $direve_config['initial_filter'];
 
 $site_language = strtolower(get_bloginfo('language'));
 
-$direve_next_events_url = $direve_service_url . 'api/event/next/?fq=' . urlencode($initial_filter);
+$query = ( isset($_GET['s']) ? $_GET['s'] : $_GET['q'] );
+$query = stripslashes($query);
+$user_filter = stripslashes($_GET['filter']);
+$filter = '';
 
-$response = @file_get_contents($direve_next_events_url);
+if ($direve_initial_filter != ''){
+    if ($user_filter != ''){    
+        $filter = $direve_initial_filter . ' AND ' . $user_filter;
+    }else{
+        $filter = $direve_initial_filter;
+    }    
+}else{
+    $filter = $user_filter;
+}
+
+if ($query != '' || $filter != ''){
+    $direve_get_url = $direve_service_url . 'api/event/search/?q=' . urlencode($query) . '&fq=' . urlencode($filter) . '&lang=' . $lang_dir;
+}else{
+    $direve_get_url = $direve_service_url . 'api/event/next/?fq=' . urlencode($filter) . '&lang=' . $lang_dir;
+}
+
+$response = @file_get_contents($direve_get_url);
 if ($response){
     $response_json = json_decode($response);
     $total = $response_json->diaServerResponse[0]->response->numFound;
@@ -26,7 +45,7 @@ if ($response){
     <channel>
         <title><?php _e('Events Directory', 'direve') ?></title>
         <link><?php echo real_site_url($eve_plugin_slug) . 'events-feed' ?></link>
-        <description><?php _e('Next events', 'direve') ?></description>
+        <description><?php echo  ($query != '' || $filter != '') ? $query . ' ' . $filter : _e('Next events','direve');  ?></description>
         <?php 
             foreach ( $event_list as $event) {
                 $rss_description = '';
