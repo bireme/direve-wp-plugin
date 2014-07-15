@@ -60,8 +60,7 @@ if ($response){
                     $rss_description .= __('Subjects','direve') . ': ';
                     $rss_description .= implode(", ", array_merge( $descriptors, $keywords) );
                 }
-                echo "   <description><![CDATA[ " . $rss_description . " ]]></description>\n";            
-                echo "   <pubDate>" . date_format(date_create($event->created_date), 'D, d M Y h:i:s O') . "</pubDate>\n";
+                echo "   <description><![CDATA[ " . $rss_description . " ]]></description>\n";
                 echo "   <guid isPermaLink=\"false\">" . $event->django_id . "</guid>\n";
                 echo "</item>\n";
             }
