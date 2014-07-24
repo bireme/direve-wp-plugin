@@ -25,7 +25,7 @@ function direve_page_admin() {
 
                         <tr valign="top">
                             <th scope="row"><?php _e('Filter query', 'direve'); ?>:</th>
-                            <td><input type="text" name="direve_config[initial_filter]" value="<?php echo $direve_config[initial_filter] ?>" class="regular-text code"></td>
+                            <td><input type="text" name="direve_config[initial_filter]" value='<?php echo $direve_config[initial_filter] ?>' class="regular-text code"></td>
                         </tr>
                         <tr valign="top">
                             <th scope="row"><?php _e('Search form', 'direve'); ?>:</th>
