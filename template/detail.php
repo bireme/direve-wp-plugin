@@ -12,6 +12,7 @@ $event_id = end($request_parts);
 $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);
 
+$plugin_slug = $direve_config['plugin_slug'];
 $direve_service_url = $direve_config['service_url'];
 $direve_disqus_id  = $direve_config['disqus_shortname'];
 $direve_addthis_id = $direve_config['addthis_profile_id'];
@@ -34,7 +35,7 @@ if ($response){
         <div class="ajusta2">
             <div class="row-fluid breadcrumb">
                 <a href="<?php echo real_site_url(); ?>"><?php _e('Home','direve'); ?></a> > 
-                <a href="<?php echo real_site_url($eve_plugin_slug); ?>"><?php _e('Events Directory', 'direve') ?> </a> > 
+                <a href="<?php echo real_site_url($plugin_slug); ?>"><?php _e('Events Directory', 'direve') ?> </a> > 
                 <?php _e('Resource','direve'); ?>
             </div>
 
@@ -47,10 +48,10 @@ if ($response){
                         <div class="conteudo-loop-rates">
                             <div class="star" data-score="1"></div>
                         </div>
-                        
+
                         <?php if ($resource->city || $resource->country): ?>
                             <div class="row-fluid">
-                                <?php echo $resource->city . ' ' . $resource->country ;?>
+                                <?php echo $resource->city . ' ' . $resource->country;?>
                             </div>
                         <?php endif; ?>
 
@@ -160,8 +161,69 @@ if ($response){
                                         </div>
                                     </div>
                                 </li>
+                                <li class="conteudo-loop-icons-li">
+                                    <!-- AddThisEvent Button BEGIN -->
+                                    <script type="text/javascript" src="https://addthisevent.com/libs/1.5.8/ate.min.js"></script>
+                                    <!-- AddThisEvent Button Settings -->
+                                    <script type="text/javascript">
+                                        addthisevent.settings({
+                                            mouse     : false,
+                                            css       : true,
+                                            outlook   : {show:true, text:"Outlook Calendar"},
+                                            google    : {show:true, text:"Google Calendar"},
+                                            yahoo     : {show:true, text:"Yahoo Calendar"},
+                                            hotmail   : {show:true, text:"Hotmail Calendar"},
+                                            ical      : {show:true, text:"iCal Calendar"},
+                                            facebook  : {show:true, text:"Facebook Event"}
+                                        });
+                                    </script>
+                                    <a href="#" title="Add to Calendar" class="addthisevent">
+                                        <?php _e('Add to Calendar','direve'); ?>
+                                        <span class="_start"><?php echo date("d-m-Y", strtotime($resource->start_date)); ?></span>
+                                        <span class="_end"><?php echo date("d-m-Y", strtotime($resource->end_date)); ?></span>
+                                        <span class="_zonecode"></span>
+                                        <span class="_summary"><?php echo $resource->title; ?></span>
+                                        <span class="_description"></span>
+                                        <?php 
+                                            $location = "";
+                                            if ($resource->address[0]) {
+                                                $location = $resource->address[0];
+                                            }
+                                            if($resource->city) {
+                                                if(empty($location))
+                                                    $location = $resource->city;
+                                                else
+                                                    $location .= ', ' . $resource->city;
+                                            }
+                                            if($resource->country){
+                                                if(empty($location))
+                                                    $location = $resource->country;
+                                                else
+                                                    $location .=  ', ' . $resource->country;
+                                            }
+                                        ?>
+                                        <span class="_location"><?php echo $location; ?></span>
+                                        <span class="_organizer"></span>
+                                        <span class="_organizer_email"><?php echo $resource->contact_email; ?></span>
+                                        <span class="_facebook_event"></span>
+                                        <span class="_all_day_event">true</span>
+                                        <span class="_date_format">DD/MM/YYYY</span>
+                                    </a>
+                                    <!-- AddThisEvent Button END -->                                    
+                                </li>
                             </ul>
                         </footer>
+
+                        <?php 
+                            if ($resource->address[0]) {
+                                $address =  $resource->address[0];
+                                if($resource->city)
+                                    $address .=  ', ' . $resource->city;
+                                if($resource->country)
+                                    $address .=  ', ' . $resource->country;
+                                echo geolocation($address);
+                            }
+                        ?>
 
                         <?php if ($direve_disqus_id != '') :?>
                             <div id="disqus_thread" class="row-fluid margintop25"></div>
@@ -186,13 +248,13 @@ if ($response){
 		<aside id="sidebar">
                 	<section class="header-search">
                         	<?php if ($direve_config['show_form']) : ?>
-                        	<form role="search" method="get" id="searchform" action="<?php echo real_site_url($eve_plugin_slug); ?>">
+                        	<form role="search" method="get" id="searchform" action="<?php echo real_site_url($plugin_slug); ?>">
                 	                <input value="<?php echo $query ?>" name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
                        		        <input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
                         	</form>
                         	<?php endif; ?>
                 	</section>
-                	<a href="<?php echo real_site_url($eve_plugin_slug); ?>suggest-event" class="header-colabore"><?php _e('Suggest a event','direve'); ?></a>
+                	<a href="<?php echo real_site_url($plugin_slug); ?>suggest-event" class="header-colabore"><?php _e('Suggest a event','direve'); ?></a>
         	</aside>
         </div>
     </div>

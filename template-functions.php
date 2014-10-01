@@ -101,4 +101,60 @@ if ( !function_exists('real_site_url') ) {
     }
 }
 
+if ( !function_exists('geolocation') ) {
+    function geolocation($address) {
+        ob_start();
+    ?>
+
+        <style>
+            .direve-geolocation-map {
+                margin-top: -10px;
+                position: relative;
+                width: 100%;
+                float: left;
+                display: none; 
+            }
+            #direve-geolocation-map-canvas {
+                width: 100%;
+                height: 320px;
+            }
+            .pac-container {
+                width: 320px !important;
+            }
+        </style>
+        <script type="text/javascript">
+            var lat;
+            var lng;
+            var latlng;
+            var newArray = [];
+            var address = '<?php echo $address; ?>';
+            var geocoder = new google.maps.Geocoder();
+
+            geocoder.geocode( { 'address': address }, function( results, status ) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    latlng = results[0].geometry.location;
+                    for (var key in latlng) {
+                        newArray.push(key);
+                    }
+                    lat = latlng[newArray[0]];
+                    lng = latlng[newArray[1]];
+                    $j(".direve-geolocation-map").show();
+                } else {
+                    //alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+            
+        </script>
+        <div class="direve-geolocation-map">
+            <div id="direve-geolocation-map-canvas" style="margin-top:15px;"></div>
+            <div id="directionsPanel"></div>
+        </div>
+
+    <?php
+        $geoloc_res = ob_get_contents();
+        ob_end_clean();
+        return $geoloc_res;
+    }
+}
+
 ?>

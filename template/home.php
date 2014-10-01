@@ -3,11 +3,12 @@
 Template Name: DirEve Home
 */
 
-require_once(DIREVE_PLUGIN_PATH . '/lib/Paginator.php');
+require_once(PLUGIN_PATH . '/lib/Paginator.php');
 
 $direve_config = get_option('direve_config');
 $direve_service_url = $direve_config['service_url'];
 $direve_initial_filter = $direve_config['initial_filter'];
+$plugin_slug = $direve_config['plugin_slug'];
 
 $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);
@@ -58,8 +59,8 @@ if ($response){
     $event_type_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->event_type;
 }
 
-$page_url_params = real_site_url($eve_plugin_slug) . '?q=' . urlencode($query)  . '&filter=' . urlencode($filter);
-$feed_url = real_site_url($eve_plugin_slug) . 'events-feed?q=' . urlencode($query) . '&filter=' . urlencode($filter);
+$page_url_params = real_site_url($plugin_slug) . '?q=' . urlencode($query)  . '&filter=' . urlencode($filter);
+$feed_url = real_site_url($plugin_slug) . 'events-feed?q=' . urlencode($query) . '&filter=' . urlencode($filter);
 
 $pages = new Paginator($total, $start);
 $pages->paginate($page_url_params);
@@ -72,7 +73,7 @@ $pages->paginate($page_url_params);
             <div class="row-fluid breadcrumb">                
                 <a href="<?php echo real_site_url(); ?>"><?php _e('Home','direve'); ?></a> >
                 <?php if ($query != '' || $user_filter != ''): ?>
-                    <a href="<?php echo real_site_url($eve_plugin_slug); ?>"><?php _e('Events Directory', 'direve') ?> </a> >
+                    <a href="<?php echo real_site_url($plugin_slug); ?>"><?php _e('Events Directory', 'direve') ?> </a> >
                     <?php _e('Search result', 'direve') ?>                    
                 <?php else: ?> 
                     <?php _e('Events Directory', 'direve') ?>
@@ -90,7 +91,7 @@ $pages->paginate($page_url_params);
                            <h1 class="h1-header"><?php _e('Next events','direve'); ?></h1>
                         <?php endif; ?>
 			             <div class="pull-right">
-				            <a href="<?php echo $feed_url ?>" target="blank"><img src="<?php echo DIREVE_PLUGIN_URL ?>template/images/icon_rss.png" class="rss_feed" ></a>
+				            <a href="<?php echo $feed_url ?>" target="blank"><img src="<?php echo PLUGIN_URL; ?>template/images/icon_rss.png" class="rss_feed" ></a>
                         </div>
 			            <!-- Not implemented yet
                         <div class="pull-right">
@@ -137,7 +138,7 @@ $pages->paginate($page_url_params);
 
         						<p class="row-fluid">
         							<?php echo ( strlen($resource->abstract) > 200 ? substr($resource->abstract,0,200) . '...' : $resource->abstract); ?><br/>
-        							<span class="more"><a href="<?php echo real_site_url($eve_plugin_slug); ?>resource/<?php echo $resource->django_id; ?>"><?php _e('See more details','direve'); ?></a></span>
+        							<span class="more"><a href="<?php echo real_site_url($plugin_slug); ?>resource/<?php echo $resource->django_id; ?>"><?php _e('See more details','direve'); ?></a></span>
         						</p>
 
 
@@ -175,13 +176,13 @@ $pages->paginate($page_url_params);
 			<aside id="sidebar">
 			<section class="header-search">
                     		<?php if ($direve_config['show_form']) : ?>
-                        		<form role="search" method="get" id="searchform" action="<?php echo real_site_url($eve_plugin_slug); ?>">
+                        		<form role="search" method="get" id="searchform" action="<?php echo real_site_url($plugin_slug); ?>">
                             			<input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
                             			<input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
                         		</form>
                     		<?php endif; ?>
                 	</section>
-			<a href="<?php echo real_site_url($eve_plugin_slug . '/suggest-event'); ?>" class="header-colabore"><?php _e('Suggest a event','direve'); ?></a>
+			<a href="<?php echo real_site_url($plugin_slug . '/suggest-event'); ?>" class="header-colabore"><?php _e('Suggest a event','direve'); ?></a>
                 <?php if (strval($total) > 0) :?>
     				<section class="row-fluid marginbottom25 widget_categories">
     					<header class="row-fluid border-bottom marginbottom15">

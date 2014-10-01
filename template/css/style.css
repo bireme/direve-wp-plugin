@@ -90,7 +90,7 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 #conteudo{width:629px; float:left; margin-bottom: 20px;}
 .conteudo-loop{width:597px; position:relative; float:left; background:rgb(245,245,245); border:1px solid rgb(223,223,223); padding:15px; border-radius:5px; margin-top:15px;}
 .conteudo-loop-rates{position:absolute; right:15px; top:18px; z-index:3;}
-.conteudo-loop-icons{list-style:none; float:left; width:100%; max-height:22px; padding: 0px;}
+.conteudo-loop-icons{list-style:none; float:left; width:100%; max-height:22px; margin-bottom: 12px; border-bottom: 1px solid #999; padding-bottom: 12px;}
 .conteudo-loop-icons-li{float:left; margin:0 18.3px; position:relative;}
 .conteudo-loop-icons-li:first-child{margin:0px 18.3px 0px 0px !important;}
 .conteudo-loop-icons-li:last-child{margin:0px 0px 0px 18.3px !important;}
@@ -273,6 +273,28 @@ input[type=radio]{float:left; margin:3px 5px 0 0;}
                 color-stop(0.85, #0E85CA)
         );
 } 
+
+a.addthisevent-drop {
+    display: inline !important;
+    position: relative;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    border: 0 !important;
+    color: rgb(0,0,0) !important;
+    font-weight: 600 !important;
+}
+a.addthisevent-drop:hover {
+    border: 1px solid #aab9d4;
+    color: #555;
+    font-weight: bold;
+    font-size: 11px !important;
+    text-decoration: underline !important;
+}
+.addthisevent_dropdown span, .addthisevent_dropdown span:hover {
+    font-size: 11px !important;
+}
+.addthisevent-drop:active {
+    top: 0 !important;
+}
 
 @media (min-width: 525px) and (max-width: 767px) {
 	.ajusta, .ajusta3, .ajusta2, .top, .bar .barInner, .footerArea {width:100%; margin:0;}
