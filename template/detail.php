@@ -209,7 +209,7 @@ if ($response){
                                         <span class="_all_day_event">true</span>
                                         <span class="_date_format">DD/MM/YYYY</span>
                                     </a>
-                                    <!-- AddThisEvent Button END -->                                    
+                                    <!-- AddThisEvent Button END -->
                                 </li>
                             </ul>
                         </footer>

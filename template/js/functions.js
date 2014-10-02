@@ -1,29 +1,29 @@
 var $j = jQuery;
 
 $j(window).load(function(){
-	  regExp();
-	  reportarErro();
-	  sugerirTag();
-    if($j("#direve-geolocation-map-canvas").length){
-        direve_geolocationInitialize();
+	regExp();
+	reportarErro();
+	sugerirTag();
+    if($j("#geolocation-map-canvas").length){
+        geolocationInitialize();
     }
 });
 
 function regExp(){
     if($j(".cat-item").length){
-    		$j("#categories-3 .cat-item").each(function(e){
-    			  i = e+1;
-    			  element = $(this);
+		$j("#categories-3 .cat-item").each(function(e){
+			i = e+1;
+			element = $(this);
 
-    			  var cat_text = element.html();
-    			  var cat_link = element.children("a").attr("href");
-    			  var cat_nome = element.children("a").text();
-    			  var cat_new  = "<a href='"+cat_link+"' title='Ver todos os posts arquivados em "+cat_nome+"'>"+cat_nome+"</a>";
+			var cat_text = element.html();
+			var cat_link = element.children("a").attr("href");
+			var cat_nome = element.children("a").text();
+			var cat_new  = "<a href='"+cat_link+"' title='Ver todos os posts arquivados em "+cat_nome+"'>"+cat_nome+"</a>";
 
-    			  var regex    = /(.*)(\()(.*)(\))/;
-    			  var result   = cat_text.replace(regex, "<span class='cat-item-count'>$3</span>");
-    			  element.text("").append(cat_new+result);
-    		});
+			var regex    = /(.*)(\()(.*)(\))/;
+			var result   = cat_text.replace(regex, "<span class='cat-item-count'>$3</span>");
+			element.text("").append(cat_new+result);
+		});
     }
 }
 

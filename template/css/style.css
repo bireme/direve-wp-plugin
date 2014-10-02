@@ -289,6 +289,7 @@ a.addthisevent-drop:hover {
     font-size: 11px !important;
     text-decoration: underline !important;
 }
+.addthisevent_dropdown { display: none; }
 .addthisevent_dropdown span, .addthisevent_dropdown span:hover {
     font-size: 11px !important;
 }

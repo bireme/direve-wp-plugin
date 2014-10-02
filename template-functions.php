@@ -107,19 +107,17 @@ if ( !function_exists('geolocation') ) {
     ?>
 
         <style>
-            .direve-geolocation-map {
+            .geolocation-map {
                 margin-top: -10px;
                 position: relative;
                 width: 100%;
                 float: left;
-                display: none; 
+                display: none;
             }
-            #direve-geolocation-map-canvas {
+            #geolocation-map-canvas {
                 width: 100%;
                 height: 320px;
-            }
-            .pac-container {
-                width: 320px !important;
+                margin-top:15px;
             }
         </style>
         <script type="text/javascript">
@@ -128,25 +126,28 @@ if ( !function_exists('geolocation') ) {
             var latlng;
             var newArray = [];
             var address = '<?php echo $address; ?>';
-            var geocoder = new google.maps.Geocoder();
+            var geocoder;
 
-            geocoder.geocode( { 'address': address }, function( results, status ) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    latlng = results[0].geometry.location;
-                    for (var key in latlng) {
-                        newArray.push(key);
+            $j(document).ready(function() {
+                geocoder = new google.maps.Geocoder();
+                geocoder.geocode( { 'address': address }, function( results, status ) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        latlng = results[0].geometry.location;
+                        for (var key in latlng) {
+                            newArray.push(key);
+                        }
+                        lat = latlng[newArray[0]];
+                        lng = latlng[newArray[1]];
+                        $j(".geolocation-map").show();
+                    } else {
+                        //alert('Geocode was not successful for the following reason: ' + status);
                     }
-                    lat = latlng[newArray[0]];
-                    lng = latlng[newArray[1]];
-                    $j(".direve-geolocation-map").show();
-                } else {
-                    //alert('Geocode was not successful for the following reason: ' + status);
-                }
+                });
             });
             
         </script>
-        <div class="direve-geolocation-map">
-            <div id="direve-geolocation-map-canvas" style="margin-top:15px;"></div>
+        <div class="geolocation-map">
+            <div id="geolocation-map-canvas"></div>
             <div id="directionsPanel"></div>
         </div>
 

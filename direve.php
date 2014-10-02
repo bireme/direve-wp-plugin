@@ -198,7 +198,7 @@ if(!class_exists('DirEve_Plugin')) {
 		        var directionDisplay;
 		        var directionsService = new google.maps.DirectionsService();
 
-		        function direve_geolocationInitialize() {
+		        function geolocationInitialize() {
 		        	var dirLoc = new google.maps.LatLng(lat, lng);
 		            directionsDisplay = new google.maps.DirectionsRenderer();
 		            var mapOptions = {
@@ -213,7 +213,7 @@ if(!class_exists('DirEve_Plugin')) {
 		                zoom:15
 		            }
 
-		            map = new google.maps.Map(document.getElementById('direve-geolocation-map-canvas'), mapOptions);
+		            map = new google.maps.Map(document.getElementById('geolocation-map-canvas'), mapOptions);
 		            marker = new google.maps.Marker({map: map, position: dirLoc});
 		        
 		            directionsDisplay.setMap(map);  
