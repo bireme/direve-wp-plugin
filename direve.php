@@ -8,22 +8,22 @@ Version: 0.1
 Author URI: http://reddes.bvsalud.org/
 */
 
-define('PLUGIN_VERSION', '0.1' );
+define('DIREVE_VERSION', '0.1' );
 
-define('PLUGIN_SYMBOLIC_LINK', false );
-define('PLUGIN_DIRNAME', 'direve' );
+define('DIREVE_SYMBOLIC_LINK', false );
+define('DIREVE_PLUGIN_DIRNAME', 'direve' );
 
-if(PLUGIN_SYMBOLIC_LINK == true) {
-    define('PLUGIN_PATH',  ABSPATH . 'wp-content/plugins/' . PLUGIN_DIRNAME );
+if(DIREVE_SYMBOLIC_LINK == true) {
+    define('DIREVE_PLUGIN_PATH',  ABSPATH . 'wp-content/plugins/' . DIREVE_PLUGIN_DIRNAME );
 } else {
-    define('PLUGIN_PATH',  plugin_dir_path(__FILE__) );
+    define('DIREVE_PLUGIN_PATH',  plugin_dir_path(__FILE__) );
 }
 
-define('PLUGIN_DIR',   plugin_basename( PLUGIN_PATH ) );
-define('PLUGIN_URL',   plugin_dir_url(__FILE__) );
+define('DIREVE_PLUGIN_DIR',   plugin_basename( DIREVE_PLUGIN_PATH ) );
+define('DIREVE_PLUGIN_URL',   plugin_dir_url(__FILE__) );
 
-require_once(PLUGIN_PATH . '/settings.php');
-require_once(PLUGIN_PATH . '/template-functions.php');
+require_once(DIREVE_PLUGIN_PATH . '/settings.php');
+require_once(DIREVE_PLUGIN_PATH . '/template-functions.php');
 
 if(!class_exists('DirEve_Plugin')) {
     class DirEve_Plugin {
@@ -66,7 +66,7 @@ if(!class_exists('DirEve_Plugin')) {
 
         function load_translation(){
 		    // Translations
-		    load_plugin_textdomain( 'direve', false,  PLUGIN_DIR . '/languages' );
+		    load_plugin_textdomain( 'direve', false,  DIREVE_PLUGIN_DIR . '/languages' );
 		}
 
 		function plugin_init() {
@@ -98,13 +98,13 @@ if(!class_exists('DirEve_Plugin')) {
 		        add_action( 'wp_enqueue_scripts', array(&$this, 'template_styles_scripts') );
 
 		        if ($pagename == $this->plugin_slug){
-		            $template = PLUGIN_PATH . '/template/home.php';
+		            $template = DIREVE_PLUGIN_PATH . '/template/home.php';
 		        }elseif ($pagename == $this->plugin_slug . '/suggest-event'){
-		            $template = PLUGIN_PATH . '/template/suggest-event.php';
+		            $template = DIREVE_PLUGIN_PATH . '/template/suggest-event.php';
 		        }elseif ($pagename == $this->plugin_slug . '/events-feed'){
-		            $template = PLUGIN_PATH . '/template/rss.php';
+		            $template = DIREVE_PLUGIN_PATH . '/template/rss.php';
 		        }else{
-		            $template = PLUGIN_PATH . '/template/detail.php';
+		            $template = DIREVE_PLUGIN_PATH . '/template/detail.php';
 		        }
 		        // force status to 200 - OK
 		        status_header(200);
@@ -150,9 +150,9 @@ if(!class_exists('DirEve_Plugin')) {
 		}
 
 		function template_styles_scripts(){
-		    wp_enqueue_script('direve-page', PLUGIN_URL . 'template/js/functions.js',       array( 'jquery' ));
-		    wp_enqueue_script('jquery-raty', PLUGIN_URL . 'template/js/jquery.raty.min.js', array( 'jquery' ));
-		    wp_enqueue_style ('direve-page', PLUGIN_URL . 'template/css/style.css');
+		    wp_enqueue_script('direve-page', DIREVE_PLUGIN_URL . 'template/js/functions.js',       array( 'jquery' ));
+		    wp_enqueue_script('jquery-raty', DIREVE_PLUGIN_URL . 'template/js/jquery.raty.min.js', array( 'jquery' ));
+		    wp_enqueue_style ('direve-page', DIREVE_PLUGIN_URL . 'template/css/style.css');
 		}
 
 		function register_settings(){
