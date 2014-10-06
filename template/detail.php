@@ -188,6 +188,8 @@ if ($response){
                                             $location = "";
                                             if ($resource->address[0]) {
                                                 $location = $resource->address[0];
+                                                if (preg_match('/, undefined$/', $location))
+                                                    $location = preg_replace('/, undefined$/', '', $location);
                                             }
                                             if($resource->city) {
                                                 if(empty($location))
@@ -217,6 +219,8 @@ if ($response){
                         <?php 
                             if ($resource->address[0]) {
                                 $address =  $resource->address[0];
+                                if (preg_match('/, undefined$/', $address))
+                                    $address = preg_replace('/, undefined$/', '', $address);
                                 if($resource->city)
                                     $address .=  ', ' . $resource->city;
                                 if($resource->country)
