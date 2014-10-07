@@ -49,11 +49,25 @@ if ($response){
                             <div class="star" data-score="1"></div>
                         </div>
 
-                        <?php if ($resource->city || $resource->country): ?>
+                        <?php if ($resource->address[0]): ?>
                             <div class="row-fluid">
-                                <?php echo $resource->city . ' ' . $resource->country;?>
+                                <?php
+                                    $address =  $resource->address[0];
+                                    if (preg_match('/, undefined$/', $address))
+                                        $address = preg_replace('/, undefined$/', '', $address);
+                                    echo $address;
+                                ?>
                             </div>
                         <?php endif; ?>
+
+                        <?php
+                            if ($resource->city && $resource->country):
+                                $dash = " - ";
+                            endif;
+                        ?>
+                        <div class="row-fluid">
+                            <?php echo $resource->city . $dash . $resource->country; ?>
+                        </div>
 
                         <div id="conteudo-loop-data" class="row-fluid margintop05">
                             <span class="conteudo-loop-data-tit"><?php _e('Date','direve'); ?>:</span>
@@ -186,10 +200,8 @@ if ($response){
                                         <span class="_description"></span>
                                         <?php 
                                             $location = "";
-                                            if ($resource->address[0]) {
-                                                $location = $resource->address[0];
-                                                if (preg_match('/, undefined$/', $location))
-                                                    $location = preg_replace('/, undefined$/', '', $location);
+                                            if ($address) {
+                                                $location = $address;
                                             }
                                             if($resource->city) {
                                                 if(empty($location))
@@ -217,10 +229,7 @@ if ($response){
                         </footer>
 
                         <?php 
-                            if ($resource->address[0]) {
-                                $address =  $resource->address[0];
-                                if (preg_match('/, undefined$/', $address))
-                                    $address = preg_replace('/, undefined$/', '', $address);
+                            if ($address) {
                                 if($resource->city)
                                     $address .=  ', ' . $resource->city;
                                 if($resource->country)
@@ -249,17 +258,17 @@ if ($response){
                     </article>
                 </div>
             </section>
-		<aside id="sidebar">
-                	<section class="header-search">
-                        	<?php if ($direve_config['show_form']) : ?>
-                        	<form role="search" method="get" id="searchform" action="<?php echo real_site_url($plugin_slug); ?>">
-                	                <input value="<?php echo $query ?>" name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
-                       		        <input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
-                        	</form>
-                        	<?php endif; ?>
-                	</section>
-                	<a href="<?php echo real_site_url($plugin_slug); ?>suggest-event" class="header-colabore"><?php _e('Suggest a event','direve'); ?></a>
-        	</aside>
+        <aside id="sidebar">
+                    <section class="header-search">
+                            <?php if ($direve_config['show_form']) : ?>
+                            <form role="search" method="get" id="searchform" action="<?php echo real_site_url($plugin_slug); ?>">
+                                    <input value="<?php echo $query ?>" name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
+                                    <input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
+                            </form>
+                            <?php endif; ?>
+                    </section>
+                    <a href="<?php echo real_site_url($plugin_slug); ?>suggest-event" class="header-colabore"><?php _e('Suggest a event','direve'); ?></a>
+            </aside>
         </div>
     </div>
 
