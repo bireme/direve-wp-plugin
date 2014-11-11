@@ -174,14 +174,32 @@ $pages->paginate($page_url_params);
                 <?php endif; ?>
 			</section>
 			<aside id="sidebar">
+            <section class="row-fluid widget wp_calendar">
+                <?php if ($direve_config['show_calendar']) : ?>
+                    <div class="widget widget_calendar">
+                        <div class="widget_inner">
+                            <div id="calendar_wrap">
+                                <div id="wp-calendar"></div>
+                                <!--div class="calendar-pagi">
+                                    <ul>
+                                        <li class="wp-cal-prev"><a onclick="jQuery.datepicker._adjustDate('#wp-calendar', -1, 'M');"><?php echo __("&laquo; Prev Month", 'wp_calendar'); ?></a></li>
+                                        <li class="wp-cal-next"><a onclick="jQuery.datepicker._adjustDate('#wp-calendar', +1, 'M');"><?php echo __("Next Month &raquo;", 'wp_calendar'); ?></a></li>
+                                    </ul>
+                                </div-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="calendar_wrap_loading calendar_wrap_loading_hide"><img src="<?php echo WP_CALENDAR_PLUGIN_URL; ?>/images/ajax_loader_blue_64.gif"></div>
+                <?php endif; ?>
+            </section>
 			<section class="header-search">
-                    		<?php if ($direve_config['show_form']) : ?>
-                        		<form role="search" method="get" id="searchform" action="<?php echo real_site_url($plugin_slug); ?>">
-                            			<input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
-                            			<input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
-                        		</form>
-                    		<?php endif; ?>
-                	</section>
+        		<?php if ($direve_config['show_form']) : ?>
+            		<form role="search" method="get" id="searchform" action="<?php echo real_site_url($plugin_slug); ?>">
+            			<input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
+            			<input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
+            		</form>
+        		<?php endif; ?>
+    	    </section>
 			<a href="<?php echo real_site_url($plugin_slug . '/suggest-event'); ?>" class="header-colabore"><?php _e('Suggest a event','direve'); ?></a>
                 <?php if (strval($total) > 0) :?>
     				<section class="row-fluid marginbottom25 widget_categories">

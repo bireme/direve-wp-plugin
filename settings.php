@@ -28,6 +28,13 @@ function direve_page_admin() {
                             <td><input type="text" name="direve_config[initial_filter]" value='<?php echo $config['initial_filter'] ?>' class="regular-text code"></td>
                         </tr>
                         <tr valign="top">
+                            <th scope="row"><?php _e('Calendar events', 'direve'); ?>:</th>
+                            <td>
+                                <input type="checkbox" name="direve_config[show_calendar]" value="1" <?php if ( $config['show_calendar'] == '1' ): echo ' checked="checked"'; endif;?> >
+                                <?php _e('Show events calendar', 'direve'); ?>
+                            </td>
+                        </tr>
+                        <tr valign="top">
                             <th scope="row"><?php _e('Search form', 'direve'); ?>:</th>
                             <td>
                                 <input type="checkbox" name="direve_config[show_form]" value="1" <?php if ( $config['show_form'] == '1' ): echo ' checked="checked"'; endif;?> >

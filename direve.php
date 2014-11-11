@@ -24,6 +24,7 @@ define('DIREVE_PLUGIN_URL',   plugin_dir_url(__FILE__) );
 
 require_once(DIREVE_PLUGIN_PATH . '/settings.php');
 require_once(DIREVE_PLUGIN_PATH . '/template-functions.php');
+require_once(DIREVE_PLUGIN_PATH . '/calendar/wp-calendar.php');
 
 if(!class_exists('DirEve_Plugin')) {
     class DirEve_Plugin {
