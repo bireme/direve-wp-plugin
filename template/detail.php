@@ -3,8 +3,9 @@
 Template Name: DirEve Detail
 */
 
-$direve_config = get_option('direve_config');
+global $direve_service_url, $direve_plugin_slug;
 
+$direve_config = get_option('direve_config');
 $request_uri = $_SERVER["REQUEST_URI"];
 $request_parts = explode('/', $request_uri);
 $event_id = end($request_parts);
@@ -12,8 +13,6 @@ $event_id = end($request_parts);
 $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);
 
-$plugin_slug = $direve_config['plugin_slug'];
-$direve_service_url = $direve_config['service_url'];
 $direve_disqus_id  = $direve_config['disqus_shortname'];
 $direve_addthis_id = $direve_config['addthis_profile_id'];
 $direve_service_request = $direve_service_url . 'api/event/search/?id=events.event.' .$event_id . '&op=related&lang=' . $lang_dir;
@@ -35,7 +34,7 @@ if ($response){
         <div class="ajusta2">
             <div class="row-fluid breadcrumb">
                 <a href="<?php echo real_site_url(); ?>"><?php _e('Home','direve'); ?></a> > 
-                <a href="<?php echo real_site_url($plugin_slug); ?>"><?php _e('Events Directory', 'direve') ?> </a> > 
+                <a href="<?php echo real_site_url($direve_plugin_slug); ?>"><?php _e('Events Directory', 'direve') ?> </a> > 
                 <?php _e('Resource','direve'); ?>
             </div>
 
@@ -261,13 +260,13 @@ if ($response){
         <aside id="sidebar">
                     <section class="header-search">
                             <?php if ($direve_config['show_form']) : ?>
-                            <form role="search" method="get" id="searchform" action="<?php echo real_site_url($plugin_slug); ?>">
+                            <form role="search" method="get" id="searchform" action="<?php echo real_site_url($direve_plugin_slug); ?>">
                                     <input value="<?php echo $query ?>" name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
                                     <input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
                             </form>
                             <?php endif; ?>
                     </section>
-                    <a href="<?php echo real_site_url($plugin_slug); ?>suggest-event" class="header-colabore"><?php _e('Suggest a event','direve'); ?></a>
+                    <a href="<?php echo real_site_url($direve_plugin_slug); ?>suggest-event" class="header-colabore"><?php _e('Suggest a event','direve'); ?></a>
             </aside>
         </div>
     </div>

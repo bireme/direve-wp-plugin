@@ -4,11 +4,10 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
 /*
 Template Name: DirEVE RSS
 */
+global $direve_service_url, $direve_plugin_slug;
 
 $direve_config = get_option('direve_config');
-$direve_service_url = $direve_config['service_url'];
 $initial_filter = $direve_config['initial_filter'];
-$plugin_slug = $direve_config['plugin_slug'];
 
 $site_language = strtolower(get_bloginfo('language'));
 
@@ -45,7 +44,7 @@ if ($response){
 <rss version="2.0">
     <channel>
         <title><?php _e('Events Directory', 'direve') ?></title>
-        <link><?php echo real_site_url($plugin_slug) . 'events-feed' ?></link>
+        <link><?php echo real_site_url($direve_plugin_slug) . 'events-feed' ?></link>
         <description><?php echo  ($query != '' || $filter != '') ? $query . ' ' . $filter : _e('Next events','direve');  ?></description>
         <?php 
             foreach ( $event_list as $event) {
@@ -56,7 +55,7 @@ if ($response){
                 if ($event->author){
                     echo "   <author>". implode(", ", $event->author) . "</author>\n";
                 }
-                echo "   <link>" . real_site_url($plugin_slug) . 'resource/'  . $event->django_id . "</link>\n";
+                echo "   <link>" . real_site_url($direve_plugin_slug) . 'resource/'  . $event->django_id . "</link>\n";
 
                 if ($event->city || $event->country) {
                     $rss_description .= $event->city . ' - ' . $event->country . '<br/>';

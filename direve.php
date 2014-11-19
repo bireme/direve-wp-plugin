@@ -29,7 +29,8 @@ require_once(DIREVE_PLUGIN_PATH . '/calendar/wp-calendar.php');
 if(!class_exists('DirEve_Plugin')) {
     class DirEve_Plugin {
         
-        private static $plugin_slug = 'direve';
+        private $plugin_slug = 'direve';
+        private $service_url = 'http://fi-admin.bvsalud.org/';
 
         /**
          * Construct the plugin object
@@ -73,7 +74,7 @@ if(!class_exists('DirEve_Plugin')) {
 		function plugin_init() {
 		    $direve_config = get_option('direve_config');
 
-		    if ($direve_config['plugin_slug'] != ''){
+		    if ( $direve_config && $direve_config['plugin_slug'] != ''){
 		        $this->plugin_slug = $direve_config['plugin_slug'];
 		    }
 
@@ -89,8 +90,11 @@ if(!class_exists('DirEve_Plugin')) {
 		}
 
 		function theme_redirect() {
-		    global $wp;
+		    global $wp, $direve_service_url, $direve_plugin_slug;
 		    $pagename = $wp->query_vars["pagename"];
+
+		    $direve_service_url = $this->service_url;
+		    $direve_plugin_slug = $this->plugin_slug;
 
 		    if ($pagename == $this->plugin_slug || $pagename == $this->plugin_slug . '/resource' 
 		        || $pagename == $this->plugin_slug . '/suggest-event' 
