@@ -18,7 +18,6 @@ Wordpress 3.x
 
 ##Configuration
 0. Go to `Settings` in the administration panel (dashboard) and click on the newly created `DirEVE` item.
-    * `Service URL` is mandatory and is set to `http://fi-admin.bvsalud.org` by default. It specifies the webservice of FI-ADMIN system; 
     * `Plugin page` is mandatory and is set to `direve` by default. It defines the URL of the search interface page;
     * `Filter query` is optional and defines the strategy (a term or expression) to act as a filter for record displaying;
     * `Search form` is optional and defines a flag to control the display of the search box in the `DirEve` homepage;
