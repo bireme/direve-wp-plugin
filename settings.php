@@ -15,10 +15,6 @@ function direve_page_admin() {
                 <table class="form-table">
                     <tbody>
                         <tr valign="top">
-                            <th scope="row"><?php _e('Service URL', 'direve'); ?>:</th>
-                            <td><input type="text" name="direve_config[service_url]" value="<?php echo ($config['service_url'] == '' ? 'http://fi-admin.bvsalud.org/' : $config['service_url'] ) ?>" class="regular-text code"></td>
-                        </tr>
-                        <tr valign="top">
                             <th scope="row"><?php _e('Plugin page', 'direve'); ?>:</th>
                             <td><input type="text" name="direve_config[plugin_slug]" value="<?php echo ($config['plugin_slug'] != '' ? $config['plugin_slug'] : 'direve'); ?>" class="regular-text code"></td>
                         </tr>

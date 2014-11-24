@@ -103,13 +103,14 @@ add_action('wp_ajax_nopriv_wp_calendar_get_events', 'wp_calendar_get_events');
  */
 if ( !function_exists('wp_calendar_get_events') ) {
     function wp_calendar_get_events() {
+
         $wp_cal_content = array();
         $ajax = $_POST['ajax'];
         $selected_month = $_POST['month'];
         $selected_year = $_POST['year'];
 
         $direve_config = get_option('direve_config');
-        $direve_service_url = $direve_config['service_url'];
+        $direve_service_url = 'http://fi-admin.bvsalud.org/';
         $direve_initial_filter = $direve_config['initial_filter'];
         $site_language = strtolower(get_bloginfo('language'));
         $lang_dir = substr($site_language,0,2);

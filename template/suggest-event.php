@@ -2,10 +2,9 @@
 /*
 Template Name: DirEVE Suggest Event
 */
+global $direve_service_url, $direve_plugin_slug;
 
 $direve_config = get_option('direve_config');
-$direve_service_url = $direve_config['service_url'];
-$plugin_slug = $direve_config['plugin_slug'];
 
 $current_year = intval(date("Y"));
 
@@ -39,7 +38,7 @@ $month_list = range(1,12);
         <div class="ajusta2">
             <div class="row-fluid">
                 <a href="<?php echo real_site_url(); ?>"><?php _e('Home','direve'); ?></a> > 
-                <a href="<?php echo real_site_url($plugin_slug); ?>"><?php _e('Events Directory', 'direve') ?> </a> > 
+                <a href="<?php echo real_site_url($direve_plugin_slug); ?>"><?php _e('Events Directory', 'direve') ?> </a> > 
                 <?php _e('Suggest a event','direve'); ?>
             </div>
 
