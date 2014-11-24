@@ -7,6 +7,8 @@
 	Author URL: http://www.bireme.org
 */
 
+@import url("style1.css");
+
 /* FONT-FACE */
 @font-face{font-family: 'Open Sans'; font-style: normal; font-weight: 400; src: local('Open Sans'), local('OpenSans'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff'); }
 @font-face{font-family: 'Open Sans'; font-style: normal; font-weight: 600; src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/MTP_ySUJH_bn48VBG8sNSnhCUOGz7vYGh680lGh-uXM.woff) format('woff'); }
@@ -307,7 +309,7 @@ a.addthisevent-drop:hover {
 #calendar_wrap .ui-datepicker-header, #calendar_wrap .calendar-pagi { background-color: #1E90FF; }
 #calendar_wrap .wp-cal-datepicker-calendar tr th, #calendar_wrap .wp-cal-datepicker-calendar tr td { border: 0.1em solid #1E90FF; }
 #calendar_wrap .calendar-pagi { height: 0; }
-.wp_calendar .calendar_wrap_loading_show {
+.wp_calendar .calendar_wrap_loading {
     position: absolute !important;
     top: 27%;
     left: 50.5%;

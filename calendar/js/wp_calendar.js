@@ -50,7 +50,8 @@ jQuery(document).ready(function(){
         var found_at = jQuery.inArray( check_date , wp_cal_dates );
         if( found_at == -1 ){
             
-            jQuery(".wp_calendar .calendar_wrap_loading").removeClass('calendar_wrap_loading_hide').addClass('calendar_wrap_loading_show');
+            //jQuery(".wp_calendar .calendar_wrap_loading").removeClass('calendar_wrap_loading_hide').addClass('calendar_wrap_loading_show');
+            jQuery(".wp_calendar .circle_loading").removeClass('hide_circle').addClass('show_circle');
             jQuery('#wp-calendar .ui-datepicker-prev').toggle();
             jQuery('#wp-calendar .ui-datepicker-next').toggle();
             jQuery('#calendar_wrap .calendar-pagi a').each(function(){
@@ -113,7 +114,8 @@ jQuery(document).ready(function(){
                 },
                 complete: function() {
                     jQuery('.ui-datepicker-next, .ui-datepicker-prev, .wp-cal-prev, .wp-cal-next').bind('click');
-                    jQuery(".wp_calendar .calendar_wrap_loading").removeClass('calendar_wrap_loading_show').addClass('calendar_wrap_loading_hide');
+                    //jQuery(".wp_calendar .calendar_wrap_loading").removeClass('calendar_wrap_loading_show').addClass('calendar_wrap_loading_hide');
+                    jQuery(".wp_calendar .circle_loading").removeClass('show_circle').addClass('hide_circle');
                     jQuery('#wp-calendar .ui-datepicker-prev').toggle();
                     jQuery('#wp-calendar .ui-datepicker-next').toggle();
                     jQuery('#calendar_wrap .calendar-pagi a').each(function(){
