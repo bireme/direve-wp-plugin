@@ -145,6 +145,8 @@ select{float:left; padding:4.5px; border-radius:4px; border:1px solid rgb(132,13
 input[type=radio]{float:left; margin:3px 5px 0 0;}
 .select-input-home{max-height:29px; min-height:29px; margin:0 10px;}
 #searchsubmit{
+        font-size: 11px;
+        line-height: 15px;
 	cursor: pointer;
 	border-radius: 0 10px 10px 0;
 	border: 1px solid #475f78;
