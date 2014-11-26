@@ -39,16 +39,17 @@ if(!class_exists('DirEve_Plugin')) {
             // register actions
 
             add_action( 'wp_head', array(&$this, 'geolocation_head') );
-			add_action( 'init', array(&$this, 'load_translation') );
-			add_action( 'admin_menu', array(&$this, 'admin_menu') );
-			add_action( 'plugins_loaded', array(&$this, 'plugin_init') );
-			add_action( 'wp_head', array(&$this, 'google_analytics_code') );
-			add_action( 'template_redirect', array(&$this, 'theme_redirect') );
-			add_action( 'widgets_init', array(&$this, 'register_sidebars') );
-			add_filter( 'wp_title', array(&$this, 'page_title'), 10, 2 );
-			add_filter( 'get_search_form', array(&$this, 'search_form') );
+            add_action( 'init', array(&$this, 'load_translation') );
+            add_action( 'admin_menu', array(&$this, 'admin_menu') );
+            add_action( 'plugins_loaded', array(&$this, 'plugin_init') );
+            add_action( 'wp_head', array(&$this, 'google_analytics_code') );
+            add_action( 'template_redirect', array(&$this, 'theme_redirect') );
+            add_action( 'widgets_init', array(&$this, 'register_sidebars') );
+            add_filter( 'wp_title', array(&$this, 'page_title'), 10, 2 );
+            add_filter( 'get_search_form', array(&$this, 'search_form') );
+            add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array(&$this, 'settings_link') );
 
-		} // END public function __construct
+        } // END public function __construct
 
         /**
          * Activate the plugin
@@ -163,6 +164,12 @@ if(!class_exists('DirEve_Plugin')) {
 		function register_settings(){
 		    register_setting('direve-settings-group', 'direve_config');
 		}
+
+                function settings_link($links) {        
+                    $settings_link = '<a href="options-general.php?page=direve.php">Settings</a>';
+                    array_unshift($links, $settings_link);
+                    return $links;
+                }
 
 		function google_analytics_code(){
 		    global $wp;
