@@ -40,11 +40,13 @@ if ($response){
     $event_list = $response_json->diaServerResponse[0]->response->docs;
 }
 
+$rss_channel_url = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query) . '&filter=' . urlencode($filter);
+
 ?>
 <rss version="2.0">
     <channel>
         <title><?php _e('Events Directory', 'direve') ?></title>
-        <link><?php echo real_site_url($direve_plugin_slug) . 'events-feed' ?></link>
+        <link><?php echo $rss_channel_url ?></link>
         <description><?php echo  ($query != '' || $filter != '') ? $query . ' ' . $filter : _e('Next events','direve');  ?></description>
         <?php 
             foreach ( $event_list as $event) {
