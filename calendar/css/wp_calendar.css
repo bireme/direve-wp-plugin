@@ -190,7 +190,6 @@
     box-shadow: 0 2px 4px rgba(50, 50, 50, 0.63);
     border-radius: 0px;
     display: none;
-    padding: 7px;
     position: absolute;
     text-align: left;
     width: 230px;
@@ -303,7 +302,7 @@
     font-family: arial;
     font-size: 14px;
     font-weight: bold;
-    padding: 5px;
+    padding: 10px;
     width: 100%;
 }
 
