@@ -134,12 +134,12 @@ if(!class_exists('DirEve_Plugin')) {
 		    register_sidebar( $args );
 		}
 
-		function page_title($title){
+		function page_title(){
 		    global $wp;
 		    $pagename = $wp->query_vars["pagename"];
 
 		    if ( strpos($pagename, $this->plugin_slug) === 0 ) { //pagename starts with plugin slug
-		        return 'DirEVE | ' . $title;        
+		        return 'DirEVE | ';
 		    }
 		}
 
