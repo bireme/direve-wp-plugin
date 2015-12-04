@@ -17,11 +17,11 @@ $user_filter = stripslashes($_GET['filter']);
 $filter = '';
 
 if ($direve_initial_filter != ''){
-    if ($user_filter != ''){    
+    if ($user_filter != ''){
         $filter = $direve_initial_filter . ' AND ' . $user_filter;
     }else{
         $filter = $direve_initial_filter;
-    }    
+    }
 }else{
     $filter = $user_filter;
 }
@@ -48,7 +48,7 @@ $rss_channel_url = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query
         <title><?php _e('Events Directory', 'direve') ?></title>
         <link><?php echo htmlspecialchars($rss_channel_url); ?></link>
         <description><?php echo  ($query != '' || $filter != '') ? $query . ' ' . $filter : _e('Next events','direve');  ?></description>
-        <?php 
+        <?php
             foreach ( $event_list as $event) {
                 $rss_description = '';
 
@@ -60,19 +60,18 @@ $rss_channel_url = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query
                 echo "   <link>" . real_site_url($direve_plugin_slug) . 'resource/'  . $event->django_id . "</link>\n";
 
                 if ($event->city || $event->country) {
-                    $rss_description .= $event->city . ' - ' . $event->country . '<br/>';
+                    $rss_description .= $event->city . ' - ' . $event->country . '&nbsp;<br/>';
                 }
                 $rss_description .= __('Date','direve') . ': ' . format_date($event->start_date);
-                $rss_description .= ' - '. format_date($event->end_date) . '<br/>';
+                $rss_description .= ' - '. format_date($event->end_date) . '&nbsp;<br/>';
 
-                if ($event->abastract){                
-                    $rss_description .= $event->abstract . '<br/>';
+                if ($event->abastract){
+                    $rss_description .= $event->abstract . '&nbsp;<br/>';
                 }
 
                 if ($event->source_language_display){
                     $rss_description .= __('Available languages','direve') . ': ';
                     $rss_description .= print_lang_value($event->source_language_display, $site_language);
-                        
                 }
 
                 if ($event->descriptor || $event->keyword ) {
