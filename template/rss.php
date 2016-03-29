@@ -1,4 +1,5 @@
 <?php
+header("Content-Type: application/rss+xml; charset=UTF-8");
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
 
 /*
@@ -59,16 +60,18 @@ $rss_channel_url = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query
                 }
                 echo "   <link>" . real_site_url($direve_plugin_slug) . 'resource/'  . $event->django_id . "</link>\n";
 
+                $rss_description .= format_date($event->start_date);
+                $rss_description .= ' - ' . format_date($event->end_date) . '. ';
+                
                 if ($event->city || $event->country) {
-                    $rss_description .= $event->city . ' - ' . $event->country . '&nbsp;<br/>';
-                }
-                $rss_description .= __('Date','direve') . ': ' . format_date($event->start_date);
-                $rss_description .= ' - '. format_date($event->end_date) . '&nbsp;<br/>';
-
-                if ($event->abastract){
-                    $rss_description .= $event->abstract . '&nbsp;<br/>';
+                    $rss_description .= trim($event->city) . ' - ' . trim($event->country) . '.';
                 }
 
+                /*
+                if ($event->abstract){
+                    $rss_description .= $event->abstract . '&nbsp;<br />';
+                }
+                
                 if ($event->source_language_display){
                     $rss_description .= __('Available languages','direve') . ': ';
                     $rss_description .= print_lang_value($event->source_language_display, $site_language);
@@ -80,7 +83,9 @@ $rss_channel_url = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query
                     $rss_description .= __('Subjects','direve') . ': ';
                     $rss_description .= implode(", ", array_merge( $descriptors, $keywords) );
                 }
-                echo "   <description><![CDATA[ " . $rss_description . " ]]></description>\n";
+                */
+
+                echo "   <description><![CDATA[" . $rss_description . "]]></description>\n";
                 echo "   <guid isPermaLink=\"false\">" . $event->django_id . "</guid>\n";
                 echo "</item>\n";
             }
