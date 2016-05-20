@@ -22,11 +22,11 @@ $count = 10;
 $filter = '';
 
 if ($direve_initial_filter != ''){
-    if ($user_filter != ''){    
+    if ($user_filter != ''){
         $filter = $direve_initial_filter . ' AND ' . $user_filter;
     }else{
         $filter = $direve_initial_filter;
-    }    
+    }
 }else{
     $filter = $user_filter;
 }
@@ -50,17 +50,17 @@ if ($response){
     if ($query != '' || $user_filter != ''){
         $event_list = $response_json->diaServerResponse[0]->response->docs;
     }else{
-        $response_next_events =  @file_get_contents($direve_next_events);        
+        $response_next_events =  @file_get_contents($direve_next_events);
         $response_next_events_json = json_decode($response_next_events);
         $event_list = $response_next_events_json->diaServerResponse[0]->response->docs;
     }
-    
+
     $descriptor_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptor_filter;
     $event_type_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->event_type;
 }
 
 $page_url_params = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query)  . '&filter=' . urlencode($filter);
-$feed_url = real_site_url($direve_plugin_slug) . 'events-feed?q=' . urlencode($query) . '&filter=' . urlencode($filter);
+$feed_url = real_site_url($direve_plugin_slug) . 'events-feed?q=' . urlencode($query) . '&filter=' . urlencode($user_filter);
 
 $pages = new Paginator($total, $start);
 $pages->paginate($page_url_params);
@@ -70,16 +70,16 @@ $pages->paginate($page_url_params);
 <?php get_header('direve');?>
 	<div id="content" class="row-fluid">
 		<div class="ajusta2">
-            <div class="row-fluid breadcrumb">                
+            <div class="row-fluid breadcrumb">
                 <a href="<?php echo real_site_url(); ?>"><?php _e('Home','direve'); ?></a> >
                 <?php if ($query != '' || $user_filter != ''): ?>
                     <a href="<?php echo real_site_url($direve_plugin_slug); ?>"><?php _e('Events Directory', 'direve') ?> </a> >
-                    <?php _e('Search result', 'direve') ?>                    
-                <?php else: ?> 
+                    <?php _e('Search result', 'direve') ?>
+                <?php else: ?>
                     <?php _e('Events Directory', 'direve') ?>
                 <?php endif; ?>
             </div>
-				
+
 			<section id="conteudo">
                 <?php if ( isset($total) && strval($total) == 0) :?>
                     <h1 class="h1-header"><?php _e('No results found','direve'); ?></h1>
@@ -132,7 +132,7 @@ $pages->paginate($page_url_params);
 
                                 <div id="conteudo-loop-data" class="row-fluid margintop05">
                                     <span class="conteudo-loop-data-tit"><?php _e('Date','direve'); ?>:</span>
-                                    <?php echo format_date($resource->start_date); ?> - 
+                                    <?php echo format_date($resource->start_date); ?> -
                                     <?php echo format_date($resource->end_date); ?>
                                 </div>
 
@@ -151,11 +151,11 @@ $pages->paginate($page_url_params);
 
                                 <?php if ($resource->descriptor || $resource->keyword ) : ?>
                                     <div id="conteudo-loop-tags" class="row-fluid margintop10">
-                                        <i class="ico-tags"> </i>   
-                                            <?php 
+                                        <i class="ico-tags"> </i>
+                                            <?php
                                                 $descriptors = (array)$resource->descriptor;
                                                 $keywords = (array)$resource->keyword;
-                                            ?>                               
+                                            ?>
                                             <?php echo implode(", ", array_merge( $descriptors, $keywords) ); ?>
                                       </div>
                                 <?php endif; ?>
@@ -220,8 +220,8 @@ $pages->paginate($page_url_params);
                                     $filter_link .= 'filter=descriptor:"' . $descriptor[0] . '"';
                                     if ($user_filter != ''){
                                         $filter_link .= ' AND ' . $user_filter ;
-                                    }                                    
-                                ?>                            
+                                    }
+                                ?>
                                 <li class="cat-item">
                                     <a href='<?php echo $filter_link; ?>'><?php echo $descriptor[0] ?></a>
                                     <span class="cat-item-count"><?php echo $descriptor[1] ?></span>

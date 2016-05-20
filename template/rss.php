@@ -8,9 +8,10 @@ Template Name: DirEVE RSS
 global $direve_service_url, $direve_plugin_slug;
 
 $direve_config = get_option('direve_config');
-$initial_filter = $direve_config['initial_filter'];
+$direve_initial_filter = $direve_config['initial_filter'];
 
 $site_language = strtolower(get_bloginfo('language'));
+$lang_dir = substr($site_language,0,2);
 
 $query = ( isset($_GET['s']) ? $_GET['s'] : $_GET['q'] );
 $query = stripslashes($query);
@@ -27,7 +28,7 @@ if ($direve_initial_filter != ''){
     $filter = $user_filter;
 }
 
-if ($query != '' || $filter != ''){
+if ($query != '' || $user_filter != ''){
     $direve_get_url = $direve_service_url . 'api/event/search/?q=' . urlencode($query) . '&fq=' . urlencode($filter) . '&lang=' . $lang_dir;
 }else{
     $direve_get_url = $direve_service_url . 'api/event/next/?fq=' . urlencode($filter) . '&lang=' . $lang_dir;
@@ -62,7 +63,7 @@ $rss_channel_url = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query
 
                 $rss_description .= format_date($event->start_date);
                 $rss_description .= ' - ' . format_date($event->end_date) . '. ';
-                
+
                 if ($event->city || $event->country) {
                     $rss_description .= trim($event->city) . ' - ' . trim($event->country) . '.';
                 }
@@ -71,7 +72,7 @@ $rss_channel_url = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query
                 if ($event->abstract){
                     $rss_description .= $event->abstract . '&nbsp;<br />';
                 }
-                
+
                 if ($event->source_language_display){
                     $rss_description .= __('Available languages','direve') . ': ';
                     $rss_description .= print_lang_value($event->source_language_display, $site_language);
