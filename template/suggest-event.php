@@ -12,6 +12,16 @@ $year_list = range($current_year, $current_year+4);
 $day_list = range(1,31);
 $month_list = range(1,12);
 
+/* Metadada from Suggest Event in BVS Events Calendar */
+$title = $_POST['title'] ? $_POST['title'] : '';
+$start_day = $_POST['start_day'] ? $_POST['start_day'] : '';
+$start_month = $_POST['start_month'] ? $_POST['start_month'] : '';
+$start_year = $_POST['start_year'] ? $_POST['start_year'] : '';
+$end_day = $_POST['end_day'] ? $_POST['end_day'] : '';
+$end_month = $_POST['end_month'] ? $_POST['end_month'] : '';
+$end_year = $_POST['end_year'] ? $_POST['end_year'] : '';
+$site = $_POST['site'] ? $_POST['site'] : '';
+
 ?>
 
 <?php get_header('direve'); ?>
@@ -54,28 +64,27 @@ $month_list = range(1,12);
                             <input type="hidden" name="end_date" id="end_date" value="" />
 
                             <?php _e('Event title', 'direve') ?>
-                            <p><input type="text"  name="title" size="80" value=""/></p>
-
+                            <p><input type="text"  name="title" size="80" value="<?php echo $title; ?>"/></p>
  
                             <div class="row-fluid">
                                 <div><?php _e('Start date', 'direve') ?></div>
 
                                 <select name="start_day" id="start_day">
-                                    <option value="" selected="selected"><?php _e('Day', 'direve') ?></option>
+                                    <option value=""><?php _e('Day', 'direve') ?></option>
                                     <?php foreach ($day_list as $day) :?>
-                                        <option value="<?php echo $day ?>"><?php echo $day ?></option>
+                                        <option value="<?php echo $day ?>" <?php echo $start_day == $day ? 'selected' : ''; ?>><?php echo $day ?></option>
                                     <?php endforeach; ?>
                                 </select>
                                 <select name="start_month" id="start_month">
-                                    <option value="" selected="selected"><?php _e('Month', 'direve') ?></option>
+                                    <option value=""><?php _e('Month', 'direve') ?></option>
                                     <?php foreach ($month_list as $month) :?>
-                                        <option value="<?php echo $month ?>"><?php echo $month ?></option>
+                                        <option value="<?php echo $month ?>" <?php echo $start_month == $month ? 'selected' : ''; ?>><?php echo $month ?></option>
                                     <?php endforeach; ?>
                                 </select>
                                 <select name="start_year" id="start_year">
-                                    <option value="" selected="selected"><?php _e('Year', 'direve') ?></option>
+                                    <option value=""><?php _e('Year', 'direve') ?></option>
                                     <?php foreach ($year_list as $year) :?>
-                                        <option value="<?php echo $year ?>"><?php echo $year ?></option>
+                                        <option value="<?php echo $year ?>" <?php echo $start_year == $year ? 'selected' : ''; ?>><?php echo $year ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -83,27 +92,27 @@ $month_list = range(1,12);
                             <div class="row-fluid">
                                 <div><?php _e('End date', 'direve') ?></div>
                                 <select name="end_day" id="end_day">
-                                    <option value="" selected="selected"><?php _e('Day', 'direve') ?></option>
+                                    <option value=""><?php _e('Day', 'direve') ?></option>
                                     <?php foreach ($day_list as $day) :?>
-                                        <option value="<?php echo $day ?>"><?php echo $day ?></option>
+                                        <option value="<?php echo $day ?>" <?php echo $end_day == $day ? 'selected' : ''; ?>><?php echo $day ?></option>
                                     <?php endforeach; ?>
                                 </select>
                                 <select name="end_month" id="end_month">
-                                    <option value="" selected="selected"><?php _e('Month', 'direve') ?></option>
+                                    <option value=""><?php _e('Month', 'direve') ?></option>
                                     <?php foreach ($month_list as $month) :?>
-                                        <option value="<?php echo $month ?>"><?php echo $month ?></option>
+                                        <option value="<?php echo $month ?>" <?php echo $end_month == $month ? 'selected' : ''; ?>><?php echo $month ?></option>
                                     <?php endforeach; ?>
                                 </select>
                                 <select name="end_year" id="end_year">
-                                    <option value="" selected="selected"><?php _e('Year', 'direve') ?></option>
+                                    <option value=""><?php _e('Year', 'direve') ?></option>
                                     <?php foreach ($year_list as $year) :?>
-                                        <option value="<?php echo $year ?>"><?php echo $year ?></option>
+                                        <option value="<?php echo $year ?>" <?php echo $end_year == $year ? 'selected' : ''; ?>><?php echo $year ?></option>
                                     <?php endforeach; ?>
                                 </select> 
                             </div>
 
                             <?php _e('Website', 'direve') ?>
-                            <p><input type="text" placeholder="" name="link" size="80" value="<?php echo $site_meta_tags['keywords'] ?>"/></p>
+                            <p><input type="text" placeholder="" name="link" size="80" value="<?php echo $site ? $site : $site_meta_tags['keywords'] ?>"/></p>
 
                             <?php _e('City', 'direve') ?>
                             <p><input type="text" placeholder="" name="city" size="80" value="<?php echo $site_meta_tags['keywords'] ?>"/></p>
