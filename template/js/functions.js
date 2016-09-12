@@ -1,9 +1,10 @@
 var $j = jQuery;
 
 $j(window).load(function(){
-	regExp();
-	reportarErro();
-	sugerirTag();
+    regExp();
+    reportarErro();
+    sugerirTag();
+
     if($j("#geolocation-map-canvas").length){
         geolocationInitialize();
     }

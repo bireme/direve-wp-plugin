@@ -143,8 +143,7 @@ if ( !function_exists('geolocation') ) {
                         //alert('Geocode was not successful for the following reason: ' + status);
                     }
                 });
-            });
-            
+            });            
         </script>
         <div class="geolocation-map">
             <div id="geolocation-map-canvas"></div>

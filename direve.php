@@ -211,7 +211,9 @@ if(!class_exists('DirEve_Plugin')) {
 		        var directionsService = new google.maps.DirectionsService();
 
 		        function geolocationInitialize() {
-		        	var dirLoc = new google.maps.LatLng(lat, lng);
+                            lat = lat();
+                            lng = lng();
+		            var dirLoc = new google.maps.LatLng(lat, lng);
 		            directionsDisplay = new google.maps.DirectionsRenderer();
 		            var mapOptions = {
 		                mapTypeControl: true,
