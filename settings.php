@@ -1,5 +1,5 @@
 <?php
-function direve_page_admin() { 
+function direve_page_admin() {
 
     $config = get_option('direve_config');
 
@@ -7,7 +7,7 @@ function direve_page_admin() {
     <div class="wrap">
             <div id="icon-options-general" class="icon32"></div>
             <h2><?php _e('DirEve Plugin Options', 'direve'); ?></h2>
-            
+
             <form method="post" action="options.php">
 
                 <?php settings_fields('direve-settings-group'); ?>
@@ -37,6 +37,29 @@ function direve_page_admin() {
                                 <?php _e('Show search form', 'direve'); ?>
                             </td>
                         </tr>
+
+                        <?php
+                        if ( function_exists( 'pll_the_languages' ) ) {
+                            $available_languages = pll_languages_list();
+                            $available_languages_name = pll_languages_list(array('fields' => 'name'));
+                            $count = 0;
+                            foreach ($available_languages as $lang) {
+                                $key_name = 'plugin_title_' . $lang;
+                                $home_url = 'home_url_' . $lang;
+                                echo '<tr valign="top">';
+                                echo '    <th scope="row"> ' . __("Page title", "direve") . ' (' . $available_languages_name[$count] . '):</th>';
+                                echo '    <td><input type="text" name="direve_config[' . $key_name . ']" value="' . $config[$key_name] . '" class="regular-text code"></td>';
+                                echo '</tr>';
+                                $count++;
+                            }
+                        }else{
+                            echo '<tr valign="top">';
+                            echo '   <th scope="row">' . __("Page title", "direve") . ':</th>';
+                            echo '   <td><input type="text" name="direve_config[plugin_title]" value="' . $config["plugin_title"] .'" class="regular-text code"></td>';
+                            echo '</tr>';
+                        }
+                        ?>
+
                         <tr valign="top">
                             <th scope="row"><?php _e('Disqus shortname', 'direve'); ?>:</th>
                             <td><input type="text" name="direve_config[disqus_shortname]" value="<?php echo $config['disqus_shortname'] ?>" class="regular-text code"></td>
@@ -55,7 +78,7 @@ function direve_page_admin() {
                 <p class="submit">
                 <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
                 </p>
-            
+
             </form>
         </div>
 

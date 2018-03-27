@@ -6,9 +6,7 @@ Template Name: DirEve Detail
 global $direve_service_url, $direve_plugin_slug;
 
 $direve_config = get_option('direve_config');
-$request_uri = $_SERVER["REQUEST_URI"];
-$request_parts = explode('/', $request_uri);
-$event_id = end($request_parts);
+$event_id = $_GET['id'];
 
 $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);
@@ -33,8 +31,8 @@ if ($response){
 <div id="content" class="row-fluid">
         <div class="ajusta2">
             <div class="row-fluid breadcrumb">
-                <a href="<?php echo real_site_url(); ?>"><?php _e('Home','direve'); ?></a> > 
-                <a href="<?php echo real_site_url($direve_plugin_slug); ?>"><?php _e('Events Directory', 'direve') ?> </a> > 
+                <a href="<?php echo real_site_url(); ?>"><?php _e('Home','direve'); ?></a> >
+                <a href="<?php echo real_site_url($direve_plugin_slug); ?>"><?php _e('Events Directory', 'direve') ?> </a> >
                 <?php _e('Resource','direve'); ?>
             </div>
 
@@ -70,7 +68,7 @@ if ($response){
 
                         <div id="conteudo-loop-data" class="row-fluid margintop05">
                             <span class="conteudo-loop-data-tit"><?php _e('Date','direve'); ?>:</span>
-                            <?php echo format_date($resource->start_date); ?> - 
+                            <?php echo format_date($resource->start_date); ?> -
                             <?php echo format_date($resource->end_date); ?>
                         </div>
 
@@ -93,15 +91,15 @@ if ($response){
                                <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','direve'); ?>:</span>
                                <?php print_lang_value($resource->source_language_display, $site_language); ?>
                             </div>
-                        <?php endif; ?>                            
+                        <?php endif; ?>
 
                         <?php if ($resource->descriptor || $resource->keyword ) : ?>
                             <div id="conteudo-loop-tags" class="row-fluid margintop10">
-                                <i class="ico-tags"> </i>   
-                                    <?php 
+                                <i class="ico-tags"> </i>
+                                    <?php
                                         $descriptors = (array)$resource->descriptor;
                                         $keywords = (array)$resource->keyword;
-                                    ?>                               
+                                    ?>
                                     <?php echo implode(", ", array_merge( $descriptors, $keywords) ); ?>
                               </div>
                         <?php endif; ?>
@@ -114,7 +112,7 @@ if ($response){
                                     <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=<?php echo $direve_addthis_id; ?>"><?php _e('Share','direve'); ?></a>
                                     <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
                                     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $direve_addthis_id; ?>"></script>
-                                    <!-- AddThis Button END -->                                    
+                                    <!-- AddThis Button END -->
                                 </li>
                                 <li class="conteudo-loop-icons-li">
                                     <span class="reportar-erro-open">
@@ -122,7 +120,7 @@ if ($response){
                                         <?php _e('Report error','direve'); ?>
                                     </span>
 
-                                    <div class="reportar-erro"> 
+                                    <div class="reportar-erro">
                                         <div class="erro-form">
                                             <form action="<?php echo $direve_service_url ?>report-error" id="reportErrorForm">
                                                 <input type="hidden" name="resource_type" value="event"/>
@@ -197,7 +195,7 @@ if ($response){
                                         <span class="_zonecode"></span>
                                         <span class="_summary"><?php echo $resource->title; ?></span>
                                         <span class="_description"></span>
-                                        <?php 
+                                        <?php
                                             $location = "";
                                             if ($address) {
                                                 $location = $address;
@@ -227,7 +225,7 @@ if ($response){
                             </ul>
                         </footer>
 
-                        <?php 
+                        <?php
                             if ($address) {
                                 if($resource->city)
                                     $address .=  ', ' . $resource->city;
@@ -253,7 +251,7 @@ if ($response){
                             <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                             <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                         <?php endif; ?>
-    
+
                     </article>
                 </div>
             </section>

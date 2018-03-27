@@ -4,11 +4,11 @@ Plugin Name: DirEve
 Plugin URI: https://github.com/bireme/direve-wp-plugin/
 Description: Events Directory (DirEVE) WordPress plugin
 Author: BIREME/OPAS/OMS
-Version: 0.1
+Version: 0.2
 Author URI: http://reddes.bvsalud.org/
 */
 
-define('DIREVE_VERSION', '0.1' );
+define('DIREVE_VERSION', '0.2' );
 
 define('DIREVE_SYMBOLIC_LINK', false );
 define('DIREVE_PLUGIN_DIRNAME', 'direve' );
@@ -28,7 +28,7 @@ require_once(DIREVE_PLUGIN_PATH . '/calendar/wp-calendar.php');
 
 if(!class_exists('DirEve_Plugin')) {
     class DirEve_Plugin {
-        
+
         private $plugin_slug = 'direve';
         private $service_url = 'http://fi-admin.bvsalud.org/';
 
@@ -45,9 +45,9 @@ if(!class_exists('DirEve_Plugin')) {
             add_action( 'wp_head', array(&$this, 'google_analytics_code') );
             add_action( 'template_redirect', array(&$this, 'theme_redirect') );
             add_action( 'widgets_init', array(&$this, 'register_sidebars') );
-            add_filter( 'wp_title', array(&$this, 'page_title'), 10, 2 );
             add_filter( 'get_search_form', array(&$this, 'search_form') );
             add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array(&$this, 'settings_link') );
+            add_filter( 'document_title_parts', array(&$this, 'theme_slug_render_title'));
 
         } // END public function __construct
 
@@ -61,7 +61,7 @@ if(!class_exists('DirEve_Plugin')) {
 
         /**
          * Deactivate the plugin
-         */     
+         */
         public static function deactivate()
         {
             // Do nothing
@@ -82,43 +82,48 @@ if(!class_exists('DirEve_Plugin')) {
 		}
 
 		function admin_menu() {
-
 		    add_submenu_page( 'options-general.php', __('DirEVE Settings', 'direve'), __('DirEVE', 'direve'), 'manage_options', 'direve', 'direve_page_admin');
 
 		    //call register settings function
 		    add_action( 'admin_init', array(&$this, 'register_settings') );
-
 		}
 
 		function theme_redirect() {
 		    global $wp, $direve_service_url, $direve_plugin_slug;
-		    $pagename = $wp->query_vars["pagename"];
 
-		    $direve_service_url = $this->service_url;
-		    $direve_plugin_slug = $this->plugin_slug;
+            // check if request contains plugin slug string
+            $pos_slug = strpos($wp->request, $this->plugin_slug);
+            if ( $pos_slug !== false ){
+                $pagename = substr($wp->request, $pos_slug);
+            }
 
-		    if ($pagename == $this->plugin_slug || $pagename == $this->plugin_slug . '/resource' 
-		        || $pagename == $this->plugin_slug . '/suggest-event' 
-		        || $pagename == $this->plugin_slug . '/events-feed') {
+            if ( is_404() && $pos_slug !== false ){
+                $direve_service_url = $this->service_url;
+                $direve_plugin_slug = $this->plugin_slug;
 
-		        add_action( 'wp_enqueue_scripts', array(&$this, 'template_styles_scripts') );
+    		    if ($pagename == $this->plugin_slug || $pagename == $this->plugin_slug . '/resource'
+    		        || $pagename == $this->plugin_slug . '/suggest-event'
+    		        || $pagename == $this->plugin_slug . '/events-feed') {
 
-		        if ($pagename == $this->plugin_slug){
-		            $template = DIREVE_PLUGIN_PATH . '/template/home.php';
-		        }elseif ($pagename == $this->plugin_slug . '/suggest-event'){
-		            $template = DIREVE_PLUGIN_PATH . '/template/suggest-event.php';
-		        }elseif ($pagename == $this->plugin_slug . '/events-feed'){
-		            $template = DIREVE_PLUGIN_PATH . '/template/rss.php';
-		        }else{
-		            $template = DIREVE_PLUGIN_PATH . '/template/detail.php';
-		        }
-		        // force status to 200 - OK
-		        status_header(200);
+    		        add_action( 'wp_enqueue_scripts', array(&$this, 'template_styles_scripts') );
 
-		        // redirect to page and finish execution
-		        include($template);
-		        die();
-		    }
+    		        if ($pagename == $this->plugin_slug){
+    		            $template = DIREVE_PLUGIN_PATH . '/template/home.php';
+    		        }elseif ($pagename == $this->plugin_slug . '/suggest-event'){
+    		            $template = DIREVE_PLUGIN_PATH . '/template/suggest-event.php';
+    		        }elseif ($pagename == $this->plugin_slug . '/events-feed'){
+    		            $template = DIREVE_PLUGIN_PATH . '/template/rss.php';
+    		        }else{
+    		            $template = DIREVE_PLUGIN_PATH . '/template/detail.php';
+    		        }
+    		        // force status to 200 - OK
+    		        status_header(200);
+
+    		        // redirect to page and finish execution
+    		        include($template);
+    		        die();
+    		    }
+            }
 		}
 
 		function register_sidebars(){
@@ -127,33 +132,52 @@ if(!class_exists('DirEve_Plugin')) {
 		        'id'   => 'direve-home',
 		        'description' => 'DirEVE Area',
 		        'before_widget' => '<section id="%1$s" class="row-fluid widget %2$s">',
-		        'after_widget'  => '</section>',        
+		        'after_widget'  => '</section>',
 		        'before_title'  => '<h2 class="widgettitle">',
 		        'after_title'   => '</h2>',
 		    );
 		    register_sidebar( $args );
 		}
 
-		function page_title(){
-		    global $wp;
-		    $pagename = $wp->query_vars["pagename"];
+        function theme_slug_render_title( $title_parts ) {
+            global $wp, $direve_plugin_title;
 
-		    if ( strpos($pagename, $this->plugin_slug) === 0 ) { //pagename starts with plugin slug
-		        return 'DirEVE | ';
-		    }
-		}
+            $pagename = '';
+            // check if request contains plugin slug string
+            $pos_slug = strpos($wp->request, $this->plugin_slug);
+            if ( $pos_slug !== false ){
+                $pagename = substr($wp->request, $pos_slug);
+            }
+            if ( is_404() && $pos_slug !== false ){
+                $config = get_option('direve_config');
+                if ( function_exists( 'pll_the_languages' ) ) {
+                    $current_lang = pll_current_language();
+                    $direve_plugin_title = $config['plugin_title_' . $current_lang];
+                }else{
+                    $direve_plugin_title = $config['plugin_title'];
+                }
+                $title_parts['title'] = $direve_plugin_title . " | " . get_bloginfo('name');
+            }
 
-		function search_form( $form ) {
-		    global $wp;
-		    $pagename = $wp->query_vars["pagename"];
+            return $title_parts;
+        }
 
 
-		    if ($pagename == $this->plugin_slug || $pagename == $this->plugin_slug .'/resource') {
-		        $form = preg_replace('/action="([^"]*)"(.*)/','action="' . home_url($this->plugin_slug) . '"',$form);
-		    }
+        function search_form( $form ) {
+            global $wp;
 
-		    return $form;
-		}
+            $pagename = '';
+            // check if request contains plugin slug string
+            $pos_slug = strpos($wp->request, $this->plugin_slug);
+            if ( $pos_slug !== false ){
+                $pagename = substr($wp->request, $pos_slug);
+            }
+
+            if ($pagename == $this->plugin_slug || $pagename == $this->plugin_slug .'/resource') {
+                $form = preg_replace('/action="([^"]*)"(.*)/','action="' . home_url($this->plugin_slug) . '"',$form);
+            }
+            return $form;
+        }
 
 		function template_styles_scripts(){
 		    wp_enqueue_script('direve-page', DIREVE_PLUGIN_URL . 'template/js/functions.js',       array( 'jquery' ));
@@ -165,7 +189,7 @@ if(!class_exists('DirEve_Plugin')) {
 		    register_setting('direve-settings-group', 'direve_config');
 		}
 
-                function settings_link($links) {        
+                function settings_link($links) {
                     $settings_link = '<a href="options-general.php?page=direve.php">Settings</a>';
                     array_unshift($links, $settings_link);
                     return $links;
@@ -174,19 +198,20 @@ if(!class_exists('DirEve_Plugin')) {
 		function google_analytics_code(){
 		    global $wp;
 
-		    $pagename = $wp->query_vars["pagename"];
-		    $direve_config = get_option('direve_config');
+            $pos_slug = strpos($wp->request, $this->plugin_slug);
+            if ( $pos_slug !== false ){
+                $pagename = substr($wp->request, $pos_slug);
 
-		    // check if is defined GA code and pagename starts with plugin slug
-		    if ($direve_config['google_analytics_code'] != '' 
-		        && strpos($pagename, $this->plugin_slug) === 0){
-
+                $config = get_option('direve_config');
+                // check if is defined GA code and pagename starts with plugin slug
+                if ($config['google_analytics_code'] != ''
+                    && strpos($pagename, $this->plugin_slug) === 0){
 		?>
 
 		<script type="text/javascript">
 		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', '<?php echo $direve_config['google_analytics_code'] ?>']);
-		  _gaq.push(['_setCookiePath', '/<?php echo $direve_config['$this->plugin_slug'] ?>']);
+		  _gaq.push(['_setAccount', '<?php echo $config['google_analytics_code'] ?>']);
+		  _gaq.push(['_setCookiePath', '/<?php echo $config['$this->plugin_slug'] ?>']);
 		  _gaq.push(['_trackPageview']);
 
 		  (function() {
@@ -198,8 +223,9 @@ if(!class_exists('DirEve_Plugin')) {
 		</script>
 
 		<?php
-		    } //endif
-		}
+            } //endif lis_config
+          }// endif pos_slug
+        } // end function google_analytics_code
 
 		function geolocation_head() {
 		    ob_start();
@@ -229,9 +255,9 @@ if(!class_exists('DirEve_Plugin')) {
 
 		            map = new google.maps.Map(document.getElementById('geolocation-map-canvas'), mapOptions);
 		            marker = new google.maps.Marker({map: map, position: dirLoc});
-		        
-		            directionsDisplay.setMap(map);  
-		            directionsDisplay.setPanel(document.getElementById("directionsPanel"));         
+
+		            directionsDisplay.setMap(map);
+		            directionsDisplay.setPanel(document.getElementById("directionsPanel"));
 		        }
 		    </script>
 		<?php

@@ -138,7 +138,7 @@ $pages->paginate($page_url_params);
 
         						<p class="row-fluid">
         							<?php echo ( strlen($resource->abstract) > 200 ? substr($resource->abstract,0,200) . '...' : $resource->abstract); ?><br/>
-        							<span class="more"><a href="<?php echo real_site_url($direve_plugin_slug); ?>resource/<?php echo $resource->django_id; ?>"><?php _e('See more details','direve'); ?></a></span>
+        							<span class="more"><a href="<?php echo real_site_url($direve_plugin_slug); ?>resource/?id=<?php echo $resource->django_id; ?>"><?php _e('See more details','direve'); ?></a></span>
         						</p>
 
 
