@@ -26,8 +26,9 @@ $site = $_POST['site'] ? $_POST['site'] : '';
 
 <?php get_header('direve'); ?>
 
-<script language="javascript">
+<script src='https://www.google.com/recaptcha/api.js' async defer></script>
 
+<script language="javascript">
     function getSelectVal(element_id){
         var el = document.getElementById(element_id);
         var el_value = el.options[el.selectedIndex].value;
@@ -35,11 +36,10 @@ $site = $_POST['site'] ? $_POST['site'] : '';
         return el_value;
     }
 
-    function joinDate(){
-        
+    function onSubmit(){
         document.getElementById('start_date').value = getSelectVal('start_day') + '/' + getSelectVal('start_month') + '/'  + getSelectVal('start_year');
         document.getElementById('end_date').value = getSelectVal('end_day') + '/' + getSelectVal('end_month') + '/' + getSelectVal('end_year');
-
+        document.getElementById("suggest-form").submit();
     }
 </script>
 
@@ -47,8 +47,8 @@ $site = $_POST['site'] ? $_POST['site'] : '';
 <div id="content" class="row-fluid">
         <div class="ajusta2">
             <div class="row-fluid">
-                <a href="<?php echo real_site_url(); ?>"><?php _e('Home','direve'); ?></a> > 
-                <a href="<?php echo real_site_url($direve_plugin_slug); ?>"><?php _e('Events Directory', 'direve') ?> </a> > 
+                <a href="<?php echo real_site_url(); ?>"><?php _e('Home','direve'); ?></a> >
+                <a href="<?php echo real_site_url($direve_plugin_slug); ?>"><?php _e('Events Directory', 'direve') ?> </a> >
                 <?php _e('Suggest a event','direve'); ?>
             </div>
 
@@ -59,13 +59,13 @@ $site = $_POST['site'] ? $_POST['site'] : '';
                 <div class="row-fluid">
                     <article class="conteudo-loop suggest-form">
 
-                        <form method="post" name="suggest_form" action="<?php echo $direve_service_url ?>suggest-event" onsubmit="joinDate()">
+                        <form method="post" name="suggest_form" action="<?php echo $direve_service_url ?>suggest-event" id="suggest-form">
                             <input type="hidden" name="start_date" id="start_date" value="" />
                             <input type="hidden" name="end_date" id="end_date" value="" />
 
                             <?php _e('Event title', 'direve') ?>
                             <p><input type="text"  name="title" size="80" value="<?php echo $title; ?>"/></p>
- 
+
                             <div class="row-fluid">
                                 <div><?php _e('Start date', 'direve') ?></div>
 
@@ -108,7 +108,7 @@ $site = $_POST['site'] ? $_POST['site'] : '';
                                     <?php foreach ($year_list as $year) :?>
                                         <option value="<?php echo $year ?>" <?php echo $end_year == $year ? 'selected' : ''; ?>><?php echo $year ?></option>
                                     <?php endforeach; ?>
-                                </select> 
+                                </select>
                             </div>
 
                             <?php _e('Website', 'direve') ?>
@@ -116,7 +116,7 @@ $site = $_POST['site'] ? $_POST['site'] : '';
 
                             <?php _e('City', 'direve') ?>
                             <p><input type="text" placeholder="" name="city" size="80" value="<?php echo $site_meta_tags['keywords'] ?>"/></p>
-                            
+
                             <div><?php _e('Country', 'direve') ?></div>
                             <select id="country" name="country">
                                 <option value="1">Afeganistão</option>
@@ -360,31 +360,14 @@ $site = $_POST['site'] ? $_POST['site'] : '';
                                 <option value="239">Zimbabue</option>
                             </select>
 
-
-                            <script type="text/javascript">
-                                var RecaptchaOptions = {
-                                    theme : 'clean',
-                                    lang : '<?php echo substr($site_language, 0,2); ?>'
-                                };
-                            </script>
-                            <script type="text/javascript"
-                               src="http://www.google.com/recaptcha/api/challenge?k=6LcV0ugSAAAAAEpxBvqmNlnOZIAKSf_E6M-s8abc">
-                            </script>
-                            <noscript>
-                               <iframe src="http://www.google.com/recaptcha/api/noscript?k=6LcV0ugSAAAAAEpxBvqmNlnOZIAKSf_E6M-s8abc"
-                                   height="300" width="500" frameborder="0"></iframe><br>
-                               <textarea name="recaptcha_challenge_field" rows="3" cols="40">
-                               </textarea>
-                               <input type="hidden" name="recaptcha_response_field" value="manual_challenge">
-                            </noscript>
-
-
-                            <div class="btn-line">
-                               <input type="submit" value="<?php _e('Send', 'direve') ?>"/>
-                            </div>
+                            <button
+                                class="g-recaptcha"
+                                data-sitekey="6Lczl08UAAAAACjpV0PZ_1exDzQ7SJA_TmDrwI2U"
+                                data-callback="onSubmit">
+                                <?php _e('Send', 'direve') ?>
+                            </button>
 
                         </form>
-    
                     </article>
                 </div>
             </section>
