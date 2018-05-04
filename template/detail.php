@@ -110,7 +110,7 @@ if ($response){
                                     <i class="ico-compartilhar"> </i>
                                     <!-- AddThis Button BEGIN -->
                                     <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=<?php echo $direve_addthis_id; ?>"><?php _e('Share','direve'); ?></a>
-                                    <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+                                    <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
                                     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $direve_addthis_id; ?>"></script>
                                     <!-- AddThis Button END -->
                                 </li>

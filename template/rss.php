@@ -59,7 +59,7 @@ $rss_channel_url = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query
                 if ($event->author){
                     echo "   <author>". implode(", ", $event->author) . "</author>\n";
                 }
-                echo "   <link>" . real_site_url($direve_plugin_slug) . 'resource/'  . $event->django_id . "</link>\n";
+                echo "   <link>" . real_site_url($direve_plugin_slug) . 'resource/?id='  . $event->django_id . "</link>\n";
 
                 $rss_description .= format_date($event->start_date);
                 $rss_description .= ' - ' . format_date($event->end_date) . '. ';
