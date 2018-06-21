@@ -1,11 +1,11 @@
 DirEve Plugin for WordPress
 ===========================
 
-##Introduction
+## Introduction
 
 This plugin creates a search interface for [Virtual Health Library](http://modelo.bvsalud.org/en/) Events Directory (DirEve) information source.
 
-##Requirements
+## Requirements
 
 Wordpress 3.x
 
@@ -16,7 +16,7 @@ Wordpress 3.x
 0. Activate the DirEve plugin through the administration panel of WordPress (dashboard).
     * For further information on installing plugins please see the [Manual Plugin Installation from Wordpress codex site](http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation).
 
-##Configuration
+## Configuration
 0. Go to `Settings` in the administration panel (dashboard) and click on the newly created `DirEVE` item.
     * `Plugin page` is mandatory and is set to `direve` by default. It defines the URL of the search interface page;
     * `Filter query` is optional and defines the strategy (a term or expression) to act as a filter for record displaying;
