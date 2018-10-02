@@ -206,6 +206,10 @@ $pages->paginate($page_url_params);
     	    </section>
 			<a href="<?php echo real_site_url($direve_plugin_slug . '/suggest-event'); ?>" class="header-colabore"><?php _e('Suggest a event','direve'); ?></a>
                 <?php if (strval($total) > 0) :?>
+                  <?php
+                        $order = explode(';', $direve_config['available_filter']);
+                        foreach ( $order as $index => $content) { ?>
+            <?php if($content == 'Subjects'){ ?>
     				<section class="row-fluid marginbottom25 widget_categories">
     					<header class="row-fluid border-bottom marginbottom15">
     						<h1 class="h1-header"><?php _e('Subjects','direve'); ?></h1>
@@ -229,6 +233,8 @@ $pages->paginate($page_url_params);
                             <?php } ?>
     					</ul>
     				</section>
+          <?php } ?>
+          <?php if($content == 'Event type'){ ?>
                     <section class="row-fluid marginbottom25 widget_categories">
                         <header class="row-fluid border-bottom marginbottom15">
                             <h1 class="h1-header"><?php _e('Event type','direve'); ?></h1>
@@ -252,10 +258,12 @@ $pages->paginate($page_url_params);
                             <?php } ?>
                         </ul>
                     </section>
+                  <?php } ?>
 
 
-
-                <?php endif; ?>
+                <?php
+              }
+               endif; ?>
 				<?php dynamic_sidebar('direve-home');?>
 			</aside>
 			<div class="spacer"></div>

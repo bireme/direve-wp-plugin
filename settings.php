@@ -72,6 +72,62 @@ function direve_page_admin() {
                             <th scope="row"><?php _e('Google Analytics code', 'direve'); ?>:</th>
                             <td><input type="text" name="direve_config[google_analytics_code]" value="<?php echo $config['google_analytics_code'] ?>" class="regular-text code"></td>
                         </tr>
+                        <tr valign="top">
+                            <th scope="row"><?php _e('Sidebar order', 'direve');?>:</th>
+
+                            <?php
+                              if(!isset($config['available_filter'])){
+                                $config['available_filter'] = 'Subjects;Event type';
+                                $order = explode(';', $config['available_filter'] );
+
+                              }else {
+                                $order = explode(';', $config['available_filter'] );
+                            }
+
+                            ?>
+
+                            <td>
+
+
+                              <table border=0>
+                                <tr>
+                                <td >
+                                    <p align="right"><?php _e('Available', 'direve');?><br>
+                                      <ul id="sortable1" class="droptrue">
+                                      <?php
+                                      if(!in_array('Event type', $order) && !in_array('Event type ', $order) ){
+                                      	echo '<li class="ui-state-default" id="Event type">'.translate('Event type','direve').'</li>';
+                                      }
+                                      if(!in_array('Subjects', $order) && !in_array('Subjects ', $order) ){
+                                      	echo '<li class="ui-state-default" id="Subjects">'.translate('Subjects','direve').'</li>';
+                                      }
+                                      ?>
+                                      </ul>
+
+                                    </p>
+                                </td>
+
+                                <td >
+                                    <p align="left"><?php _e('Selected', 'direve');?> <br>
+                                      <ul id="sortable2" class="sortable-list">
+                                      <?php
+                                      foreach ($order as $index => $item) {
+                                        $item = trim($item); // Important
+                                        if($item != '') {
+                                          echo '<li class="ui-state-default" id="'.$item.'">'.translate($item ,'direve').'</li>';
+                                        }
+                                      }
+                                      ?>
+                                      </ul>
+                                      <input type="hidden" id="order_aux" name="direve_config[available_filter]" value="<?php echo trim($config['available_filter']); ?> " >
+
+                                    </p>
+                                </td>
+                                </tr>
+                                </table>
+
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
 
@@ -81,6 +137,25 @@ function direve_page_admin() {
 
             </form>
         </div>
+        <script type="text/javascript">
+            $j( function() {
+              $j( "ul.droptrue" ).sortable({
+                connectWith: "ul"
+              });
+
+              $j('.sortable-list').sortable({
+
+                connectWith: 'ul',
+                update: function(event, ui) {
+                  var changedList = this.id;
+                  var order = $j(this).sortable('toArray');
+                  var positions = order.join(';');
+                  $j('#order_aux').val(positions);
+
+                }
+              });
+            } );
+        </script>
 
         <?php
 }
