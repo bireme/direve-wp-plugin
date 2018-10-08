@@ -187,6 +187,8 @@ if(!class_exists('DirEve_Plugin')) {
 
 		function register_settings(){
 		    register_setting('direve-settings-group', 'direve_config');
+        wp_enqueue_style ('direve-page',  DIREVE_PLUGIN_URL . 'template/css/admin.css');
+        wp_enqueue_script('direve-page',  DIREVE_PLUGIN_URL . 'template/js/jquery-ui.js');
 		}
 
                 function settings_link($links) {
