@@ -231,9 +231,11 @@ if ($response){
                                     $address .=  ', ' . $resource->city;
                                 if($resource->country)
                                     $address .=  ', ' . $resource->country;
-                                echo geolocation($address);
                             }
                         ?>
+                        <div class="map">
+                            <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=<?php echo $address; ?>&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width="595" height="385" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                        </div>
 
                         <?php if ($direve_disqus_id != '') :?>
                             <div id="disqus_thread" class="row-fluid margintop25"></div>

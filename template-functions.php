@@ -16,17 +16,24 @@ if ( !function_exists('print_lang_value') ) {
 }
 
 if ( !function_exists('get_lang_value') ) {
-    function get_lang_value($string, $lang_code){
+    function get_lang_value($string, $lang_code, $default_lang_code = 'en'){
         $lang_value = array();
         $occs = preg_split('/\|/', $string);
 
         foreach ($occs as $occ){
-            $lv = preg_split('/\^/', $occ);
+            $re_sep = (strpos($occ, '~') !== false ? '/\~/' : '/\^/');
+            $lv = preg_split($re_sep, $occ);
             $lang = substr($lv[0],0,2);
-            $value = $lv[1];        
-            $lang_value[$lang] = $value;        
+            $value = $lv[1];
+            $lang_value[$lang] = $value;
         }
-        return $lang_value[$lang_code];
+        if ( isset($lang_value[$lang_code]) ){
+            $translated = $lang_value[$lang_code];
+        }else{
+            $translated = $lang_value[$default_lang_code];
+        }
+
+        return $translated;
     }
 }
 
@@ -63,7 +70,7 @@ if ( !function_exists('get_site_meta_tags') ) {
                 $site_title = trim($site_title);
             }
 
-            $site_meta_tags = get_meta_tags($url);        
+            $site_meta_tags = get_meta_tags($url);
             $site_meta_tags['title'] = $site_title;
 
             foreach ($site_meta_tags as $key => $value) {
@@ -88,7 +95,7 @@ if ( !function_exists('real_site_url') ) {
             $current_language = substr( strtolower(get_bloginfo('language')),0,2 );
 
             if ( $mlf_config['default_language'] != $current_language ){
-                $site_url .= '/' . $current_language;    
+                $site_url .= '/' . $current_language;
             }
         }
         // check for polylang plugin
@@ -104,7 +111,7 @@ if ( !function_exists('real_site_url') ) {
         if ($path != ''){
             $site_url .= '/' . $path;
         }
-        
+
         $site_url .= '/';
 
         return $site_url;
@@ -153,7 +160,7 @@ if ( !function_exists('geolocation') ) {
                         //alert('Geocode was not successful for the following reason: ' + status);
                     }
                 });
-            });            
+            });
         </script>
         <div class="geolocation-map">
             <div id="geolocation-map-canvas"></div>

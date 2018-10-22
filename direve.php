@@ -8,7 +8,7 @@ Version: 0.2
 Author URI: http://reddes.bvsalud.org/
 */
 
-define('DIREVE_VERSION', '0.3' );
+define('DIREVE_VERSION', '0.4' );
 
 define('DIREVE_SYMBOLIC_LINK', false );
 define('DIREVE_PLUGIN_DIRNAME', 'direve' );
@@ -38,7 +38,7 @@ if(!class_exists('DirEve_Plugin')) {
         public function __construct() {
             // register actions
 
-            add_action( 'wp_head', array(&$this, 'geolocation_head') );
+            //add_action( 'wp_head', array(&$this, 'geolocation_head') );
             add_action( 'init', array(&$this, 'load_translation') );
             add_action( 'admin_menu', array(&$this, 'admin_menu') );
             add_action( 'plugins_loaded', array(&$this, 'plugin_init') );
