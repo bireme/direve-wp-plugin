@@ -110,7 +110,7 @@ if ( !function_exists('wp_calendar_get_events') ) {
         $selected_year = $_POST['year'];
 
         $direve_config = get_option('direve_config');
-        $direve_service_url = 'https://fi-admin.bvsalud.org/';
+        $direve_service_url = 'http://fi-admin.data.bvsalud.org/';
         $direve_initial_filter = $direve_config['initial_filter'];
         $site_language = strtolower(get_bloginfo('language'));
         $lang_dir = substr($site_language,0,2);

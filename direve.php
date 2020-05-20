@@ -30,7 +30,7 @@ if(!class_exists('DirEve_Plugin')) {
     class DirEve_Plugin {
 
         private $plugin_slug = 'direve';
-        private $service_url = 'https://fi-admin.bvsalud.org/';
+        private $service_url = 'http://fi-admin.data.bvsalud.org/';
 
         /**
          * Construct the plugin object
