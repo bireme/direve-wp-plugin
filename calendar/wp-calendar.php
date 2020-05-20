@@ -140,36 +140,10 @@ if ( !function_exists('wp_calendar_get_events') ) {
                     $classes[$da]++;
                 }
             }
+            
             $wp_cal_content['classes'] = $classes;
-
-            $events_div = array();
-            foreach ($wp_cal_content['classes'] as $date => $val) {
-                $date_array = explode('-', $date);
-                $year = (int) $date_array[0];
-                $month = (int) $date_array[1];
-                $day = (int) $date_array[2];
-
-                $query = 'start_date:"' . $year . '-' . $month . '-' . $day . 'T00:00:00Z"';
-                $direve_search = $direve_service_url . 'api/event/search/?q=' . urlencode($query) . '&fq=' . urlencode($direve_initial_filter) . '&lang=' . $lang_dir . '&count=' . $count;
-
-                $response = @file_get_contents($direve_search);
-                if ($response){
-                    $response_json = json_decode($response);
-                    $total = $response_json->diaServerResponse[0]->response->numFound;
-                }
-
-                $output = '<span class="date">Total events: ' . $total . '</span>';
-                /*
-                $output .= '<ul>';
-                $output .= '    <li>
-                $output .= '        <span>Total events: ' . $total . '</span>';
-                $output .= '    </li>';
-                $output .= '</ul>';
-                */
-                $events_div[$date] = $output;
-            }
         }
-        $wp_cal_content['posts'] = $events_div;
+
         die(json_encode($wp_cal_content));
     }
 }

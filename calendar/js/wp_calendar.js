@@ -71,7 +71,6 @@ jQuery(document).ready(function($){
                 },
                 success :   function( data ){
                     data = $.parseJSON( data );
-                    var posts = data.posts;
                     var this_dates = data.classes;
                     var curr_date = new Array();
                     var d = '';
@@ -96,19 +95,11 @@ jQuery(document).ready(function($){
                         var month = $(this).attr('data-month');
                         month = parseInt( month ) + 1;
                         var day = $(this).find('a.ui-state-default').text();
-                        var this_date = year + '-' + month + '-' + day;
-                        var innerContent = posts[this_date];
-                        if (/undefined/.test(innerContent)) {
-                            $(this).removeClass('WP-Cal-popup');
-                        } else {
-                            $(this).append( '<div class="wp-cal-tooltip">'+innerContent+'</div>' );
-                            $(this).find('a.ui-state-default').attr('href', '?q=start_date:"'+year+'-'+month+'-'+day+'T00:00:00Z"');
-                        }
+                        $(this).find('a.ui-state-default').attr('href', '?q=start_date:"'+year+'-'+month+'-'+day+'T00:00:00Z"');
                     });
                     var new_data_element = {
                         month : check_date, 
                         classes : this_dates, 
-                        posts : posts
                     };
                     wp_cal_posts.push( new_data_element );
                 },
@@ -126,12 +117,10 @@ jQuery(document).ready(function($){
         }
         else{
             var this_dates = {};
-            var this_posts = {};
             
             $( wp_cal_posts ).each( function (){
                 if( this.month == check_date ){
                     this_dates = this.classes;
-                    this_posts = this.posts;
                     var curr_date = new Array();
                     var d = '';
                     $.each( this_dates, function (key , value){
@@ -155,14 +144,7 @@ jQuery(document).ready(function($){
                         var month = $(this).attr('data-month');
                         month = parseInt( month ) + 1;
                         var day = $(this).find('a.ui-state-default').text();
-                        var this_date = year + '-' + month + '-' + day;
-                        var innerContent = this_posts[this_date];
-                        if (/undefined/.test(innerContent)) {
-                            $(this).removeClass('WP-Cal-popup');
-                        } else {
-                            $(this).append( '<div class="wp-cal-tooltip">'+innerContent+'</div>' );
-                            $(this).find('a.ui-state-default').attr('href', '?q=start_date:"'+year+'-'+month+'-'+day+'T00:00:00Z"');
-                        }
+                        $(this).find('a.ui-state-default').attr('href', '?q=start_date:"'+year+'-'+month+'-'+day+'T00:00:00Z"');
                     });
                 }
             });
