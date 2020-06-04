@@ -157,7 +157,7 @@ if ( !function_exists('geolocation') ) {
                         lng = latlng[newArray[1]];
                         $j(".geolocation-map").show();
                     } else {
-                        //alert('Geocode was not successful for the following reason: ' + status);
+                        // alert('Geocode was not successful for the following reason: ' + status);
                     }
                 });
             });
