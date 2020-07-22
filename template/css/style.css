@@ -332,13 +332,13 @@ a.addthisevent-drop:hover {
     right: -5px !important;
 }
 
-.related-docs .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+.related-docs .slick-prev:hover, .related-docs .slick-prev:focus, .related-docs .slick-next:hover, .related-docs .slick-next:focus {
     color: transparent !important;
     outline: none !important;
     background: transparent !important;
 }
 
-.related-docs .slick-prev:before, .slick-next:before {
+.related-docs .slick-prev:before, .related-docs .slick-next:before {
     color: #30348d!important;
 }
 
