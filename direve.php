@@ -30,7 +30,8 @@ if(!class_exists('DirEve_Plugin')) {
     class DirEve_Plugin {
 
         private $plugin_slug = 'direve';
-        private $service_url = 'http://fi-admin.data.bvsalud.org/';
+        private $service_url = 'https://fi-admin-api.bvsalud.org/';
+        private $similar_docs_url = 'http://similardocs.bireme.org/SDService';
 
         /**
          * Construct the plugin object
@@ -92,7 +93,7 @@ if(!class_exists('DirEve_Plugin')) {
 		}
 
 		function theme_redirect() {
-		    global $wp, $direve_service_url, $direve_plugin_slug;
+		    global $wp, $direve_service_url, $direve_plugin_slug, $similar_docs_url;
 
             // check if request contains plugin slug string
             $pos_slug = strpos($wp->request, $this->plugin_slug);
@@ -103,6 +104,7 @@ if(!class_exists('DirEve_Plugin')) {
             if ( is_404() && $pos_slug !== false ){
                 $direve_service_url = $this->service_url;
                 $direve_plugin_slug = $this->plugin_slug;
+                $similar_docs_url = $this->similar_docs_url;
 
     		    if ($pagename == $this->plugin_slug || $pagename == $this->plugin_slug . '/resource'
     		        || $pagename == $this->plugin_slug . '/suggest-event'
@@ -221,9 +223,12 @@ if(!class_exists('DirEve_Plugin')) {
         }
 
 		function template_styles_scripts(){
-		    wp_enqueue_script('direve-page', DIREVE_PLUGIN_URL . 'template/js/functions.js',       array( 'jquery' ));
+            wp_enqueue_script('slick-js', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js');
+		    wp_enqueue_script('direve-page', DIREVE_PLUGIN_URL . 'template/js/functions.js', array( 'jquery' ));
 		    wp_enqueue_script('jquery-raty', DIREVE_PLUGIN_URL . 'template/js/jquery.raty.min.js', array( 'jquery' ));
-		    wp_enqueue_style ('direve-page', DIREVE_PLUGIN_URL . 'template/css/style.css');
+            wp_enqueue_style('slick-css', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css');
+            wp_enqueue_style('slick-theme-css', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css');
+		    wp_enqueue_style('direve-page', DIREVE_PLUGIN_URL . 'template/css/style.css');
 		}
 
 		function register_settings(){
