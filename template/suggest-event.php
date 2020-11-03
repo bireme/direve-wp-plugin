@@ -59,7 +59,7 @@ $site = $_POST['site'] ? $_POST['site'] : '';
                 <div class="row-fluid">
                     <article class="conteudo-loop suggest-form">
 
-                        <form method="post" name="suggest_form" action="<?php echo $direve_service_url ?>suggest-event" id="suggest-form">
+                        <form method="post" name="suggest_form" action="https://fi-admin.bvsalud.org/suggest-event" id="suggest-form">
                             <input type="hidden" name="start_date" id="start_date" value="" />
                             <input type="hidden" name="end_date" id="end_date" value="" />
 
