@@ -154,7 +154,7 @@ jQuery(document).ready(function($){
         });
     }
 
-    $('.ui-datepicker-next, .ui-datepicker-prev, .wp-cal-prev, .wp-cal-next').live('click', function (){
+    $('.ui-datepicker-next, .ui-datepicker-prev, .wp-cal-prev, .wp-cal-next').on('click', function (){
         var Month = $('#wp-calendar .ui-datepicker-month #monthnum').val();
         var Year = $('#wp-calendar .ui-datepicker-year').text();
         Month = WP_Cal_convertMonth(Month);
@@ -166,7 +166,7 @@ jQuery(document).ready(function($){
 
     WP_Cal_get_posts_by_month(c_month, c_year);
 
-    $('.WP-Cal-popup').live({
+    $('.WP-Cal-popup').on({
         mouseenter: function() {
             $(this).find('div').css( "display", "inline-table" );
         },
