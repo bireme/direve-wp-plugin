@@ -94,4 +94,47 @@
         -webkit-transform: rotate(360deg);
     };
 }
-
+.widget_calendar{
+    box-shadow: none;
+    border: 0!important;
+}
+.ui-helper-clearfix{
+    box-sizing: revert!important;
+}
+#calendar_wrap .wp-cal-datepicker-calendar tr th,
+#calendar_wrap .wp-cal-datepicker-calendar tr td{
+    border: none!important;
+}
+#calendar_wrap .wp-cal-datepicker-calendar tr td{
+    background-color: #fff!important;
+}
+#calendar_wrap .wp-cal-datepicker-calendar tr td.WP-Cal-popup{
+    background-color: #d5ebff!important;
+    border-radius: 5px;
+}
+.widget_calendar{
+    background-color: #fff!important;
+}
+#calendar_wrap tr td{
+    line-height: 20px!important;
+}
+#calendar_wrap table.wp-cal-datepicker-calendar thead tr{
+    border-bottom: 1px solid #ddd;
+}
+#calendar_wrap table.wp-cal-datepicker-calendar thead tr th{
+    padding-bottom: 20px!important;
+}
+.widget_calendar table{
+   border-collapse: separate!important;
+   border-spacing: 2px!important;
+}
+.widget_calendar table td{
+    padding:20px!important;
+}
+#calendar_wrap .wp-cal-datepicker-calendar tr td.WP-Cal-popup:hover{
+   filter: brightness(.8);
+}
+#calendar_wrap .ui-datepicker-header{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

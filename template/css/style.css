@@ -302,7 +302,7 @@ a.addthisevent-drop:hover {
 }
 
 .wp_calendar { display: flex; justify-content: center; }
-.widget_calendar { border: 1px solid #1E90FF !important; }
+/*.widget_calendar { border: 1px solid #1E90FF !important; }*/
 .ui-icon { margin-top: 1px !important; }
 #calendar_wrap .ui-datepicker-header { line-height: 19px; }
 #calendar_wrap .calendar-pagi { height: 23px; }
