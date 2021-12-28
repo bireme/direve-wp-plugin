@@ -190,10 +190,11 @@ $pages->paginate($page_url_params);
                         </div>
                     </div>
                     <!--div class="calendar_wrap_loading calendar_wrap_loading_hide"><img src="<?php echo WP_CALENDAR_PLUGIN_URL; ?>/images/ajax_loader_blue_64.gif"></div-->
-                    <div class="circle_loading hide_circle">
+                    <!-- <div class="circle_loading hide_circle">
                         <div class="circle"></div>
                         <div class="circle1"></div>
-                    </div>
+                    </div> -->
+                    <div class="spinner"></div>
                 <?php endif; ?>
             </section>
 			<section class="header-search">

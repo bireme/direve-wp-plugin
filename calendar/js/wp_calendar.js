@@ -83,7 +83,7 @@
 
             if( found_at == -1 ){
                 // $(".wp_calendar .calendar_wrap_loading").removeClass('calendar_wrap_loading_hide').addClass('calendar_wrap_loading_show');
-                $(".wp_calendar .circle_loading").removeClass('hide_circle').addClass('show_circle');
+                $(".wp_calendar .spinner").removeClass('hide_circle').addClass('show_circle');
                 $('#wp-calendar .ui-datepicker-prev').toggle();
                 $('#wp-calendar .ui-datepicker-next').toggle();
                 $('#calendar_wrap .calendar-pagi a').each(function(){
@@ -142,7 +142,7 @@
                     complete: function() {
                         // $(".wp_calendar .calendar_wrap_loading").removeClass('calendar_wrap_loading_show').addClass('calendar_wrap_loading_hide');
                         $('.ui-datepicker-next, .ui-datepicker-prev, .wp-cal-prev, .wp-cal-next').bind('click');
-                        $(".wp_calendar .circle_loading").removeClass('show_circle').addClass('hide_circle');
+                        $(".wp_calendar .spinner").removeClass('show_circle').addClass('hide_circle');
                         $('#wp-calendar .ui-datepicker-prev').toggle();
                         $('#wp-calendar .ui-datepicker-next').toggle();
                         $('#calendar_wrap .calendar-pagi a').each(function(){
