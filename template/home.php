@@ -111,7 +111,7 @@ $pages->paginate($page_url_params);
                             </form>
                         </div>
                         -->
-                        <?php if ($query != '' || $user_filter != ''){ echo $pages->display_pages(); } ?>
+                        <?php // if ($query != '' || $user_filter != ''){ echo $pages->display_pages(); } ?>
     				</header>
     				<div class="row-fluid">
                         <?php foreach ( $event_list as $resource) { ?>

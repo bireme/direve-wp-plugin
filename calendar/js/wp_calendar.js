@@ -96,10 +96,10 @@
                     type: 'POST',
                     url : wpCalendarObj.ajaxurl,
                     data: {
-                        action:   'wp_calendar_get_events',
-                        ajax  :   'true',
-                        month :   month,
-                        year  :   year
+                        action: 'wp_calendar_get_events',
+                        ajax  : 'true',
+                        month : month,
+                        year  : year
                     },
                     success :   function( data ){
                         data = $.parseJSON( data );
@@ -127,7 +127,11 @@
                             var month = $(this).attr('data-month');
                             month = parseInt( month ) + 1;
                             var day = $(this).find('a.ui-state-default').text();
-                            $(this).find('a.ui-state-default').attr('href', '?q=start_date:"'+year+'-'+month+'-'+day+'T00:00:00Z"');
+                            var href = '?q=start_date:"'+year+'-'+month+'-'+day+'T00:00:00Z"';
+                            $(this).find('a.ui-state-default').attr('href', href);
+                            $(this).click( function (e){
+                                window.location = href;
+                            });
                         });
                         var new_data_element = {
                             month : check_date, 
@@ -136,8 +140,8 @@
                         wp_cal_posts.push( new_data_element );
                     },
                     complete: function() {
-                        $('.ui-datepicker-next, .ui-datepicker-prev, .wp-cal-prev, .wp-cal-next').bind('click');
                         // $(".wp_calendar .calendar_wrap_loading").removeClass('calendar_wrap_loading_show').addClass('calendar_wrap_loading_hide');
+                        $('.ui-datepicker-next, .ui-datepicker-prev, .wp-cal-prev, .wp-cal-next').bind('click');
                         $(".wp_calendar .circle_loading").removeClass('show_circle').addClass('hide_circle');
                         $('#wp-calendar .ui-datepicker-prev').toggle();
                         $('#wp-calendar .ui-datepicker-next').toggle();
@@ -148,7 +152,6 @@
                 });
             } else {
                 var this_dates = {};
-                
                 $( wp_cal_posts ).each( function (){
                     if( this.month == check_date ){
                         this_dates = this.classes;
@@ -164,7 +167,6 @@
                                         $( this ).parent('td').addClass('WP-Cal-popup');
                                     }
                                 });
-
                             }
                             else{
                                 $( element ).parent('td').addClass('WP-Cal-popup');
@@ -175,7 +177,11 @@
                             var month = $(this).attr('data-month');
                             month = parseInt( month ) + 1;
                             var day = $(this).find('a.ui-state-default').text();
-                            $(this).find('a.ui-state-default').attr('href', '?q=start_date:"'+year+'-'+month+'-'+day+'T00:00:00Z"');
+                            var href = '?q=start_date:"'+year+'-'+month+'-'+day+'T00:00:00Z"';
+                            $(this).find('a.ui-state-default').attr('href', href);
+                            $(this).click( function (e){
+                                window.location = href;
+                            });
                         });
                     }
                 });

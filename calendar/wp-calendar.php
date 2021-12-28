@@ -1,9 +1,9 @@
 <?php
 
-define('WP_CALENDAR_PLUGIN_URL', DIREVE_PLUGIN_URL . '/calendar');
-define('WP_CALENDAR_PLUGIN_DIR', DIREVE_PLUGIN_PATH . '/calendar');
-define('WP_CALENDAR_PLUGIN_CSS_PATH', DIREVE_PLUGIN_PATH . '/calendar/css/wp_calendar.css');
-define('WP_CALENDAR_PLUGIN_CSS_URL', DIREVE_PLUGIN_URL . '/calendar/css/wp_calendar.css');
+define('WP_CALENDAR_PLUGIN_URL', DIREVE_PLUGIN_URL . 'calendar');
+define('WP_CALENDAR_PLUGIN_DIR', DIREVE_PLUGIN_PATH . 'calendar');
+define('WP_CALENDAR_PLUGIN_CSS_PATH', DIREVE_PLUGIN_PATH . 'calendar/css/wp_calendar.css');
+define('WP_CALENDAR_PLUGIN_CSS_URL', DIREVE_PLUGIN_URL . 'calendar/css/wp_calendar.css');
 
 $direve_config = get_option('direve_config');
 

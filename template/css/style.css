@@ -302,22 +302,6 @@ a.addthisevent-drop:hover {
     top: 0 !important;
 }
 
-.wp_calendar { display: flex; justify-content: center; }
-/*.widget_calendar { border: 1px solid #1E90FF !important; }*/
-.ui-icon { margin-top: 1px !important; }
-#calendar_wrap .ui-datepicker-header { line-height: 19px; }
-#calendar_wrap .calendar-pagi { height: 23px; }
-#calendar_wrap .ui-datepicker-title { width: 100%; float: none; }
-#calendar_wrap .wp-cal-datepicker-calendar tr td .wp-cal-tooltip { width: auto; }
-#calendar_wrap .ui-datepicker-header, #calendar_wrap .calendar-pagi { background-color: #1E90FF; }
-#calendar_wrap .wp-cal-datepicker-calendar tr th, #calendar_wrap .wp-cal-datepicker-calendar tr td { border: 0.1em solid #1E90FF; }
-#calendar_wrap .calendar-pagi { height: 0; }
-.wp_calendar .calendar_wrap_loading {
-    position: absolute !important;
-    top: 27%;
-    left: 50.5%;
-}
-
 .box4 {
     background: #fff;
     padding: 0 30px;
