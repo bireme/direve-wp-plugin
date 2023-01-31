@@ -6,7 +6,7 @@ Template Name: DirEve Detail
 global $direve_service_url, $direve_plugin_slug, $similar_docs_url;
 
 $direve_config = get_option('direve_config');
-$event_id = $_GET['id'];
+$event_id = sanitize_text_field($_GET['id']);
 
 $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);

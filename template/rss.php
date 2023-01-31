@@ -13,9 +13,10 @@ $direve_initial_filter = $direve_config['initial_filter'];
 $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);
 
-$query = ( isset($_GET['s']) ? $_GET['s'] : $_GET['q'] );
+$query = ( isset($_GET['s']) ? sanitize_text_field($_GET['s']) : sanitize_text_field($_GET['q']) );
 $query = stripslashes($query);
-$user_filter = stripslashes($_GET['filter']);
+$sanitize_user_filter = sanitize_text_field($_GET['filter']);
+$user_filter = stripslashes($sanitize_user_filter);
 $filter = '';
 
 if ($direve_initial_filter != ''){
