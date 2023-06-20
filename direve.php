@@ -72,28 +72,28 @@ if(!class_exists('DirEve_Plugin')) {
         } // END public static function deactivate
 
         function load_translation(){
-		    // Translations
-		    load_plugin_textdomain( 'direve', false,  DIREVE_PLUGIN_DIR . '/languages' );
-		}
+            // Translations
+            load_plugin_textdomain( 'direve', false,  DIREVE_PLUGIN_DIR . '/languages' );
+        }
 
-		function plugin_init() {
-		    $direve_config = get_option('direve_config');
+        function plugin_init() {
+            $direve_config = get_option('direve_config');
 
-		    if ( $direve_config && $direve_config['plugin_slug'] != ''){
-		        $this->plugin_slug = $direve_config['plugin_slug'];
-		    }
+            if ( $direve_config && $direve_config['plugin_slug'] != ''){
+                $this->plugin_slug = $direve_config['plugin_slug'];
+            }
 
-		}
+        }
 
-		function admin_menu() {
-		    add_submenu_page( 'options-general.php', __('DirEVE Settings', 'direve'), __('DirEVE', 'direve'), 'manage_options', 'direve', 'direve_page_admin');
+        function admin_menu() {
+            add_submenu_page( 'options-general.php', __('DirEVE Settings', 'direve'), __('DirEVE', 'direve'), 'manage_options', 'direve', 'direve_page_admin');
 
-		    //call register settings function
-		    add_action( 'admin_init', array(&$this, 'register_settings') );
-		}
+            //call register settings function
+            add_action( 'admin_init', array(&$this, 'register_settings') );
+        }
 
-		function theme_redirect() {
-		    global $wp, $direve_service_url, $direve_plugin_slug, $similar_docs_url;
+        function theme_redirect() {
+            global $wp, $direve_service_url, $direve_plugin_slug, $similar_docs_url;
 
             // check if request contains plugin slug string
             $pos_slug = strpos($wp->request, $this->plugin_slug);
@@ -106,43 +106,44 @@ if(!class_exists('DirEve_Plugin')) {
                 $direve_plugin_slug = $this->plugin_slug;
                 $similar_docs_url = $this->similar_docs_url;
 
-    		    if ($pagename == $this->plugin_slug || $pagename == $this->plugin_slug . '/resource'
-    		        || $pagename == $this->plugin_slug . '/suggest-event'
-    		        || $pagename == $this->plugin_slug . '/events-feed') {
+                if ($pagename == $this->plugin_slug || $pagename == $this->plugin_slug . '/resource'
+                    || $pagename == $this->plugin_slug . '/suggest-event'
+                    || $pagename == $this->plugin_slug . '/events-feed') {
 
-    		        add_action( 'wp_enqueue_scripts', array(&$this, 'template_styles_scripts') );
+                    add_action( 'wp_enqueue_scripts', array(&$this, 'template_styles_scripts') );
+                    add_filter( 'pll_the_languages', array(&$this, 'direve_language_switcher'), 10, 2 );
 
-    		        if ($pagename == $this->plugin_slug){
-    		            $template = DIREVE_PLUGIN_PATH . '/template/home.php';
-    		        }elseif ($pagename == $this->plugin_slug . '/suggest-event'){
-    		            $template = DIREVE_PLUGIN_PATH . '/template/suggest-event.php';
-    		        }elseif ($pagename == $this->plugin_slug . '/events-feed'){
-    		            $template = DIREVE_PLUGIN_PATH . '/template/rss.php';
-    		        }else{
-    		            $template = DIREVE_PLUGIN_PATH . '/template/detail.php';
-    		        }
-    		        // force status to 200 - OK
-    		        status_header(200);
+                    if ($pagename == $this->plugin_slug){
+                        $template = DIREVE_PLUGIN_PATH . '/template/home.php';
+                    }elseif ($pagename == $this->plugin_slug . '/suggest-event'){
+                        $template = DIREVE_PLUGIN_PATH . '/template/suggest-event.php';
+                    }elseif ($pagename == $this->plugin_slug . '/events-feed'){
+                        $template = DIREVE_PLUGIN_PATH . '/template/rss.php';
+                    }else{
+                        $template = DIREVE_PLUGIN_PATH . '/template/detail.php';
+                    }
+                    // force status to 200 - OK
+                    status_header(200);
 
-    		        // redirect to page and finish execution
-    		        include($template);
-    		        die();
-    		    }
+                    // redirect to page and finish execution
+                    include($template);
+                    die();
+                }
             }
-		}
+        }
 
-		function register_sidebars(){
-		    $args = array(
-		        'name' => __('DirEVE sidebar', 'direve'),
-		        'id'   => 'direve-home',
-		        'description' => 'DirEVE Area',
-		        'before_widget' => '<section id="%1$s" class="row-fluid widget %2$s">',
-		        'after_widget'  => '</section>',
-		        'before_title'  => '<h2 class="widgettitle">',
-		        'after_title'   => '</h2>',
-		    );
-		    register_sidebar( $args );
-		}
+        function register_sidebars(){
+            $args = array(
+                'name' => __('DirEVE sidebar', 'direve'),
+                'id'   => 'direve-home',
+                'description' => 'DirEVE Area',
+                'before_widget' => '<section id="%1$s" class="row-fluid widget %2$s">',
+                'after_widget'  => '</section>',
+                'before_title'  => '<h2 class="widgettitle">',
+                'after_title'   => '</h2>',
+            );
+            register_sidebar( $args );
+        }
 
         function title_tag_sep(){
             return '|';
@@ -222,29 +223,29 @@ if(!class_exists('DirEve_Plugin')) {
             return $form;
         }
 
-		function template_styles_scripts(){
+        function template_styles_scripts(){
             wp_enqueue_script('slick-js', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js');
-		    wp_enqueue_script('direve-page', DIREVE_PLUGIN_URL . 'template/js/functions.js', array( 'jquery' ));
-		    wp_enqueue_script('jquery-raty', DIREVE_PLUGIN_URL . 'template/js/jquery.raty.min.js', array( 'jquery' ));
+            wp_enqueue_script('direve-page', DIREVE_PLUGIN_URL . 'template/js/functions.js', array( 'jquery' ));
+            wp_enqueue_script('jquery-raty', DIREVE_PLUGIN_URL . 'template/js/jquery.raty.min.js', array( 'jquery' ));
             wp_enqueue_style('slick-css', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css');
             wp_enqueue_style('slick-theme-css', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css');
-		    wp_enqueue_style('direve-page', DIREVE_PLUGIN_URL . 'template/css/style.css');
-		}
+            wp_enqueue_style('direve-page', DIREVE_PLUGIN_URL . 'template/css/style.css');
+        }
 
-		function register_settings(){
-		    register_setting('direve-settings-group', 'direve_config');
-        wp_enqueue_style ('direve-page',  DIREVE_PLUGIN_URL . 'template/css/admin.css');
-        wp_enqueue_script('direve-page',  DIREVE_PLUGIN_URL . 'template/js/jquery-ui.js');
-		}
+        function register_settings(){
+            register_setting('direve-settings-group', 'direve_config');
+            wp_enqueue_style ('direve-page',  DIREVE_PLUGIN_URL . 'template/css/admin.css');
+            wp_enqueue_script('direve-page',  DIREVE_PLUGIN_URL . 'template/js/jquery-ui.js');
+        }
 
-                function settings_link($links) {
-                    $settings_link = '<a href="options-general.php?page=direve.php">Settings</a>';
-                    array_unshift($links, $settings_link);
-                    return $links;
-                }
+        function settings_link($links) {
+            $settings_link = '<a href="options-general.php?page=direve.php">Settings</a>';
+            array_unshift($links, $settings_link);
+            return $links;
+        }
 
-		function google_analytics_code(){
-		    global $wp;
+        function google_analytics_code(){
+            global $wp;
 
             $pos_slug = strpos($wp->request, $this->plugin_slug);
             if ( $pos_slug !== false ){
@@ -254,66 +255,87 @@ if(!class_exists('DirEve_Plugin')) {
                 // check if is defined GA code and pagename starts with plugin slug
                 if ($config['google_analytics_code'] != ''
                     && strpos($pagename, $this->plugin_slug) === 0){
-		?>
+        ?>
 
-		<script type="text/javascript">
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', '<?php echo $config['google_analytics_code'] ?>']);
-		  _gaq.push(['_setCookiePath', '/<?php echo $config['$this->plugin_slug'] ?>']);
-		  _gaq.push(['_trackPageview']);
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', '<?php echo $config['google_analytics_code'] ?>']);
+          _gaq.push(['_setCookiePath', '/<?php echo $config['$this->plugin_slug'] ?>']);
+          _gaq.push(['_trackPageview']);
 
-		  (function() {
-		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
 
-		</script>
+        </script>
 
-		<?php
+        <?php
             } //endif lis_config
           }// endif pos_slug
         } // end function google_analytics_code
 
-		function geolocation_head() {
-		    ob_start();
-		?>
-		    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
-		    <script type="text/javascript">
-		        var map;
-		        var directionDisplay;
-		        var directionsService = new google.maps.DirectionsService();
+        function geolocation_head() {
+            ob_start();
+        ?>
+            <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+            <script type="text/javascript">
+                var map;
+                var directionDisplay;
+                var directionsService = new google.maps.DirectionsService();
 
-		        function geolocationInitialize() {
+                function geolocationInitialize() {
                             lat = lat();
                             lng = lng();
-		            var dirLoc = new google.maps.LatLng(lat, lng);
-		            directionsDisplay = new google.maps.DirectionsRenderer();
-		            var mapOptions = {
-		                mapTypeControl: true,
-		                streetViewControl: true,
-		                overviewMapControl: true,
-		                scaleControl: true,
-		                panControl: true,
-		                zoomControl: true,
-		                mapTypeId: google.maps.MapTypeId.ROADMAP,
-		                center: dirLoc,
-		                zoom:15
-		            }
+                    var dirLoc = new google.maps.LatLng(lat, lng);
+                    directionsDisplay = new google.maps.DirectionsRenderer();
+                    var mapOptions = {
+                        mapTypeControl: true,
+                        streetViewControl: true,
+                        overviewMapControl: true,
+                        scaleControl: true,
+                        panControl: true,
+                        zoomControl: true,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        center: dirLoc,
+                        zoom:15
+                    }
 
-		            map = new google.maps.Map(document.getElementById('geolocation-map-canvas'), mapOptions);
-		            marker = new google.maps.Marker({map: map, position: dirLoc});
+                    map = new google.maps.Map(document.getElementById('geolocation-map-canvas'), mapOptions);
+                    marker = new google.maps.Marker({map: map, position: dirLoc});
 
-		            directionsDisplay.setMap(map);
-		            directionsDisplay.setPanel(document.getElementById("directionsPanel"));
-		        }
-		    </script>
-		<?php
-		    $geolocation_res = ob_get_contents();
-		    ob_end_clean();
-		    echo $geolocation_res;
-		}
-	}
+                    directionsDisplay.setMap(map);
+                    directionsDisplay.setPanel(document.getElementById("directionsPanel"));
+                }
+            </script>
+        <?php
+            $geolocation_res = ob_get_contents();
+            ob_end_clean();
+            echo $geolocation_res;
+        }
+
+        function direve_language_switcher( $output, $args ) {
+            if ( defined( 'POLYLANG_VERSION' ) ) {
+                $current_language = strtolower(get_bloginfo('language'));
+                $site_lang = substr($current_language, 0,2);
+                $default_language = pll_default_language();
+                $translations = pll_the_languages(array('raw'=>1));
+
+                $output = "<ul>\n";
+                foreach ($translations as $key => $value) :
+                    if ($site_lang == $key) continue;
+                    $search = ($site_lang != $default_language) ? $site_lang.'/'.$this->plugin_slug : $this->plugin_slug;
+                    $replace = ($key != $default_language) ? $key.'/'.$this->plugin_slug : $this->plugin_slug;
+                    $url = str_replace($search, $replace, $_SERVER['REQUEST_URI']);
+                    $output .= "<li class=\"" . $value['classes'][2] . "\"><a href=\"" . $url . "\"><img src=\"" . $value['flag']. "\" title=\"" . $value['name'] . "\" alt=\"" . $value['name'] . "\" /> " . $value['name'] . "</a></li>\n";
+                endforeach;
+                $output .= "</ul>";
+            }
+
+            return $output;
+        }
+    }
 }
 
 if(class_exists('DirEve_Plugin'))
