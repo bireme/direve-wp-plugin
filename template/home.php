@@ -69,8 +69,8 @@ $pages->paginate($page_url_params);
 ?>
 
 <?php get_header('direve');?>
-	<div id="content" class="row-fluid">
-		<div class="ajusta2">
+    <div id="content" class="row-fluid">
+        <div class="ajusta2">
             <div class="row-fluid breadcrumb">
                 <a href="<?php echo real_site_url(); ?>"><?php _e('Home','direve'); ?></a> >
                 <?php if ($query != '' || $user_filter != ''): ?>
@@ -81,20 +81,20 @@ $pages->paginate($page_url_params);
                 <?php endif; ?>
             </div>
 
-			<section id="conteudo">
+            <section id="conteudo">
                 <?php if ( isset($total) && strval($total) == 0) :?>
                     <h1 class="h1-header"><?php _e('No results found','direve'); ?></h1>
                 <?php else :?>
-    				<header class="row-fluid border-bottom">
+                    <header class="row-fluid border-bottom">
                         <?php if ( ( $query != '' || $user_filter != '' ) && strval($total) > 0) :?>
-    					   <h1 class="h1-header"><?php _e('Resources found','direve'); ?>: <?php echo $total; ?></h1>
+                           <h1 class="h1-header"><?php _e('Resources found','direve'); ?>: <?php echo $total; ?></h1>
                         <?php else: ?>
                            <h1 class="h1-header"><?php _e('Next events','direve'); ?></h1>
                         <?php endif; ?>
-			             <div class="pull-right">
-				            <a href="<?php echo $feed_url ?>" target="blank"><img src="<?php echo DIREVE_PLUGIN_URL; ?>template/images/icon_rss.png" class="rss_feed" ></a>
+                         <div class="pull-right">
+                            <a href="<?php echo $feed_url ?>" target="blank"><img src="<?php echo DIREVE_PLUGIN_URL; ?>template/images/icon_rss.png" class="rss_feed" ></a>
                         </div>
-			            <!-- Not implemented yet
+                        <!-- Not implemented yet
                         <div class="pull-right">
                             <a href="#" class="ico-feeds"></a>
                             <form action="">
@@ -113,17 +113,17 @@ $pages->paginate($page_url_params);
                         </div>
                         -->
                         <?php // if ($query != '' || $user_filter != ''){ echo $pages->display_pages(); } ?>
-    				</header>
-    				<div class="row-fluid">
+                    </header>
+                    <div class="row-fluid">
                         <?php foreach ( $event_list as $resource) { ?>
-    					    <article class="conteudo-loop">
+                            <article class="conteudo-loop">
 
-        						<div class="row-fluid">
-        							<h2 class="h2-loop-tit"><?php echo $resource->title; ?></h2>
-        						</div>
-        						<div class="conteudo-loop-rates">
-        							<div class="star" data-score="1"></div>
-        						</div>
+                                <div class="row-fluid">
+                                    <h2 class="h2-loop-tit"><?php echo $resource->title; ?></h2>
+                                </div>
+                                <div class="conteudo-loop-rates">
+                                    <div class="star" data-score="1"></div>
+                                </div>
 
                                 <?php if ($resource->city || $resource->country): ?>
                                     <div class="row-fluid">
@@ -137,17 +137,17 @@ $pages->paginate($page_url_params);
                                     <?php echo format_date($resource->end_date); ?>
                                 </div>
 
-        						<p class="row-fluid">
-        							<?php echo ( strlen($resource->abstract) > 200 ? substr($resource->abstract,0,200) . '...' : $resource->abstract); ?><br/>
-        							<span class="more"><a href="<?php echo real_site_url($direve_plugin_slug); ?>resource/?id=<?php echo $resource->django_id; ?>"><?php _e('See more details','direve'); ?></a></span>
-        						</p>
+                                <p class="row-fluid">
+                                    <?php echo ( strlen($resource->abstract) > 200 ? substr($resource->abstract,0,200) . '...' : $resource->abstract); ?><br/>
+                                    <span class="more"><a href="<?php echo real_site_url($direve_plugin_slug); ?>resource/?id=<?php echo $resource->django_id; ?>"><?php _e('See more details','direve'); ?></a></span>
+                                </p>
 
 
                                 <?php if ($resource->source_language_display): ?>
-            						<div id="conteudo-loop-idiomas" class="row-fluid">
-            							<span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','direve'); ?>:</span>
-            							<?php print_lang_value($resource->source_language_display, $site_language); ?>
-            						</div>
+                                    <div id="conteudo-loop-idiomas" class="row-fluid">
+                                        <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','direve'); ?>:</span>
+                                        <?php print_lang_value($resource->source_language_display, $site_language); ?>
+                                    </div>
                                 <?php endif; ?>
 
                                 <?php if ($resource->descriptor || $resource->keyword ) : ?>
@@ -161,20 +161,20 @@ $pages->paginate($page_url_params);
                                       </div>
                                 <?php endif; ?>
 
-        					</article>
+                            </article>
                         <?php } ?>
                         <?php if ($query == '' && $user_filter == ''): ?>
                             <div class="row-fluid">
                                 <h3><a href="?q=*"><?php _e('See all events','direve'); ?></a></h3>
                             </div>
                         <?php endif; ?>
-    				</div>
+                    </div>
                     <div class="row-fluid">
                         <?php if ($query != '' || $user_filter != ''){ echo $pages->display_pages(); } ?>
                     </div>
                 <?php endif; ?>
-			</section>
-			<aside id="sidebar">
+            </section>
+            <aside id="sidebar">
             <section class="row-fluid widget wp_calendar">
                 <?php if ($direve_config['show_calendar']) : ?>
                     <div class="widget widget_calendar">
@@ -198,25 +198,25 @@ $pages->paginate($page_url_params);
                     <div class="spinner"></div>
                 <?php endif; ?>
             </section>
-			<section class="header-search">
-        		<?php if ($direve_config['show_form']) : ?>
-            		<form role="search" method="get" id="searchform" action="<?php echo real_site_url($direve_plugin_slug); ?>">
-            			<input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
-            			<input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
-            		</form>
-        		<?php endif; ?>
-    	    </section>
-			<a href="<?php echo real_site_url($direve_plugin_slug . '/suggest-event'); ?>" class="header-colabore"><?php _e('Suggest a event','direve'); ?></a>
+            <section class="header-search">
+                <?php if ($direve_config['show_form']) : ?>
+                    <form role="search" method="get" id="searchform" action="<?php echo real_site_url($direve_plugin_slug); ?>">
+                        <input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
+                        <input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
+                    </form>
+                <?php endif; ?>
+            </section>
+            <a href="<?php echo real_site_url($direve_plugin_slug . '/suggest-event'); ?>" class="header-colabore"><?php _e('Suggest a event','direve'); ?></a>
                 <?php if (strval($total) > 0) :?>
                   <?php
                         $order = explode(';', $direve_config['available_filter']);
                         foreach ( $order as $index => $content) { ?>
             <?php if($content == 'Subjects'){ ?>
-    				<section class="row-fluid marginbottom25 widget_categories">
-    					<header class="row-fluid border-bottom marginbottom15">
-    						<h1 class="h1-header"><?php _e('Subjects','direve'); ?></h1>
-    					</header>
-    					<ul>
+                    <section class="row-fluid marginbottom25 widget_categories">
+                        <header class="row-fluid border-bottom marginbottom15">
+                            <h1 class="h1-header"><?php _e('Subjects','direve'); ?></h1>
+                        </header>
+                        <ul>
                             <?php foreach ( $descriptor_list as $descriptor) { ?>
                                 <?php
                                     $filter_link = '?';
@@ -228,13 +228,15 @@ $pages->paginate($page_url_params);
                                         $filter_link .= ' AND ' . $user_filter ;
                                     }
                                 ?>
-                                <li class="cat-item">
-                                    <a href='<?php echo $filter_link; ?>'><?php echo $descriptor[0] ?></a>
-                                    <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
-                                </li>
+                                <?php if ( filter_var($descriptor[0], FILTER_VALIDATE_INT) === false ) : ?>
+                                    <li class="cat-item">
+                                        <a href='<?php echo $filter_link; ?>'><?php echo $descriptor[0]; ?></a>
+                                        <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
+                                    </li>
+                                <?php endif; ?>
                             <?php } ?>
-    					</ul>
-    				</section>
+                        </ul>
+                    </section>
           <?php } ?>
           <?php if($content == 'Event type'){ ?>
                     <section class="row-fluid marginbottom25 widget_categories">
@@ -266,9 +268,9 @@ $pages->paginate($page_url_params);
                 <?php
               }
                endif; ?>
-				<?php dynamic_sidebar('direve-home');?>
-			</aside>
-			<div class="spacer"></div>
-		</div>
-	</div>
+                <?php dynamic_sidebar('direve-home');?>
+            </aside>
+            <div class="spacer"></div>
+        </div>
+    </div>
 <?php get_footer();?>
