@@ -46,6 +46,8 @@ if ($response){
 $rss_channel_url = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query) . '&filter=' . urlencode($user_filter);
 
 ?>
+
+<?php if ( $event_list ) : ?>
 <rss version="2.0">
     <channel>
         <title><?php _e('Events Directory', 'direve') ?></title>
@@ -94,3 +96,15 @@ $rss_channel_url = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query
         ?>
     </channel>
 </rss>
+<?php else : ?>
+<rss version="2.0">
+    <channel>
+        <title><?php _e('Events Directory', 'direve') ?></title>
+        <link><?php echo htmlspecialchars($rss_channel_url); ?></link>
+        <description><?php echo  ($query != '' || $user_filter != '') ? $query . ' ' . $user_filter : _e('Next events','direve');  ?></description>
+        <item>
+            <title><?php _e('No upcoming events.', 'direve'); ?></title>
+        </item>
+    </channel>
+</rss>
+<?php endif; ?>
