@@ -4,276 +4,403 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LIS 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/direve\n"
-"POT-Creation-Date: 2014-06-04 12:47:04+00:00\n"
-"PO-Revision-Date: 2014-06-04 09:50-0300\n"
+"POT-Creation-Date: 2023-06-21 18:13-0300\n"
+"PO-Revision-Date: 2023-06-21 18:15-0300\n"
 "Last-Translator: Vinicius Andrade <vinicius.andrade@bireme.org>\n"
 "Language-Team: RedDes <reddes@gmail.com>\n"
-"Language: \n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Spanish\n"
-"X-Poedit-Country: SPAIN\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: direve.php:83
+#: direve.php:89
 msgid "DirEVE Settings"
 msgstr "DirEVE - Ajustes"
 
-#: direve.php:83
+#: direve.php:89
 msgid "DirEVE"
 msgstr ""
 
-#: direve.php:133
+#: direve.php:137
 msgid "DirEVE sidebar"
 msgstr "DirEVE area de destacados"
 
-#: lib/Paginator.php:38
-#: lib/Paginator.php:39
-#: lib/Paginator.php:50
-#: lib/Paginator.php:56
-#: lib/Paginator.php:65
-#: lib/Paginator.php:66
-#: lib/Paginator.php:72
-#: lib/Paginator.php:73
+#: lib/Paginator.php:34 lib/Paginator.php:35 lib/Paginator.php:46
+#: lib/Paginator.php:52 lib/Paginator.php:61 lib/Paginator.php:62
+#: lib/Paginator.php:68 lib/Paginator.php:69
 msgid "go to page"
 msgstr "ir para pagina"
 
+#: settings.php:7
+msgid "MEDLINE"
+msgstr ""
+
+#: settings.php:8
+msgid "LILACS"
+msgstr ""
+
 #: settings.php:9
+msgid "MedCarib"
+msgstr ""
+
+#: settings.php:10
+msgid "BBO - Dentistry"
+msgstr ""
+
+#: settings.php:11
+msgid "Coleciona SUS"
+msgstr ""
+
+#: settings.php:12
+msgid "BDENF - Nursing"
+msgstr ""
+
+#: settings.php:13
+msgid "IBECS"
+msgstr ""
+
+#: settings.php:14
+msgid "Index Psychology - Theses"
+msgstr ""
+
+#: settings.php:15
+msgid "Index Psychology - Scientific divulgation"
+msgstr ""
+
+#: settings.php:16
+msgid "RIPSA"
+msgstr ""
+
+#: settings.php:17
+msgid "RIPSA - Reports"
+msgstr ""
+
+#: settings.php:18
+msgid "RIPSA - Products"
+msgstr ""
+
+#: settings.php:19
+msgid "RIPSA - Qualification record"
+msgstr ""
+
+#: settings.php:20
+msgid "RIPSA - Normative acts"
+msgstr ""
+
+#: settings.php:21
+msgid "Theses - Puerto Rico"
+msgstr ""
+
+#: settings.php:22
+msgid "ADOLEC - Adolescence"
+msgstr ""
+
+#: settings.php:23
+msgid "CidSaúde - Healthy Cities"
+msgstr ""
+
+#: settings.php:24
+msgid "Desastres - Disasters"
+msgstr ""
+
+#: settings.php:25
+msgid "Hanseníase - Leprosy"
+msgstr ""
+
+#: settings.php:26
+msgid "HISA - History of Health"
+msgstr ""
+
+#: settings.php:27
+msgid "HomeoIndex - Homeopathy"
+msgstr ""
+
+#: settings.php:28
+msgid "Index Psychology - Scientific journals"
+msgstr ""
+
+#: settings.php:29
+msgid "REPIDISCA"
+msgstr ""
+
+#: settings.php:30
+msgid "SOF - Formative Second Opinion"
+msgstr ""
+
+#: settings.php:31
+msgid "PAHO"
+msgstr ""
+
+#: settings.php:32
+msgid "WHO IRIS"
+msgstr ""
+
+#: settings.php:33
+msgid "CUMED"
+msgstr ""
+
+#: settings.php:39
 msgid "DirEve Plugin Options"
 msgstr "DirEVE - Opciones del plugin"
 
-#: settings.php:18
-msgid "Service URL"
-msgstr "URL del servicio"
-
-#: settings.php:22
+#: settings.php:48
 msgid "Plugin page"
 msgstr "Pagina del plugin"
 
-#: settings.php:27
+#: settings.php:53
 msgid "Filter query"
 msgstr "Filtro de búsqueda"
 
-#: settings.php:31
+#: settings.php:57
+msgid "Calendar events"
+msgstr "Calendario de eventos"
+
+#: settings.php:60
+msgid "Show events calendar"
+msgstr ""
+
+#: settings.php:64
 msgid "Search form"
 msgstr "Formulario de búsqueda"
 
-#: settings.php:34
+#: settings.php:67
 msgid "Show search form"
 msgstr "Mostrar formulario de búsqueda"
 
-#: settings.php:38
+#: settings.php:80 settings.php:87
+msgid "Page title"
+msgstr "Título de la página"
+
+#: settings.php:94
 msgid "Disqus shortname"
 msgstr "Disqus identificador"
 
-#: settings.php:42
+#: settings.php:98
 msgid "AddThis profile ID"
 msgstr "AddThis identificador"
 
-#: settings.php:46
+#: settings.php:102
 msgid "Google Analytics code"
 msgstr "Codigo del Google Analytics"
 
-#: settings.php:53
+#: settings.php:106
+msgid "Related Documents filter"
+msgstr ""
+
+#: settings.php:109 settings.php:116
+msgid "The filters must be separated by commas."
+msgstr ""
+
+#: settings.php:113
+msgid "More Related Documents filter"
+msgstr ""
+
+#: settings.php:120
+msgid "Sidebar order"
+msgstr ""
+
+#: settings.php:136
+msgid "Available"
+msgstr "Disponible"
+
+#: settings.php:150
+msgid "Selected"
+msgstr ""
+
+#: settings.php:173
 msgid "Save Changes"
 msgstr "Guardar Cambios"
 
-#: template/detail.php:36
-#: template/home.php:71
-#: template/suggest-event.php:41
+#: template/detail.php:45 template/home.php:75 template/suggest-event.php:50
 msgid "Home"
 msgstr "Inicio"
 
-#: template/detail.php:37
-#: template/home.php:73
-#: template/home.php:76
-#: template/rss.php:27
-#: template/suggest-event.php:42
+#: template/detail.php:46 template/home.php:77 template/home.php:80
+#: template/rss.php:53 template/rss.php:102 template/suggest-event.php:51
 msgid "Events Directory"
 msgstr "Directorio de eventos"
 
-#: template/detail.php:38
+#: template/detail.php:47
 msgid "Resource"
 msgstr "Recurso"
 
-#: template/detail.php:58
-#: template/home.php:131
-#: template/rss.php:44
+#: template/detail.php:81 template/home.php:135
 msgid "Date"
 msgstr "Fecha"
 
-#: template/detail.php:79
-#: template/home.php:144
-#: template/rss.php:52
+#: template/detail.php:102 template/home.php:148
 msgid "Available languages"
 msgstr "Idiomas disponibles"
 
-#: template/detail.php:100
+#: template/detail.php:123
 msgid "Share"
 msgstr "Compartir"
 
-#: template/detail.php:108
+#: template/detail.php:131
 msgid "Report error"
 msgstr "Informar un error"
 
-#: template/detail.php:117
+#: template/detail.php:140
 msgid "Reason"
 msgstr "Motivo"
 
-#: template/detail.php:121
+#: template/detail.php:144
 msgid "Invalid Link"
 msgstr "Link no es válido"
 
-#: template/detail.php:126
+#: template/detail.php:149
 msgid "Bad content"
 msgstr "Contenido inapropiado"
 
-#: template/detail.php:131
+#: template/detail.php:154
 msgid "Other"
 msgstr "Otro"
 
-#: template/detail.php:140
+#: template/detail.php:163
 msgid "New Link (Optional)"
 msgstr "Nuevo Link (opcional)"
 
-#: template/detail.php:148
-#: template/suggest-event.php:375
+#: template/detail.php:171 template/suggest-event.php:367
 msgid "Send"
 msgstr "Enviar"
 
-#: template/detail.php:155
+#: template/detail.php:178
 msgid "Thank you for your report."
 msgstr "Gracias por indicar el error."
 
-#: template/detail.php:158
+#: template/detail.php:181
 msgid "Communication problem. Please try again later."
 msgstr "Problema de Comunicación. Por favor inténte más tarde."
 
-#: template/detail.php:190
-#: template/detail.php:191
-#: template/home.php:177
-#: template/home.php:178
+#: template/detail.php:203
+msgid "Add to Calendar"
+msgstr ""
+
+#: template/detail.php:271
+msgid "More related"
+msgstr "Más relacionados"
+
+#: template/detail.php:292 template/detail.php:293 template/home.php:204
+#: template/home.php:205
 msgid "Search"
 msgstr "Buscar"
 
-#: template/detail.php:195
-#: template/home.php:182
-#: template/suggest-event.php:43
-#: template/suggest-event.php:48
+#: template/detail.php:297 template/home.php:209 template/suggest-event.php:52
+#: template/suggest-event.php:57
 msgid "Suggest a event"
 msgstr "Sugerir un evento"
 
-#: template/home.php:74
+#: template/detail.php:300
+msgid "Related"
+msgstr "Relacionados"
+
+#: template/home.php:78
 msgid "Search result"
 msgstr "Resultado de la búsqueda"
 
-#: template/home.php:82
+#: template/home.php:86
 msgid "No results found"
 msgstr "No se encontraron resultados"
 
-#: template/home.php:86
+#: template/home.php:90
 msgid "Resources found"
 msgstr "Recursos encontrados"
 
-#: template/home.php:88
-#: template/rss.php:29
+#: template/home.php:92 template/rss.php:55 template/rss.php:104
 msgid "Next events"
 msgstr "Próximos eventos"
 
-#: template/home.php:98
-#: template/home.php:99
-#: template/home.php:100
+#: template/home.php:102 template/home.php:103 template/home.php:104
 msgid "resources"
 msgstr "recursos"
 
-#: template/home.php:104
+#: template/home.php:108
 msgid "Order by"
 msgstr "Ordenar por"
 
-#: template/home.php:105
+#: template/home.php:109
 msgid "More relevant"
 msgstr "Más relevantes"
 
-#: template/home.php:106
+#: template/home.php:110
 msgid "Most recent"
 msgstr "Más recientes"
 
-#: template/home.php:138
+#: template/home.php:142
 msgid "See more details"
 msgstr "Ver más detalles"
 
-#: template/home.php:164
+#: template/home.php:168
 msgid "See all events"
 msgstr "Ver todos los eventos"
 
 #: template/home.php:186
-#: template/rss.php:60
+msgid "&laquo; Prev Month"
+msgstr ""
+
+#: template/home.php:187
+msgid "Next Month &raquo;"
+msgstr ""
+
+#: template/home.php:217
 msgid "Subjects"
 msgstr "Asuntos"
 
-#: template/home.php:209
+#: template/home.php:244
 msgid "Event type"
 msgstr "Tipo de evento"
 
-#: template/suggest-event.php:57
+#: template/related.php:56 template/similar.php:41
+msgid "No related documents"
+msgstr "No se encontraron documentos relacionados"
+
+#: template/rss.php:106
+msgid "No upcoming events."
+msgstr "No hay eventos próximos."
+
+#: template/suggest-event.php:66
 msgid "Event title"
 msgstr "Nombre del evento"
 
-#: template/suggest-event.php:62
+#: template/suggest-event.php:70
 msgid "Start date"
 msgstr "Fecha de ínicio"
 
-#: template/suggest-event.php:65
-#: template/suggest-event.php:87
+#: template/suggest-event.php:73 template/suggest-event.php:95
 msgid "Day"
 msgstr "Dia"
 
-#: template/suggest-event.php:71
-#: template/suggest-event.php:93
+#: template/suggest-event.php:79 template/suggest-event.php:101
 msgid "Month"
 msgstr "Mes"
 
-#: template/suggest-event.php:77
-#: template/suggest-event.php:99
+#: template/suggest-event.php:85 template/suggest-event.php:107
 msgid "Year"
 msgstr "Año"
 
-#: template/suggest-event.php:85
+#: template/suggest-event.php:93
 msgid "End date"
 msgstr "Fecha final"
 
-#: template/suggest-event.php:106
+#: template/suggest-event.php:114
 msgid "Website"
 msgstr "Sitio del evento"
 
-#: template/suggest-event.php:109
+#: template/suggest-event.php:117
 msgid "City"
 msgstr "Ciudad"
 
-#: template/suggest-event.php:112
+#: template/suggest-event.php:120
 msgid "Country"
 msgstr "País"
 
-#. Plugin Name of the plugin/theme
-msgid "DirEve"
-msgstr ""
-
-#. Plugin URI of the plugin/theme
-msgid "https://github.com/bireme/direve-wp-plugin/"
-msgstr ""
-
-#. Description of the plugin/theme
-msgid "Events Directory (DirEVE) WordPress plugin"
-msgstr ""
-
-#. Author of the plugin/theme
-msgid "BIREME/OPAS/OMS"
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid "http://reddes.bvsalud.org/"
-msgstr ""
+#~ msgid "Service URL"
+#~ msgstr "URL del servicio"
 
 #~ msgid "Suggest a site"
 #~ msgstr "Sugerir un sitio"
@@ -316,9 +443,6 @@ msgstr ""
 
 #~ msgid "Separated by comma"
 #~ msgstr "Separados por comas"
-
-#~ msgid "Related"
-#~ msgstr "Relacionados"
 
 #~ msgid "Create a Health Information Locator Site"
 #~ msgstr "Crear un pagina del Localizador de Información en Salud"
