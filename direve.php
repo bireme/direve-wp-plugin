@@ -224,6 +224,7 @@ if(!class_exists('DirEve_Plugin')) {
         }
 
         function template_styles_scripts(){
+            wp_enqueue_script('jquery');
             wp_enqueue_script('slick-js', '//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js');
             wp_enqueue_script('direve-page', DIREVE_PLUGIN_URL . 'template/js/functions.js', array( 'jquery' ));
             wp_enqueue_script('jquery-raty', DIREVE_PLUGIN_URL . 'template/js/jquery.raty.min.js', array( 'jquery' ));
