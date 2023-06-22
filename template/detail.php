@@ -23,6 +23,8 @@ if ($response){
     $resource = $response_json->diaServerResponse[0]->match->docs[0];
     $related_list = $response_json->diaServerResponse[0]->response->docs;
 
+    // echo "<pre>"; print_r($resource); echo "</pre>"; die();
+
     // create param to find similars
     $similar_text = $resource->title;
     if (isset($resource->mj)){
@@ -61,21 +63,25 @@ if ($response){
                         <div class="row-fluid">
                             <?php
                                 $address =  $resource->address[0];
-                                if (preg_match('/, undefined$/', $address))
+
+                                if ( preg_match('/, undefined$/', $address) ) {
                                     $address = preg_replace('/, undefined$/', '', $address);
+                                }
+
                                 echo $address;
                             ?>
                         </div>
                     <?php endif; ?>
 
-                    <?php
-                        if ($resource->city && $resource->country):
-                            $dash = " - ";
-                        endif;
-                    ?>
-                    <div class="row-fluid">
-                        <?php echo $resource->city . $dash . $resource->country; ?>
-                    </div>
+                    <?php if ($resource->city || $resource->country): ?>
+                        <div class="row-fluid">
+                            <?php if ( $resource->city ) : ?>
+                                <?php echo $resource->city . ' - ' . $resource->country ;?>
+                            <?php else : ?>
+                                <?php echo $resource->country ;?>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
 
                     <div id="conteudo-loop-data" class="row-fluid margintop05">
                         <span class="conteudo-loop-data-tit"><?php _e('Date','direve'); ?>:</span>
@@ -95,14 +101,33 @@ if ($response){
                         </p>
                     <?php endif; ?>
 
-
-
-                    <?php if ($resource->source_language_display): ?>
+                    <?php if ($resource->official_language_display): ?>
                         <div id="conteudo-loop-idiomas" class="row-fluid">
                            <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','direve'); ?>:</span>
-                           <?php print_lang_value($resource->source_language_display, $site_language); ?>
+                           <?php print_lang_value($resource->official_language_display, $site_language); ?>
                         </div>
                     <?php endif; ?>
+
+                    <?php if ($resource->contact_email): ?>
+                        <div id="conteudo-loop-idiomas" class="row-fluid">
+                           <span class="conteudo-loop-idiomas-tit"><?php _e('Contact','direve'); ?>:</span>
+                           <?php echo $resource->contact_email; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($resource->observations): ?>
+                        <div id="conteudo-loop-idiomas" class="row-fluid">
+                           <span class="conteudo-loop-idiomas-tit"><?php _e('Observations','direve'); ?>:</span>
+                           <?php echo $resource->observations; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($resource->target_groups): ?>
+                        <div id="conteudo-loop-idiomas" class="row-fluid">
+                           <span class="conteudo-loop-idiomas-tit"><?php _e('Target groups','direve'); ?>:</span>
+                           <?php echo $resource->target_groups; ?>
+                        </div>
+                    <?php endif; ?> 
 
                     <?php if ($resource->descriptor || $resource->keyword ) : ?>
                         <div id="conteudo-loop-tags" class="row-fluid margintop10">

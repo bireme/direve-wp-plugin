@@ -127,7 +127,11 @@ $pages->paginate($page_url_params);
 
                                 <?php if ($resource->city || $resource->country): ?>
                                     <div class="row-fluid">
-                                        <?php echo $resource->city . ' - ' . $resource->country ;?>
+                                        <?php if ( $resource->city ) : ?>
+                                            <?php echo $resource->city . ' - ' . $resource->country ;?>
+                                        <?php else : ?>
+                                            <?php echo $resource->country ;?>
+                                        <?php endif; ?>
                                     </div>
                                 <?php endif; ?>
 
