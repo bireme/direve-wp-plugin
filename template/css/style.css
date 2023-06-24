@@ -45,9 +45,12 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 .ico-lk{background-position:-273px -88px;}
 .ico-at{background-position:-297px -88px;}
 
-/* HEALINGS */
+/* HEADINGS */
+.list-header{float: left; display: flex; flex-direction: column;}
 .h1-header{float:left; line-height:30px; font-size:26px; color:rgb(40,54,125); font-weight:normal; text-decoration:none; margin: 0 0 10px 0;}
 .h2-loop-tit{font-weight:bold; color:rgb(0,0,0); font-size:20px;width:80%; margin-top: 10px;}
+.small-header{line-height:30px; font-size:20px; color:rgb(40,54,125); font-weight:normal; text-decoration:none; margin: 0 0 10px 0;}
+.h3-footer{font-size: 16px}
 
 /* ALL */
 .site-main{overflow:auto;}
