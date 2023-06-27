@@ -23,7 +23,7 @@ if ($response){
     $resource = $response_json->diaServerResponse[0]->match->docs[0];
     $related_list = $response_json->diaServerResponse[0]->response->docs;
 
-    echo "<pre>"; print_r($resource); echo "</pre>"; die();
+    // echo "<pre>"; print_r($resource); echo "</pre>"; die();
 
     // create param to find similars
     $similar_text = $resource->title;

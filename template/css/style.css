@@ -350,38 +350,7 @@ a.addthisevent-drop:hover {
 .map iframe {
     width: 100%;
 }
-/*
-ul.col3 {
-    padding-right: 0px;
-    padding-left: 0px;
-    float: left;
-    padding-bottom: 0px;
-    margin: 15px 0px;
-    width: 100%;
-    padding-top: 0px;
-    list-style-type: none;
-}
-ul.col3 li {
-    padding-right: 2px;
-    display: inline;
-    float: left;
-    width: 28%;
-    margin-left: 48px;
-    padding-top: 2px;
-    padding-bottom: 4px;
-    border-bottom: 1px solid rgb(229,229,229);
-}
-ul.col3 span {
-    background: rgb(172,172,172);
-    color: rgb(255,255,255);
-    padding: 0 2px 0 2px;
-    border-radius: 10px;
-    margin-left: 15px;
-    float: right;
-    min-width: 25px;
-    text-align: center;
-}
-*/
+
 ul.col3 {
     -webkit-column-count: 3;
     -moz-column-count: 3;
