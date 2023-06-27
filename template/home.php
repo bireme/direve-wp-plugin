@@ -81,6 +81,8 @@ $pages->paginate($page_url_params);
                 <?php endif; ?>
             </div>
 
+<?php if ($direve_config['page_layout'] != 'whole_page' || $_GET['q'] != '' || $_GET['filter'] != '' ) : ?>
+
             <section id="conteudo">
                 <?php if ( isset($total) && strval($total) == 0) :?>
                     <h1 class="h1-header"><?php _e('No results found','direve'); ?></h1>
@@ -94,7 +96,7 @@ $pages->paginate($page_url_params);
                                 <small class="small-header"><?php _e('Resources found','direve'); ?>: <?php echo $total; ?></small>
                             </div>
                         <?php endif; ?>
-                         <div class="pull-right">
+                        <div class="pull-right">
                             <a href="<?php echo $feed_url ?>" target="blank"><img src="<?php echo DIREVE_PLUGIN_URL; ?>template/images/icon_rss.png" class="rss_feed" ></a>
                         </div>
                         <!-- Not implemented yet
@@ -182,101 +184,233 @@ $pages->paginate($page_url_params);
                 <?php endif; ?>
             </section>
             <aside id="sidebar">
-            <section class="row-fluid widget wp_calendar">
-                <?php if ($direve_config['show_calendar']) : ?>
-                    <div class="widget widget_calendar">
-                        <div class="widget_inner">
-                            <div id="calendar_wrap">
-                                <div id="wp-calendar"></div>
-                                <!--div class="calendar-pagi">
-                                    <ul>
-                                        <li class="wp-cal-prev"><a onclick="jQuery.datepicker._adjustDate('#wp-calendar', -1, 'M');"><?php echo __("&laquo; Prev Month", 'wp_calendar'); ?></a></li>
-                                        <li class="wp-cal-next"><a onclick="jQuery.datepicker._adjustDate('#wp-calendar', +1, 'M');"><?php echo __("Next Month &raquo;", 'wp_calendar'); ?></a></li>
-                                    </ul>
-                                </div-->
+                <section class="row-fluid widget wp_calendar">
+                    <?php if ($direve_config['show_calendar']) : ?>
+                        <div class="widget widget_calendar">
+                            <div class="widget_inner">
+                                <div id="calendar_wrap">
+                                    <div id="wp-calendar"></div>
+                                    <!--div class="calendar-pagi">
+                                        <ul>
+                                            <li class="wp-cal-prev"><a onclick="jQuery.datepicker._adjustDate('#wp-calendar', -1, 'M');"><?php echo __("&laquo; Prev Month", 'wp_calendar'); ?></a></li>
+                                            <li class="wp-cal-next"><a onclick="jQuery.datepicker._adjustDate('#wp-calendar', +1, 'M');"><?php echo __("Next Month &raquo;", 'wp_calendar'); ?></a></li>
+                                        </ul>
+                                    </div-->
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!--div class="calendar_wrap_loading calendar_wrap_loading_hide"><img src="<?php echo WP_CALENDAR_PLUGIN_URL; ?>/images/ajax_loader_blue_64.gif"></div-->
-                    <!-- <div class="circle_loading hide_circle">
-                        <div class="circle"></div>
-                        <div class="circle1"></div>
-                    </div> -->
-                    <div class="spinner"></div>
-                <?php endif; ?>
-            </section>
-            <section class="header-search">
-                <?php if ($direve_config['show_form']) : ?>
-                    <form role="search" method="get" id="searchform" action="<?php echo real_site_url($direve_plugin_slug); ?>">
-                        <input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
-                        <input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
-                    </form>
-                <?php endif; ?>
-            </section>
-            <a href="<?php echo real_site_url($direve_plugin_slug . '/suggest-event'); ?>" class="header-colabore"><?php _e('Suggest a event','direve'); ?></a>
+                        <!--div class="calendar_wrap_loading calendar_wrap_loading_hide"><img src="<?php echo WP_CALENDAR_PLUGIN_URL; ?>/images/ajax_loader_blue_64.gif"></div-->
+                        <!-- <div class="circle_loading hide_circle">
+                            <div class="circle"></div>
+                            <div class="circle1"></div>
+                        </div> -->
+                        <div class="spinner"></div>
+                    <?php endif; ?>
+                </section>
+                <section class="header-search">
+                    <?php if ($direve_config['show_form']) : ?>
+                        <form role="search" method="get" id="searchform" action="<?php echo real_site_url($direve_plugin_slug); ?>">
+                            <input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
+                            <input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
+                        </form>
+                    <?php endif; ?>
+                </section>
+                <a href="<?php echo real_site_url($direve_plugin_slug . '/suggest-event'); ?>" class="header-colabore"><?php _e('Suggest a event','direve'); ?></a>
                 <?php if (strval($total) > 0) :?>
-                  <?php
+                    <?php
                         $order = explode(';', $direve_config['available_filter']);
-                        foreach ( $order as $index => $content) { ?>
-            <?php if($content == 'Subjects'){ ?>
-                    <section class="row-fluid marginbottom25 widget_categories">
-                        <header class="row-fluid border-bottom marginbottom15">
-                            <h1 class="h1-header"><?php _e('Subjects','direve'); ?></h1>
-                        </header>
-                        <ul>
-                            <?php foreach ( $descriptor_list as $descriptor) { ?>
-                                <?php
-                                    $filter_link = '?';
-                                    if ($query != ''){
-                                        $filter_link .= 'q=' . $query . '&';
-                                    }
-                                    $filter_link .= 'filter=descriptor:"' . $descriptor[0] . '"';
-                                    if ($user_filter != ''){
-                                        $filter_link .= ' AND ' . $user_filter ;
-                                    }
-                                ?>
-                                <?php if ( filter_var($descriptor[0], FILTER_VALIDATE_INT) === false ) : ?>
-                                    <li class="cat-item">
-                                        <a href='<?php echo $filter_link; ?>'><?php echo $descriptor[0]; ?></a>
-                                        <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
-                                    </li>
-                                <?php endif; ?>
-                            <?php } ?>
-                        </ul>
-                    </section>
-          <?php } ?>
-          <?php if($content == 'Event type'){ ?>
-                    <section class="row-fluid marginbottom25 widget_categories">
-                        <header class="row-fluid border-bottom marginbottom15">
-                            <h1 class="h1-header"><?php _e('Event type','direve'); ?></h1>
-                        </header>
-                        <ul>
-                            <?php foreach ( $event_type_list as $type) { ?>
-                                <?php
-                                    $filter_link = '?';
-                                    if ($query != ''){
-                                        $filter_link .= 'q=' . $query . '&';
-                                    }
-                                    $filter_link .= 'filter=event_type:"' . $type[0] . '"';
-                                    if ($user_filter != ''){
-                                        $filter_link .= ' AND ' . $user_filter ;
-                                    }
-                                ?>
-                                <li class="cat-item">
-                                    <a href='<?php echo $filter_link; ?>'><?php print_lang_value($type[0], $site_language); ?></a>
-                                    <span class="cat-item-count"><?php echo $type[1] ?></span>
-                                </li>
-                            <?php } ?>
-                        </ul>
-                    </section>
-                  <?php } ?>
-
-
-                <?php
-              }
-               endif; ?>
+                        foreach ( $order as $index => $content) {
+                    ?>
+                        <?php if($content == 'Subjects'){ ?>
+                            <section class="row-fluid marginbottom25 widget_categories">
+                                <header class="row-fluid border-bottom marginbottom15">
+                                    <h1 class="h1-header"><?php _e('Subjects','direve'); ?></h1>
+                                </header>
+                                <ul>
+                                    <?php foreach ( $descriptor_list as $descriptor) { ?>
+                                        <?php
+                                            $filter_link = '?';
+                                            if ($query != ''){
+                                                $filter_link .= 'q=' . $query . '&';
+                                            }
+                                            $filter_link .= 'filter=descriptor:"' . $descriptor[0] . '"';
+                                            if ($user_filter != ''){
+                                                $filter_link .= ' AND ' . $user_filter ;
+                                            }
+                                        ?>
+                                        <?php if ( filter_var($descriptor[0], FILTER_VALIDATE_INT) === false ) : ?>
+                                            <li class="cat-item">
+                                                <a href='<?php echo $filter_link; ?>'><?php echo $descriptor[0]; ?></a>
+                                                <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
+                                            </li>
+                                        <?php endif; ?>
+                                    <?php } ?>
+                                </ul>
+                            </section>
+                        <?php } ?>
+                        <?php if($content == 'Event type'){ ?>
+                            <section class="row-fluid marginbottom25 widget_categories">
+                                <header class="row-fluid border-bottom marginbottom15">
+                                    <h1 class="h1-header"><?php _e('Event type','direve'); ?></h1>
+                                </header>
+                                <ul>
+                                    <?php foreach ( $event_type_list as $type) { ?>
+                                        <?php
+                                            $filter_link = '?';
+                                            if ($query != ''){
+                                                $filter_link .= 'q=' . $query . '&';
+                                            }
+                                            $filter_link .= 'filter=event_type:"' . $type[0] . '"';
+                                            if ($user_filter != ''){
+                                                $filter_link .= ' AND ' . $user_filter ;
+                                            }
+                                        ?>
+                                        <li class="cat-item">
+                                            <a href='<?php echo $filter_link; ?>'><?php print_lang_value($type[0], $site_language); ?></a>
+                                            <span class="cat-item-count"><?php echo $type[1] ?></span>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </section>
+                        <?php } ?>
+                    <?php
+                        }
+                endif; ?>
                 <?php dynamic_sidebar('direve-home');?>
             </aside>
+
+<?php else : ?>
+
+            <section id="">
+                <?php if ( isset($total) && strval($total) == 0) :?>
+                    <h1 class="h1-header"><?php _e('No results found','direve'); ?></h1>
+                <?php else :?>
+                    <header class="row-fluid border-bottom">
+                        <h1 class="h1-header"><?php _e('Resources found','direve'); ?>: <?php echo $total; ?></h1>
+                        <div class="pull-right">
+                            <a href="<?php echo $feed_url ?>" target="blank"><img src="<?php echo DIREVE_PLUGIN_URL; ?>template/images/icon_rss.png" class="rss_feed" ></a>
+                        </div>
+                        <!-- Not implemented yet
+                        <div class="pull-right">
+                            <a href="#" class="ico-feeds"></a>
+                            <form action="">
+                                <select name="txtRegistros" id="txtRegistros" class="select-input-home">
+                                    <option value="10 Registros">10 <?php _e('resources', 'direve'); ?></option>`
+                                    <option value="20 Registros">20 <?php _e('resources', 'direve'); ?></option>
+                                    <option value="50 Registros">50 <?php _e('resources', 'direve'); ?></option>
+                                </select>
+
+                                <select name="txtOrder" id="txtOrder" class="select-input-home">
+                                    <option value=""><?php _e('Order by', 'direve'); ?></option>
+                                    <option value="Mais Recentes"><?php _e('More relevant','direve'); ?></option>
+                                    <option value="Mais Lidas"><?php _e('Most recent','direve'); ?></option>
+                                </select>
+                            </form>
+                        </div>
+                        -->
+                        <?php // if ($query != '' || $user_filter != ''){ echo $pages->display_pages(); } ?>
+                    </header>
+                <?php endif; ?>
+            </section>
+
+            <aside id="">
+                <section class="row-fluid widget wp_calendar">
+                    <?php if ($direve_config['show_calendar']) : ?>
+                        <div class="widget widget_calendar">
+                            <div class="widget_inner">
+                                <div id="calendar_wrap">
+                                    <div id="wp-calendar"></div>
+                                    <!--div class="calendar-pagi">
+                                        <ul>
+                                            <li class="wp-cal-prev"><a onclick="jQuery.datepicker._adjustDate('#wp-calendar', -1, 'M');"><?php echo __("&laquo; Prev Month", 'wp_calendar'); ?></a></li>
+                                            <li class="wp-cal-next"><a onclick="jQuery.datepicker._adjustDate('#wp-calendar', +1, 'M');"><?php echo __("Next Month &raquo;", 'wp_calendar'); ?></a></li>
+                                        </ul>
+                                    </div-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--div class="calendar_wrap_loading calendar_wrap_loading_hide"><img src="<?php echo WP_CALENDAR_PLUGIN_URL; ?>/images/ajax_loader_blue_64.gif"></div-->
+                        <!-- <div class="circle_loading hide_circle">
+                            <div class="circle"></div>
+                            <div class="circle1"></div>
+                        </div> -->
+                        <div class="spinner"></div>
+                    <?php endif; ?>
+                </section>
+                <section class="header-search">
+                    <?php if ($direve_config['show_form']) : ?>
+                        <form role="search" method="get" id="searchform" action="<?php echo real_site_url($direve_plugin_slug); ?>">
+                            <input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
+                            <input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
+                        </form>
+                    <?php endif; ?>
+                </section>
+                <a href="<?php echo real_site_url($direve_plugin_slug . '/suggest-event'); ?>" class="header-colabore pull-right"><?php _e('Suggest a event','direve'); ?></a>
+                <?php if (strval($total) > 0) :?>
+                    <?php
+                        $order = explode(';', $direve_config['available_filter']);
+                        foreach ( $order as $index => $content) {
+                    ?>
+                        <?php if($content == 'Subjects'){ ?>
+                            <section class="row-fluid widget_categories">
+                                <header class="row-fluid border-bottom marginbottom15">
+                                    <h1 class="h1-header"><?php _e('Subjects','direve'); ?></h1>
+                                </header>
+                                <ul class="col3">
+                                    <?php foreach ( $descriptor_list as $descriptor) { ?>
+                                        <?php
+                                            $filter_link = '?';
+                                            if ($query != ''){
+                                                $filter_link .= 'q=' . $query . '&';
+                                            }
+                                            $filter_link .= 'filter=descriptor:"' . $descriptor[0] . '"';
+                                            if ($user_filter != ''){
+                                                $filter_link .= ' AND ' . $user_filter ;
+                                            }
+                                        ?>
+                                        <?php if ( filter_var($descriptor[0], FILTER_VALIDATE_INT) === false ) : ?>
+                                            <li class="cat-item">
+                                                <a href='<?php echo $filter_link; ?>'><?php echo $descriptor[0]; ?></a>
+                                                <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
+                                            </li>
+                                        <?php endif; ?>
+                                    <?php } ?>
+                                </ul>
+                            </section>
+                        <?php } ?>
+                        <?php if($content == 'Event type'){ ?>
+                            <section class="row-fluid marginbottom25 widget_categories">
+                                <header class="row-fluid border-bottom marginbottom15">
+                                    <h1 class="h1-header"><?php _e('Event type','direve'); ?></h1>
+                                </header>
+                                <ul class="col3">
+                                    <?php foreach ( $event_type_list as $type) { ?>
+                                        <?php
+                                            $filter_link = '?';
+                                            if ($query != ''){
+                                                $filter_link .= 'q=' . $query . '&';
+                                            }
+                                            $filter_link .= 'filter=event_type:"' . $type[0] . '"';
+                                            if ($user_filter != ''){
+                                                $filter_link .= ' AND ' . $user_filter ;
+                                            }
+                                        ?>
+                                        <li class="cat-item">
+                                            <a href='<?php echo $filter_link; ?>'><?php print_lang_value($type[0], $site_language); ?></a>
+                                            <span class="cat-item-count"><?php echo $type[1] ?></span>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </section>
+                        <?php } ?>
+                    <?php
+                        }
+                endif; ?>
+                <?php dynamic_sidebar('direve-home');?>
+            </aside>
+
+<?php endif; ?>
+
             <div class="spacer"></div>
         </div>
     </div>

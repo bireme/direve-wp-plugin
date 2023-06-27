@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LIS WP Plugin 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/direve\n"
-"POT-Creation-Date: 2023-06-21 18:12-0300\n"
-"PO-Revision-Date: 2023-06-21 18:12-0300\n"
+"POT-Creation-Date: 2023-06-27 18:57-0300\n"
+"PO-Revision-Date: 2023-06-27 18:57-0300\n"
 "Last-Translator: Vinicius Andrade <vinicius.andrade@bireme.org>\n"
 "Language-Team: BIREME <reddes@gmail.com>\n"
 "Language: pt_BR\n"
@@ -200,102 +200,126 @@ msgstr ""
 msgid "More Related Documents filter"
 msgstr ""
 
-#: settings.php:120
+#: settings.php:121
+msgid "Page Layout"
+msgstr "Layout de Página"
+
+#: settings.php:126
+msgid "Show filters as whole page"
+msgstr "Mostrar filtros em página inteira"
+
+#: settings.php:132
+msgid "Show normal page"
+msgstr "Mostrar página normal"
+
+#: settings.php:137
 msgid "Sidebar order"
 msgstr ""
 
-#: settings.php:136
+#: settings.php:153
 msgid "Available"
 msgstr "Disponível"
 
-#: settings.php:150
+#: settings.php:167
 msgid "Selected"
 msgstr ""
 
-#: settings.php:173
+#: settings.php:190
 msgid "Save Changes"
 msgstr "Salvar alterações"
 
-#: template/detail.php:45 template/home.php:75 template/suggest-event.php:50
+#: template/detail.php:47 template/home.php:75 template/suggest-event.php:50
 msgid "Home"
 msgstr "Ínicio"
 
-#: template/detail.php:46 template/home.php:77 template/home.php:80
-#: template/rss.php:53 template/rss.php:102 template/suggest-event.php:51
+#: template/detail.php:48 template/home.php:77 template/home.php:80
+#: template/rss.php:46 template/rss.php:95 template/suggest-event.php:51
 msgid "Events Directory"
 msgstr "Diretório de Eventos"
 
-#: template/detail.php:47
+#: template/detail.php:49
 msgid "Resource"
 msgstr "Recurso"
 
-#: template/detail.php:81 template/home.php:135
+#: template/detail.php:87 template/home.php:144
 msgid "Date"
 msgstr "Data"
 
-#: template/detail.php:102 template/home.php:148
+#: template/detail.php:106 template/home.php:157
 msgid "Available languages"
 msgstr "Idiomas disponíveis"
 
-#: template/detail.php:123
+#: template/detail.php:113
+msgid "Contact"
+msgstr ""
+
+#: template/detail.php:120
+msgid "Observations"
+msgstr ""
+
+#: template/detail.php:127
+msgid "Target groups"
+msgstr ""
+
+#: template/detail.php:148
 msgid "Share"
 msgstr "Compartilhar"
 
-#: template/detail.php:131
+#: template/detail.php:156
 msgid "Report error"
 msgstr "Informar um erro"
 
-#: template/detail.php:140
+#: template/detail.php:165
 msgid "Reason"
 msgstr "Motivo"
 
-#: template/detail.php:144
+#: template/detail.php:169
 msgid "Invalid Link"
 msgstr "Link inválido"
 
-#: template/detail.php:149
+#: template/detail.php:174
 msgid "Bad content"
 msgstr "Conteúdo inapropriado"
 
-#: template/detail.php:154
+#: template/detail.php:179
 msgid "Other"
 msgstr "Outro"
 
-#: template/detail.php:163
+#: template/detail.php:188
 msgid "New Link (Optional)"
 msgstr "Novo Link (opcional)"
 
-#: template/detail.php:171 template/suggest-event.php:367
+#: template/detail.php:196 template/suggest-event.php:368
 msgid "Send"
 msgstr "Enviar"
 
-#: template/detail.php:178
+#: template/detail.php:203
 msgid "Thank you for your report."
 msgstr "Obrigado por informar este problema."
 
-#: template/detail.php:181
+#: template/detail.php:206
 msgid "Communication problem. Please try again later."
 msgstr "Problemas de comunicação. Por favor tente novamente."
 
-#: template/detail.php:203
+#: template/detail.php:228
 msgid "Add to Calendar"
 msgstr ""
 
-#: template/detail.php:271
+#: template/detail.php:296
 msgid "More related"
 msgstr "Mais relacionados"
 
-#: template/detail.php:292 template/detail.php:293 template/home.php:204
-#: template/home.php:205
+#: template/detail.php:317 template/detail.php:318 template/home.php:213
+#: template/home.php:214 template/home.php:343 template/home.php:344
 msgid "Search"
 msgstr "Pesquisa"
 
-#: template/detail.php:297 template/home.php:209 template/suggest-event.php:52
-#: template/suggest-event.php:57
+#: template/detail.php:322 template/home.php:218 template/home.php:348
+#: template/suggest-event.php:52 template/suggest-event.php:57
 msgid "Suggest a event"
 msgstr "Sugira um evento"
 
-#: template/detail.php:300
+#: template/detail.php:325
 msgid "Related"
 msgstr "Relacionados"
 
@@ -303,55 +327,56 @@ msgstr "Relacionados"
 msgid "Search result"
 msgstr "Resultado de pesquisa"
 
-#: template/home.php:86
+#: template/home.php:88 template/home.php:286
 msgid "No results found"
 msgstr "Nenhum resultado encontrado"
 
-#: template/home.php:90
+#: template/home.php:92 template/home.php:96 template/home.php:289
 msgid "Resources found"
 msgstr "Recursos encontrados"
 
-#: template/home.php:92 template/rss.php:55 template/rss.php:104
+#: template/home.php:95 template/rss.php:48 template/rss.php:97
 msgid "Next events"
 msgstr "Próximos eventos"
 
-#: template/home.php:102 template/home.php:103 template/home.php:104
+#: template/home.php:107 template/home.php:108 template/home.php:109
+#: template/home.php:298 template/home.php:299 template/home.php:300
 msgid "resources"
 msgstr "recursos"
 
-#: template/home.php:108
+#: template/home.php:113 template/home.php:304
 msgid "Order by"
 msgstr "Ordenar por"
 
-#: template/home.php:109
+#: template/home.php:114 template/home.php:305
 msgid "More relevant"
 msgstr "Mais relevantes"
 
-#: template/home.php:110
+#: template/home.php:115 template/home.php:306
 msgid "Most recent"
 msgstr "Mais recentes"
 
-#: template/home.php:142
+#: template/home.php:151
 msgid "See more details"
 msgstr "Ver mais detalhes"
 
-#: template/home.php:168
+#: template/home.php:177
 msgid "See all events"
 msgstr "Ver todos os eventos"
 
-#: template/home.php:186
+#: template/home.php:195 template/home.php:325
 msgid "&laquo; Prev Month"
 msgstr ""
 
-#: template/home.php:187
+#: template/home.php:196 template/home.php:326
 msgid "Next Month &raquo;"
 msgstr ""
 
-#: template/home.php:217
+#: template/home.php:227 template/home.php:357
 msgid "Subjects"
 msgstr "Assuntos"
 
-#: template/home.php:244
+#: template/home.php:254 template/home.php:384
 msgid "Event type"
 msgstr "Tipo de evento"
 
@@ -359,43 +384,43 @@ msgstr "Tipo de evento"
 msgid "No related documents"
 msgstr "Nenhum documento relacionado"
 
-#: template/rss.php:106
+#: template/rss.php:99
 msgid "No upcoming events."
 msgstr "Não há eventos futuros."
 
-#: template/suggest-event.php:66
+#: template/suggest-event.php:67
 msgid "Event title"
 msgstr "Nome do evento"
 
-#: template/suggest-event.php:70
+#: template/suggest-event.php:71
 msgid "Start date"
 msgstr "Data de ínicio"
 
-#: template/suggest-event.php:73 template/suggest-event.php:95
+#: template/suggest-event.php:74 template/suggest-event.php:96
 msgid "Day"
 msgstr "Dia"
 
-#: template/suggest-event.php:79 template/suggest-event.php:101
+#: template/suggest-event.php:80 template/suggest-event.php:102
 msgid "Month"
 msgstr "Mês"
 
-#: template/suggest-event.php:85 template/suggest-event.php:107
+#: template/suggest-event.php:86 template/suggest-event.php:108
 msgid "Year"
 msgstr "Ano"
 
-#: template/suggest-event.php:93
+#: template/suggest-event.php:94
 msgid "End date"
 msgstr "Data final"
 
-#: template/suggest-event.php:114
+#: template/suggest-event.php:115
 msgid "Website"
 msgstr "Site do evento"
 
-#: template/suggest-event.php:117
+#: template/suggest-event.php:118
 msgid "City"
 msgstr "Cidade"
 
-#: template/suggest-event.php:120
+#: template/suggest-event.php:121
 msgid "Country"
 msgstr "País"
 
