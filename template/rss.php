@@ -8,26 +8,19 @@ Template Name: DirEVE RSS
 global $direve_service_url, $direve_plugin_slug;
 
 $direve_config = get_option('direve_config');
-$direve_initial_filter = $direve_config['initial_filter'];
+$direve_initial_filter = ( $direve_config['initial_filter'] ? $direve_config['initial_filter'] : '' );
 
 $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);
 
 $query = ( isset($_GET['s']) ? sanitize_text_field($_GET['s']) : sanitize_text_field($_GET['q']) );
 $query = stripslashes($query);
-$sanitize_user_filter = sanitize_text_field($_GET['filter']);
+$sanitize_user_filter = ( sanitize_text_field($_GET['filter']) ? sanitize_text_field($_GET['filter']) : '' );
 $user_filter = stripslashes($sanitize_user_filter);
-$filter = '';
+$mode_filter = ( isset($_GET['mode']) ? 'event_modality:'.sanitize_text_field($_GET['mode']) : '' );
 
-if ($direve_initial_filter != ''){
-    if ($user_filter != ''){
-        $filter = $direve_initial_filter . ' AND ' . $user_filter;
-    }else{
-        $filter = $direve_initial_filter;
-    }
-}else{
-    $filter = $user_filter;
-}
+$filter = '';
+$filter = implode(' AND ', array_filter(array($direve_initial_filter, $mode_filter, $user_filter)));
 
 if ($query != '' || $user_filter != ''){
     $direve_get_url = $direve_service_url . 'api/event/search/?q=' . urlencode($query) . '&fq=' . urlencode($filter) . '&lang=' . $lang_dir;
