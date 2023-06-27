@@ -62,6 +62,7 @@ $site = $_POST['site'] ? $_POST['site'] : '';
                         <form method="post" name="suggest_form" action="https://fi-admin.bvsalud.org/suggest-event" id="suggest-form">
                             <input type="hidden" name="start_date" id="start_date" value="" />
                             <input type="hidden" name="end_date" id="end_date" value="" />
+                            <input type="hidden" name="origin" value="<?php echo home_url(); ?>" />
 
                             <?php _e('Event title', 'direve') ?>
                             <p><input type="text"  name="title" size="80" value="<?php echo $title; ?>"/></p>
