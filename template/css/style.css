@@ -32,11 +32,11 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 
 .ico-contato, .ico-compartilhar, .ico-rank, .ico-tag,  .ico-tags, .ico-reportar, .ico-comentar, .ico-feeds, .ico-fb, .ico-tt, .ico-lk, .ico-at{float:left; padding-right:5px;}
 .ico-contato{width:17px; height:12px; margin-top:9px; background-position:0px -93px;}
-.ico-compartilhar{width:16px; height:15px; background-position:-134px -93px; margin-top:3px;}
+.ico-compartilhar{width:16px; height:15px; background-position:-134px -93px; margin-top:3px; margin-right:3px;}
 .ico-rank{width:17px; height:15px; background-position:-108px -92px; margin-top:2px;}
 .ico-tag{width:17px; height:17px; background-position:-82px -91px; margin-top:3px;}
-.ico-tags{width:17px; height:16px; background-position:-159px -93px; margin-top:3px;}
-.ico-reportar{width:19px; height:12px; background-position: -53px -93px; margin-top:4px;}
+.ico-tags{width:17px; height:16px; background-position:-159px -93px; margin-top:3px; margin-right:3px;}
+.ico-reportar{width:19px; height:12px; background-position: -53px -93px; margin-top:4px; margin-right:3px;}
 .ico-comentar{width:17px; height:16px; background-position:-27px -92px; margin-top:3px;}
 .ico-feeds{width:25px; height:25px; background-position:-187px -88px; margin-top:2px;}
 .ico-fb, .ico-tt, .ico-lk, .ico-at{width:17px; height:16px; margin:5px;}
@@ -101,8 +101,7 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 .conteudo-loop-icons-li:last-child{margin:0px 0px 0px 18.3px !important;}
 .conteudo-loop-icons-li a{text-decoration:none; color:rgb(0,0,0); text-transform:uppercase; font-size:11px; font-weight:600;}
 .conteudo-loop-icons-li a:hover{text-decoration:underline; color:rgb(0,0,0);}
-#conteudo-loop-idiomas, #conteudo-loop-data{font-weight:bold;}
-.conteudo-loop-idiomas-tit, .conteudo-loop-data-tit{font-style: italic; font-weight:normal;}
+.conteudo-loop-data-tit, .conteudo-loop-idiomas-tit{font-weight:bold;}
 .rss_feed{width:30px;vertical-align:bottom;}
 .more{padding:3px 6px;background:rgb(0,74,142);font-size: 80%;border-radius:4px;}
 .more a{color:rgb(255,255,255);text-decoration:none;}

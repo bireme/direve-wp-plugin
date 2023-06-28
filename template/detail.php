@@ -118,25 +118,24 @@ if ($response){
                     <?php if ($resource->observations): ?>
                         <div id="conteudo-loop-idiomas" class="row-fluid">
                            <span class="conteudo-loop-idiomas-tit"><?php _e('Observations','direve'); ?>:</span>
-                           <?php echo $resource->observations; ?>
+                           <?php echo $resource->observations[0]; ?>
                         </div>
                     <?php endif; ?>
 
                     <?php if ($resource->target_groups): ?>
                         <div id="conteudo-loop-idiomas" class="row-fluid">
                            <span class="conteudo-loop-idiomas-tit"><?php _e('Target groups','direve'); ?>:</span>
-                           <?php echo $resource->target_groups; ?>
+                           <?php echo $resource->target_groups[0]; ?>
                         </div>
                     <?php endif; ?> 
 
                     <?php if ($resource->descriptor || $resource->keyword ) : ?>
                         <div id="conteudo-loop-tags" class="row-fluid margintop10">
-                            <i class="ico-tags"> </i>
-                                <?php
-                                    $descriptors = (array)$resource->descriptor;
-                                    $keywords = (array)$resource->keyword;
-                                ?>
-                                <?php echo implode(", ", array_merge( $descriptors, $keywords) ); ?>
+                            <?php
+                                $descriptors = (array)$resource->descriptor;
+                                $keywords = (array)$resource->keyword;
+                            ?>
+                            <i class="ico-tags"> </i> <?php echo implode(", ", array_merge( $descriptors, $keywords) ); ?>
                           </div>
                     <?php endif; ?>
 
