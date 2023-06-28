@@ -286,29 +286,13 @@ $pages->paginate($page_url_params);
                     <h1 class="h1-header"><?php _e('No results found','direve'); ?></h1>
                 <?php else :?>
                     <header class="row-fluid border-bottom">
-                        <h1 class="h1-header"><?php _e('Resources found','direve'); ?>: <?php echo $total; ?></h1>
+                        <div class="list-header">
+                            <h1 class="h1-header"><?php _e('Next events','direve'); ?></h1>
+                            <small class="small-header"><?php _e('Resources found','direve'); ?>: <?php echo $total; ?></small>
+                        </div>
                         <div class="pull-right">
                             <a href="<?php echo $feed_url ?>" target="blank"><img src="<?php echo DIREVE_PLUGIN_URL; ?>template/images/icon_rss.png" class="rss_feed" ></a>
                         </div>
-                        <!-- Not implemented yet
-                        <div class="pull-right">
-                            <a href="#" class="ico-feeds"></a>
-                            <form action="">
-                                <select name="txtRegistros" id="txtRegistros" class="select-input-home">
-                                    <option value="10 Registros">10 <?php _e('resources', 'direve'); ?></option>`
-                                    <option value="20 Registros">20 <?php _e('resources', 'direve'); ?></option>
-                                    <option value="50 Registros">50 <?php _e('resources', 'direve'); ?></option>
-                                </select>
-
-                                <select name="txtOrder" id="txtOrder" class="select-input-home">
-                                    <option value=""><?php _e('Order by', 'direve'); ?></option>
-                                    <option value="Mais Recentes"><?php _e('More relevant','direve'); ?></option>
-                                    <option value="Mais Lidas"><?php _e('Most recent','direve'); ?></option>
-                                </select>
-                            </form>
-                        </div>
-                        -->
-                        <?php // if ($query != '' || $user_filter != ''){ echo $pages->display_pages(); } ?>
                     </header>
                 <?php endif; ?>
             </section>
@@ -320,20 +304,9 @@ $pages->paginate($page_url_params);
                             <div class="widget_inner">
                                 <div id="calendar_wrap">
                                     <div id="wp-calendar"></div>
-                                    <!--div class="calendar-pagi">
-                                        <ul>
-                                            <li class="wp-cal-prev"><a onclick="jQuery.datepicker._adjustDate('#wp-calendar', -1, 'M');"><?php echo __("&laquo; Prev Month", 'wp_calendar'); ?></a></li>
-                                            <li class="wp-cal-next"><a onclick="jQuery.datepicker._adjustDate('#wp-calendar', +1, 'M');"><?php echo __("Next Month &raquo;", 'wp_calendar'); ?></a></li>
-                                        </ul>
-                                    </div-->
                                 </div>
                             </div>
                         </div>
-                        <!--div class="calendar_wrap_loading calendar_wrap_loading_hide"><img src="<?php echo WP_CALENDAR_PLUGIN_URL; ?>/images/ajax_loader_blue_64.gif"></div-->
-                        <!-- <div class="circle_loading hide_circle">
-                            <div class="circle"></div>
-                            <div class="circle1"></div>
-                        </div> -->
                         <div class="spinner"></div>
                     <?php endif; ?>
                 </section>
@@ -345,7 +318,69 @@ $pages->paginate($page_url_params);
                         </form>
                     <?php endif; ?>
                 </section>
+
                 <a href="<?php echo real_site_url($direve_plugin_slug . '/suggest-event'); ?>" class="header-colabore pull-right"><?php _e('Suggest a event','direve'); ?></a>
+
+                <?php if ( $event_list ) : ?>
+                    <?php if ($query == '' && $user_filter == ''): ?>
+                        <div class="row-fluid see-all-events">
+                            <h3 class="h3-footer"><a href="?q=*"><?php _e('See all events','direve'); ?></a></h3>
+                        </div>
+                    <?php endif; ?>
+                    <div class="row-fluid event-list">
+                        <?php foreach ( $event_list as $resource) { ?>
+                            <div class="conteudo-loop">
+
+                                <div class="row-fluid">
+                                    <h6 class="h6-loop-tit"><?php echo wp_trim_words($resource->title, 8); ?></h6>
+                                </div>
+                                <div class="conteudo-loop-rates">
+                                    <div class="star" data-score="1"></div>
+                                </div>
+
+                                <?php if ($resource->city || $resource->country): ?>
+                                    <div class="row-fluid">
+                                        <?php if ( $resource->city ) : ?>
+                                            <?php echo $resource->city . ' - ' . $resource->country ;?>
+                                        <?php else : ?>
+                                            <?php echo $resource->country ;?>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <div id="conteudo-loop-data" class="row-fluid margintop05">
+                                    <span class="conteudo-loop-data-tit"><?php _e('Date','direve'); ?>:</span>
+                                    <?php echo format_date($resource->start_date); ?> -
+                                    <?php echo format_date($resource->end_date); ?>
+                                </div>
+
+                                <?php if ($resource->source_language_display): ?>
+                                    <div id="conteudo-loop-idiomas" class="row-fluid">
+                                        <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','direve'); ?>:</span>
+                                        <?php print_lang_value($resource->source_language_display, $site_language); ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ($resource->descriptor || $resource->keyword ) : ?>
+                                    <div id="conteudo-loop-tags" class="row-fluid margintop10">
+                                        <i class="ico-tags"> </i>
+                                            <?php
+                                                $descriptors = (array)$resource->descriptor;
+                                                $keywords = (array)$resource->keyword;
+                                            ?>
+                                            <?php echo implode(", ", array_merge( $descriptors, $keywords) ); ?>
+                                      </div>
+                                <?php endif; ?>
+
+                                <div class="row-fluid margintop10">
+                                    <span class="more"><a href="<?php echo real_site_url($direve_plugin_slug); ?>resource/?id=<?php echo $resource->django_id; ?>"><?php _e('See more details','direve'); ?></a></span>
+                                </div>
+
+                            </div>
+                        <?php } ?>
+                    </div>
+                <?php endif; ?>
+
                 <?php if (strval($total) > 0) :?>
                     <?php
                         $order = explode(';', $direve_config['available_filter']);
