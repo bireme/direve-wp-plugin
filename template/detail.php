@@ -97,7 +97,7 @@ if ($response){
 
                     <?php if ($resource->contact_info): ?>
                         <p class="row-fluid margintop05">
-                            <?php echo $resource->contact_info; ?>
+                            <?php echo nl2br($resource->contact_info); ?>
                         </p>
                     <?php endif; ?>
 
@@ -118,14 +118,14 @@ if ($response){
                     <?php if ($resource->observations): ?>
                         <div id="conteudo-loop-idiomas" class="row-fluid">
                            <span class="conteudo-loop-idiomas-tit"><?php _e('Observations','direve'); ?>:</span>
-                           <?php echo $resource->observations[0]; ?>
+                           <?php echo nl2br($resource->observations[0]); ?>
                         </div>
                     <?php endif; ?>
 
                     <?php if ($resource->target_groups): ?>
                         <div id="conteudo-loop-idiomas" class="row-fluid">
                            <span class="conteudo-loop-idiomas-tit"><?php _e('Target groups','direve'); ?>:</span>
-                           <?php echo $resource->target_groups[0]; ?>
+                           <?php echo nl2br($resource->target_groups[0]); ?>
                         </div>
                     <?php endif; ?> 
 
