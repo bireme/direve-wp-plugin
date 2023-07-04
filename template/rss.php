@@ -19,8 +19,16 @@ $sanitize_user_filter = ( sanitize_text_field($_GET['filter']) ) ? sanitize_text
 $user_filter = stripslashes($sanitize_user_filter);
 $mode_filter = ( $_GET['mode'] ) ? 'event_modality:'.sanitize_text_field($_GET['mode']) : '';
 
+$start_date_filter = '';
+if ( $_GET['start_date'] ) {
+    $date = DateTime::createFromFormat('Ymd', $_GET['start_date']);
+    if ( $date ) {
+        $start_date_filter = 'start_date:[' . $date->format('Y') . '-' . $date->format('m') . '-' . $date->format('d') . 'T00:00:00Z TO *]';
+    }
+}
+
 $filter = '';
-$filter = implode(' AND ', array_filter(array($direve_initial_filter, $mode_filter, $user_filter)));
+$filter = implode(' AND ', array_filter(array($direve_initial_filter, $user_filter, $mode_filter, $start_date_filter)));
 
 if ($query != '' || $user_filter != ''){
     $direve_get_url = $direve_service_url . 'api/event/search/?q=' . urlencode($query) . '&fq=' . urlencode($filter) . '&lang=' . $lang_dir;
@@ -45,7 +53,7 @@ $rss_channel_url = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query
     <channel>
         <title><?php _e('Events Directory', 'direve') ?></title>
         <link><?php echo htmlspecialchars($rss_channel_url); ?></link>
-        <description><?php echo  ($query != '' || $user_filter != '') ? $query . ' ' . $user_filter : _e('Next events','direve');  ?></description>
+        <description><?php echo  ($query != '' || $user_filter != '') ? trim($query . ' ' . $user_filter) : _e('Next events','direve');  ?></description>
         <?php
             foreach ( $event_list as $event) {
                 $rss_description = '';
@@ -94,7 +102,7 @@ $rss_channel_url = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query
     <channel>
         <title><?php _e('Events Directory', 'direve') ?></title>
         <link><?php echo htmlspecialchars($rss_channel_url); ?></link>
-        <description><?php echo  ($query != '' || $user_filter != '') ? $query . ' ' . $user_filter : _e('Next events','direve');  ?></description>
+        <description><?php echo  ($query != '' || $user_filter != '') ? trim($query . ' ' . $user_filter) : _e('Next events','direve');  ?></description>
         <item>
             <title><?php _e('No upcoming events.', 'direve'); ?></title>
         </item>

@@ -45,7 +45,7 @@ if ($query != ''){
 $response = @file_get_contents($direve_search);
 if ($response){
     $response_json = json_decode($response);
-    //var_dump($response_json);
+    // echo "<pre>"; print_r($response_json); echo "</pre>"; die();
     $total = $response_json->diaServerResponse[0]->response->numFound;
     $start = $response_json->diaServerResponse[0]->response->start;
     if ($query != '' || $user_filter != ''){
