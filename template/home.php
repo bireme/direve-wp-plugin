@@ -120,6 +120,11 @@ $pages->paginate($page_url_params);
                         <?php // if ($query != '' || $user_filter != ''){ echo $pages->display_pages(); } ?>
                     </header>
                     <div class="row-fluid">
+                        <?php if ($query == '' && $user_filter == ''): ?>
+                            <div class="row-fluid">
+                                <h3 class="h3-footer pull-right margintop15"><a href="?q=*"><?php _e('See all events','direve'); ?></a></h3>
+                            </div>
+                        <?php endif; ?>
                         <?php foreach ( $event_list as $resource) { ?>
                             <article class="conteudo-loop">
 
@@ -174,7 +179,7 @@ $pages->paginate($page_url_params);
                         <?php } ?>
                         <?php if ($query == '' && $user_filter == ''): ?>
                             <div class="row-fluid">
-                                <h3 class="h3-footer"><a href="?q=*"><?php _e('See all events','direve'); ?></a></h3>
+                                <h3 class="h3-footer margintop15"><a href="?q=*"><?php _e('See all events','direve'); ?></a></h3>
                             </div>
                         <?php endif; ?>
                     </div>
