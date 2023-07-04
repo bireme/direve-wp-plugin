@@ -17,7 +17,9 @@ $query = ( $_GET['s'] ) ? sanitize_text_field($_GET['s']) : sanitize_text_field(
 $query = stripslashes($query);
 $sanitize_user_filter = ( sanitize_text_field($_GET['filter']) ) ? sanitize_text_field($_GET['filter']) : '';
 $user_filter = stripslashes($sanitize_user_filter);
-$mode_filter = ( $_GET['mode'] ) ? 'event_modality:'.sanitize_text_field($_GET['mode']) : '';
+$mode_options = array('in-person', 'hybrid', 'online');
+$mode_filter = sanitize_text_field($_GET['mode']);
+$mode_filter = ( $mode_filter && in_array($mode_filter, $mode_options) ) ? 'event_modality:'.$mode_filter : '';
 
 $start_date_filter = '';
 if ( $_GET['start_date'] ) {
