@@ -97,7 +97,7 @@ $pages->paginate($page_url_params);
                             </div>
                         <?php endif; ?>
                         <div class="pull-right">
-                            <a href="<?php echo $feed_url ?>" target="blank"><img src="<?php echo DIREVE_PLUGIN_URL; ?>template/images/icon_rss.png" class="rss_feed" ></a>
+                            <a href="<?php echo $feed_url; ?>" target="blank"><img src="<?php echo DIREVE_PLUGIN_URL; ?>template/images/icon_rss.png" class="rss_feed" ></a>
                         </div>
                         <!-- Not implemented yet
                         <div class="pull-right">
@@ -210,7 +210,7 @@ $pages->paginate($page_url_params);
                 <section class="header-search">
                     <?php if ($direve_config['show_form']) : ?>
                         <form role="search" method="get" id="searchform" action="<?php echo real_site_url($direve_plugin_slug); ?>">
-                            <input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
+                            <input value='<?php echo $query; ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
                             <input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
                         </form>
                     <?php endif; ?>
@@ -283,42 +283,41 @@ $pages->paginate($page_url_params);
 
             <section id="">
                 <?php if ( isset($total) && strval($total) == 0) :?>
-                    <h1 class="h1-header"><?php _e('No results found','direve'); ?></h1>
+                    <header class="row-fluid border-bottom">
+                        <div class="list-header">
+                            <h1 class="h1-header"><?php _e('No results found','direve'); ?></h1>
+                            <section class="header-search">
+                                <?php if ($direve_config['show_form']) : ?>
+                                    <form role="search" method="get" id="searchform" action="<?php echo real_site_url($direve_plugin_slug); ?>">
+                                        <input value='<?php echo $query; ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
+                                        <input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
+                                    </form>
+                                <?php endif; ?>
+                            </section>
+                        </div>
+                    </header>
                 <?php else :?>
                     <header class="row-fluid border-bottom">
                         <div class="list-header">
                             <h1 class="h1-header"><?php _e('Next events','direve'); ?></h1>
                             <small class="small-header"><?php _e('Resources found','direve'); ?>: <?php echo $total; ?></small>
+                            <section class="header-search">
+                                <?php if ($direve_config['show_form']) : ?>
+                                    <form role="search" method="get" id="searchform" action="<?php echo real_site_url($direve_plugin_slug); ?>">
+                                        <input value='<?php echo $query; ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
+                                        <input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
+                                    </form>
+                                <?php endif; ?>
+                            </section>
                         </div>
                         <div class="pull-right">
-                            <a href="<?php echo $feed_url ?>" target="blank"><img src="<?php echo DIREVE_PLUGIN_URL; ?>template/images/icon_rss.png" class="rss_feed" ></a>
+                            <a href="<?php echo $feed_url; ?>" target="blank"><img src="<?php echo DIREVE_PLUGIN_URL; ?>template/images/icon_rss.png" class="rss_feed" ></a>
                         </div>
                     </header>
                 <?php endif; ?>
             </section>
 
             <aside id="">
-                <section class="row-fluid widget wp_calendar">
-                    <?php if ($direve_config['show_calendar']) : ?>
-                        <div class="widget widget_calendar">
-                            <div class="widget_inner">
-                                <div id="calendar_wrap">
-                                    <div id="wp-calendar"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="spinner"></div>
-                    <?php endif; ?>
-                </section>
-                <section class="header-search">
-                    <?php if ($direve_config['show_form']) : ?>
-                        <form role="search" method="get" id="searchform" action="<?php echo real_site_url($direve_plugin_slug); ?>">
-                            <input value='<?php echo $query ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
-                            <input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
-                        </form>
-                    <?php endif; ?>
-                </section>
-
                 <a href="<?php echo real_site_url($direve_plugin_slug . '/suggest-event'); ?>" class="header-colabore pull-right"><?php _e('Suggest a event','direve'); ?></a>
 
                 <?php if ( $event_list ) : ?>
@@ -341,7 +340,7 @@ $pages->paginate($page_url_params);
                                 <?php if ($resource->city || $resource->country): ?>
                                     <div class="row-fluid">
                                         <?php if ( $resource->city ) : ?>
-                                            <?php echo $resource->city . ' - ' . $resource->country ;?>
+                                            <?php echo $resource->city . ' - ' . $resource->country; ?>
                                         <?php else : ?>
                                             <?php echo $resource->country ;?>
                                         <?php endif; ?>

@@ -76,7 +76,7 @@ if ($response){
                     <?php if ($resource->city || $resource->country): ?>
                         <div class="row-fluid">
                             <?php if ( $resource->city ) : ?>
-                                <?php echo $resource->city . ' - ' . $resource->country ;?>
+                                <?php echo $resource->city . ' - ' . $resource->country; ?>
                             <?php else : ?>
                                 <?php echo $resource->country ;?>
                             <?php endif; ?>

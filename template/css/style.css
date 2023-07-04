@@ -87,6 +87,7 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 .breadcrumb{padding:10px 10px 10px 0px !important;}
 .header-search{float:left; margin:15px 15px 15px 0;}
 .input-search{width:195px; min-height:19px; float:left; padding:8px 10px; border-radius:10px 0px 0px 10px; border:1px solid rgb(132,132,132);}
+.list-header .input-search{width:390px;}
 .b-search{cursor:pointer; width:101px; height:41px; border:0px; float:left; background-position:0 -118px; margin-left:-1px;}
 .header-colabore{font-size: 170%;text-decoration: none;color: #28367D !important;padding-left:22px;background: url(../images/plus.png) 0px 4px no-repeat;display:inline-block; margin:18px 0 12px 0;}
 .header-colabore:hover{text-decoration:none;}
