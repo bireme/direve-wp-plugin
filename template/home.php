@@ -22,6 +22,12 @@ $total = 0;
 $count = 10;
 $filter = '';
 
+$event_modality = array(
+    'in-person' => __('In-person', 'direve'),
+    'hybrid' => __('Hybrid', 'direve'),
+    'online' => __('Online', 'direve')
+);
+
 if ($direve_initial_filter != ''){
     if ($user_filter != ''){
         $filter = $direve_initial_filter . ' AND ' . $user_filter;
@@ -36,11 +42,11 @@ $start = ($page * $count) - $count;
 if ($query != ''){
     $direve_search = $direve_service_url . 'api/event/search/?q=' . urlencode($query) . '&fq=' . urlencode($filter) . '&start=' . $start . '&lang=' . $lang_dir;
 }else{
-    $direve_next_events = $direve_service_url . 'api/event/next/?fq=' . urlencode($filter) . '&lang=' . $lang_dir;
+    $direve_next_events = $direve_service_url . 'api/event/next/?fq=' . urlencode($filter) . '&lang=' . $lang_dir . '&count=20';
     $direve_search = $direve_service_url . 'api/event/search/?fq=' . urlencode($filter) . '&start=' . $start . '&lang=' . $lang_dir;
 }
 
-#print $direve_next_events;
+// echo "<pre>"; print_r($direve_next_events); echo "</pre>"; die();
 
 $response = @file_get_contents($direve_search);
 if ($response){
@@ -127,6 +133,12 @@ $pages->paginate($page_url_params);
                         <?php endif; ?>
                         <?php foreach ( $event_list as $resource) { ?>
                             <article class="conteudo-loop">
+
+                                <?php if ($resource->event_modality): ?>
+                                    <div class="row-fluid text-right">
+                                        <?php echo $event_modality[$resource->event_modality[0]]; ?>
+                                    </div>
+                                <?php endif; ?>
 
                                 <div class="row-fluid">
                                     <h2 class="h2-loop-tit"><?php echo $resource->title; ?></h2>
@@ -331,9 +343,15 @@ $pages->paginate($page_url_params);
                             <h3 class="h3-footer"><a href="?q=*"><?php _e('See all events','direve'); ?></a></h3>
                         </div>
                     <?php endif; ?>
-                    <div class="row-fluid event-list">
+                    <div class="row-fluid event-list marginbottom25">
                         <?php foreach ( $event_list as $resource) { ?>
                             <div class="conteudo-loop">
+
+                                <?php if ($resource->event_modality): ?>
+                                    <div class="row-fluid text-right">
+                                        <?php echo $event_modality[$resource->event_modality[0]]; ?>
+                                    </div>
+                                <?php endif; ?>
 
                                 <div class="row-fluid">
                                     <h6 class="h6-loop-tit"><?php echo wp_trim_words($resource->title, 8); ?></h6>
@@ -364,7 +382,7 @@ $pages->paginate($page_url_params);
                                         <?php print_lang_value($resource->source_language_display, $site_language); ?>
                                     </div>
                                 <?php endif; ?>
-
+<!--
                                 <?php if ($resource->descriptor || $resource->keyword ) : ?>
                                     <div id="conteudo-loop-tags" class="row-fluid margintop10">
                                         <i class="ico-tags"> </i>
@@ -375,7 +393,7 @@ $pages->paginate($page_url_params);
                                             <?php echo implode(", ", array_merge( $descriptors, $keywords) ); ?>
                                       </div>
                                 <?php endif; ?>
-
+-->
                                 <div class="row-fluid margintop10">
                                     <span class="more"><a href="<?php echo real_site_url($direve_plugin_slug); ?>resource/?id=<?php echo $resource->django_id; ?>"><?php _e('See more details','direve'); ?></a></span>
                                 </div>

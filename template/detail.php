@@ -15,6 +15,12 @@ $direve_disqus_id  = $direve_config['disqus_shortname'];
 $direve_addthis_id = $direve_config['addthis_profile_id'];
 $direve_service_request = $direve_service_url . 'api/event/search/?id=events.event.' .$event_id . '&op=related&lang=' . $lang_dir;
 
+$event_modality = array(
+    'in-person' => __('In-person', 'direve'),
+    'hybrid' => __('Hybrid', 'direve'),
+    'online' => __('Online', 'direve')
+);
+
 $response = @file_get_contents($direve_service_request);
 
 if ($response){
@@ -58,6 +64,12 @@ if ($response){
                     <div class="conteudo-loop-rates">
                         <div class="star" data-score="1"></div>
                     </div>
+
+                    <?php if ($resource->event_modality): ?>
+                        <div class="row-fluid">
+                            <?php echo __('Event','direve') . ' ' . $event_modality[$resource->event_modality[0]]; ?>
+                        </div>
+                    <?php endif; ?>
 
                     <?php if ($resource->address[0]): ?>
                         <div class="row-fluid">

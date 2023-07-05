@@ -72,6 +72,9 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 .marginbottom10{margin-bottom:10px;}
 .marginbottom15{margin-bottom:15px;}
 .marginbottom25{margin-bottom:25px;}
+.text-left{text-align: left;}
+.text-right{text-align: right;}
+.text-center{text-align: center;}
 
 /* HEADER */
 .header{width:100%; float:left; margin-bottom:10px;}
