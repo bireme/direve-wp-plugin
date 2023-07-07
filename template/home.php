@@ -347,12 +347,6 @@ $pages->paginate($page_url_params);
                         <?php foreach ( $event_list as $resource) { ?>
                             <div class="conteudo-loop">
 
-                                <?php if ($resource->event_modality): ?>
-                                    <div class="row-fluid text-right">
-                                        <?php echo $event_modality[$resource->event_modality[0]]; ?>
-                                    </div>
-                                <?php endif; ?>
-
                                 <div class="row-fluid">
                                     <h6 class="h6-loop-tit"><?php echo wp_trim_words($resource->title, 8); ?></h6>
                                 </div>
@@ -370,7 +364,7 @@ $pages->paginate($page_url_params);
                                     </div>
                                 <?php endif; ?>
 
-                                <div id="conteudo-loop-data" class="row-fluid margintop05">
+                                <div id="conteudo-loop-data" class="row-fluid">
                                     <span class="conteudo-loop-data-tit"><?php _e('Date','direve'); ?>:</span>
                                     <?php echo format_date($resource->start_date); ?> -
                                     <?php echo format_date($resource->end_date); ?>
@@ -380,6 +374,12 @@ $pages->paginate($page_url_params);
                                     <div id="conteudo-loop-idiomas" class="row-fluid">
                                         <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','direve'); ?>:</span>
                                         <?php print_lang_value($resource->source_language_display, $site_language); ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ($resource->event_modality): ?>
+                                    <div class="row-fluid">
+                                        <?php echo $event_modality[$resource->event_modality[0]]; ?>
                                     </div>
                                 <?php endif; ?>
 <!--
