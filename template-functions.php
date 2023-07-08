@@ -27,10 +27,13 @@ if ( !function_exists('get_lang_value') ) {
             $value = $lv[1];
             $lang_value[$lang] = $value;
         }
+
         if ( isset($lang_value[$lang_code]) ){
             $translated = $lang_value[$lang_code];
-        }else{
+        } elseif ( isset($lang_value[$default_lang_code]) ){
             $translated = $lang_value[$default_lang_code];
+        } else {
+            $translated = ltrim(strstr($string, '^'), '^');
         }
 
         return $translated;

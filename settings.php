@@ -137,9 +137,10 @@ function direve_page_admin() {
                         <th scope="row"><?php _e('Sidebar order', 'direve');?>:</th>
 
                         <?php
+                            $available_filters = 'Subjects;Event type;Thematic area;Publication year';
+                            $available_filter_list = explode(';', $available_filters);
                             if(!isset($config['available_filter'])){
-                                $config['available_filter'] = 'Subjects;Event type';
-                                $order = explode(';', $config['available_filter'] );
+                                $order = $available_filter_list;
                             } else {
                                 $order = array_filter(explode(';', $config['available_filter']));
                             }
@@ -152,14 +153,11 @@ function direve_page_admin() {
                                     <td>
                                         <p align="right"><?php _e('Available', 'direve');?><br>
                                             <ul id="sortable1" class="droptrue">
-                                                <?php
-                                                    if(!in_array('Event type', $order) && !in_array('Event type ', $order) ){
-                                                        echo '<li class="ui-state-default" id="Event type">'.translate('Event type','direve').'</li>';
-                                                    }
-                                                    if(!in_array('Subjects', $order) && !in_array('Subjects ', $order) ){
-                                                        echo '<li class="ui-state-default" id="Subjects">'.translate('Subjects','direve').'</li>';
-                                                    }
-                                                ?>
+                                                <?php foreach ($available_filter_list as $key => $value) : ?>
+                                                    <?php if ( !in_array($value, $order) ) : ?>
+                                                        <?php echo '<li class="ui-state-default" id="'.$value.'">'.translate($value,'direve').'</li>'; ?>
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>
                                             </ul>
                                         </p>
                                     </td>
@@ -201,14 +199,12 @@ function direve_page_admin() {
         });
 
         $j('.sortable-list').sortable({
-
           connectWith: 'ul',
           update: function(event, ui) {
             var changedList = this.id;
             var order = $j(this).sortable('toArray');
             var positions = order.join(';');
             $j('#order_aux').val(positions);
-
           }
         });
       });

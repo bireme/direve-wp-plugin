@@ -62,8 +62,18 @@ if ($response){
         $event_list = $response_next_events_json->diaServerResponse[0]->response->docs;
     }
 
+    $filter_list = array(
+        'descriptor_filter' => __('Subjects', 'direve'),
+        'event_type' => __('Event type', 'direve'),
+        'thematic_area_display' => __('Thematic area', 'direve'),
+        'publication_year' => __('Year', 'direve')
+    );
+
     $descriptor_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptor_filter;
     $event_type_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->event_type;
+    $thematic_area_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->thematic_area_display;
+    $publication_year_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->publication_year;
+    usort($publication_year_list, fn($a, $b) => $b[0] <=> $a[0]);
 }
 
 $page_url_params = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query)  . '&filter=' . urlencode($filter);
@@ -406,9 +416,9 @@ $pages->paginate($page_url_params);
                 <?php if (strval($total) > 0) :?>
                     <?php
                         $order = explode(';', $direve_config['available_filter']);
-                        foreach ( $order as $index => $content) {
+                        foreach ( $order as $key => $value ) {
                     ?>
-                        <?php if($content == 'Subjects'){ ?>
+                        <?php if ( $value == 'Subjects' ) { ?>
                             <section class="row-fluid widget_categories">
                                 <header class="row-fluid border-bottom marginbottom15">
                                     <h1 class="h1-header"><?php _e('Subjects','direve'); ?></h1>
@@ -435,13 +445,13 @@ $pages->paginate($page_url_params);
                                 </ul>
                             </section>
                         <?php } ?>
-                        <?php if($content == 'Event type'){ ?>
+                        <?php if ( $value == 'Event type' ) {  ?>
                             <section class="row-fluid marginbottom25 widget_categories">
                                 <header class="row-fluid border-bottom marginbottom15">
                                     <h1 class="h1-header"><?php _e('Event type','direve'); ?></h1>
                                 </header>
                                 <ul class="col3">
-                                    <?php foreach ( $event_type_list as $type) { ?>
+                                    <?php foreach ( $event_type_list as $type ) { ?>
                                         <?php
                                             $filter_link = '?';
                                             if ($query != ''){
@@ -455,6 +465,56 @@ $pages->paginate($page_url_params);
                                         <li class="cat-item">
                                             <a href='<?php echo $filter_link; ?>'><?php print_lang_value($type[0], $site_language); ?></a>
                                             <span class="cat-item-count"><?php echo $type[1] ?></span>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </section>
+                        <?php } ?>
+                        <?php if ( $value == 'Thematic area' ) {  ?>
+                            <section class="row-fluid marginbottom25 widget_categories">
+                                <header class="row-fluid border-bottom marginbottom15">
+                                    <h1 class="h1-header"><?php _e('Thematic area','direve'); ?></h1>
+                                </header>
+                                <ul class="col3">
+                                    <?php foreach ( $thematic_area_list as $ta ) { ?>
+                                        <?php
+                                            $filter_link = '?';
+                                            if ($query != ''){
+                                                $filter_link .= 'q=' . $query . '&';
+                                            }
+                                            $filter_link .= 'filter=thematic_area_display:"' . $ta[0] . '"';
+                                            if ($user_filter != ''){
+                                                $filter_link .= ' AND ' . $user_filter ;
+                                            }
+                                        ?>
+                                        <li class="cat-item">
+                                            <a href='<?php echo $filter_link; ?>'><?php print_lang_value($ta[0], $site_language); ?></a>
+                                            <span class="cat-item-count"><?php echo $ta[1] ?></span>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </section>
+                        <?php } ?>
+                        <?php if ( $value == 'Publication year' ) {  ?>
+                            <section class="row-fluid marginbottom25 widget_categories">
+                                <header class="row-fluid border-bottom marginbottom15">
+                                    <h1 class="h1-header"><?php _e('Publication year','direve'); ?></h1>
+                                </header>
+                                <ul class="col3">
+                                    <?php foreach ( $publication_year_list as $year ) { ?>
+                                        <?php
+                                            $filter_link = '?';
+                                            if ($query != ''){
+                                                $filter_link .= 'q=' . $query . '&';
+                                            }
+                                            $filter_link .= 'filter=publication_year:"' . $year[0] . '"';
+                                            if ($user_filter != ''){
+                                                $filter_link .= ' AND ' . $user_filter ;
+                                            }
+                                        ?>
+                                        <li class="cat-item">
+                                            <a href='<?php echo $filter_link; ?>'><?php echo $year[0]; ?></a>
+                                            <span class="cat-item-count"><?php echo $year[1] ?></span>
                                         </li>
                                     <?php } ?>
                                 </ul>
