@@ -62,13 +62,6 @@ if ($response){
         $event_list = $response_next_events_json->diaServerResponse[0]->response->docs;
     }
 
-    $filter_list = array(
-        'descriptor_filter' => __('Subjects', 'direve'),
-        'event_type' => __('Event type', 'direve'),
-        'thematic_area_display' => __('Thematic area', 'direve'),
-        'publication_year' => __('Year', 'direve')
-    );
-
     $descriptor_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptor_filter;
     $event_type_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->event_type;
     $thematic_area_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->thematic_area_display;
