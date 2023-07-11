@@ -137,12 +137,6 @@ $pages->paginate($page_url_params);
                         <?php foreach ( $event_list as $resource) { ?>
                             <article class="conteudo-loop">
 
-                                <?php if ($resource->event_modality): ?>
-                                    <div class="row-fluid text-right">
-                                        <?php echo $event_modality[$resource->event_modality[0]]; ?>
-                                    </div>
-                                <?php endif; ?>
-
                                 <div class="row-fluid">
                                     <h2 class="h2-loop-tit"><?php echo $resource->title; ?></h2>
                                 </div>
@@ -165,6 +159,12 @@ $pages->paginate($page_url_params);
                                     <?php echo format_date($resource->start_date); ?> -
                                     <?php echo format_date($resource->end_date); ?>
                                 </div>
+
+                                <?php if ($resource->event_modality): ?>
+                                    <div class="row-fluid margintop05">
+                                        <?php echo __('Event','direve') . ' ' . $event_modality[$resource->event_modality[0]]; ?>
+                                    </div>
+                                <?php endif; ?>
 
                                 <p class="row-fluid">
                                     <?php echo ( strlen($resource->abstract) > 200 ? substr($resource->abstract,0,200) . '...' : $resource->abstract); ?><br/>
