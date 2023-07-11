@@ -302,7 +302,7 @@ $pages->paginate($page_url_params);
                                 <header class="row-fluid border-bottom marginbottom15">
                                     <h1 class="h1-header"><?php _e('Thematic area','direve'); ?></h1>
                                 </header>
-                                <ul class="col3">
+                                <ul>
                                     <?php foreach ( $thematic_area_list as $ta ) { ?>
                                         <?php
                                             $filter_link = '?';
@@ -327,7 +327,7 @@ $pages->paginate($page_url_params);
                                 <header class="row-fluid border-bottom marginbottom15">
                                     <h1 class="h1-header"><?php _e('Publication year','direve'); ?></h1>
                                 </header>
-                                <ul class="col3">
+                                <ul>
                                     <?php foreach ( $publication_year_list as $year ) { ?>
                                         <?php
                                             $filter_link = '?';
