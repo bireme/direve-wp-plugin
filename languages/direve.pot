@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DirEve 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/direve\n"
-"POT-Creation-Date: 2023-07-11 09:09-0300\n"
+"POT-Creation-Date: 2023-07-11 16:46-0300\n"
 "PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -401,7 +401,7 @@ msgid "Thematic area"
 msgstr ""
 
 #: template/home.php:328 template/home.php:548
-msgid "Publication year"
+msgid "Event year"
 msgstr ""
 
 #: template/related.php:56 template/related.php:67 template/similar.php:41

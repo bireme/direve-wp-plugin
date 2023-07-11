@@ -322,10 +322,10 @@ $pages->paginate($page_url_params);
                                 </ul>
                             </section>
                         <?php } ?>
-                        <?php if ( $value == 'Publication year' ) {  ?>
+                        <?php if ( $value == 'Event year' ) {  ?>
                             <section class="row-fluid marginbottom25 widget_categories">
                                 <header class="row-fluid border-bottom marginbottom15">
-                                    <h1 class="h1-header"><?php _e('Publication year','direve'); ?></h1>
+                                    <h1 class="h1-header"><?php _e('Event year','direve'); ?></h1>
                                 </header>
                                 <ul>
                                     <?php foreach ( $publication_year_list as $year ) { ?>
@@ -542,10 +542,10 @@ $pages->paginate($page_url_params);
                                 </ul>
                             </section>
                         <?php } ?>
-                        <?php if ( $value == 'Publication year' ) {  ?>
+                        <?php if ( $value == 'Event year' ) {  ?>
                             <section class="row-fluid marginbottom25 widget_categories">
                                 <header class="row-fluid border-bottom marginbottom15">
-                                    <h1 class="h1-header"><?php _e('Publication year','direve'); ?></h1>
+                                    <h1 class="h1-header"><?php _e('Event year','direve'); ?></h1>
                                 </header>
                                 <ul class="col3">
                                     <?php foreach ( $publication_year_list as $year ) { ?>

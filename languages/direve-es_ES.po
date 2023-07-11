@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LIS 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/direve\n"
-"POT-Creation-Date: 2023-07-11 09:10-0300\n"
-"PO-Revision-Date: 2023-07-11 09:11-0300\n"
+"POT-Creation-Date: 2023-07-11 16:47-0300\n"
+"PO-Revision-Date: 2023-07-11 16:47-0300\n"
 "Last-Translator: Vinicius Andrade <vinicius.andrade@bireme.org>\n"
 "Language-Team: RedDes <reddes@gmail.com>\n"
 "Language: es_ES\n"
@@ -402,8 +402,8 @@ msgid "Thematic area"
 msgstr "Área temática"
 
 #: template/home.php:328 template/home.php:548
-msgid "Publication year"
-msgstr "Año de publicación"
+msgid "Event year"
+msgstr "Año del evento"
 
 #: template/related.php:56 template/related.php:67 template/similar.php:41
 msgid "No related documents"
@@ -448,6 +448,9 @@ msgstr "Ciudad"
 #: template/suggest-event.php:121
 msgid "Country"
 msgstr "País"
+
+#~ msgid "Publication year"
+#~ msgstr "Año de publicación"
 
 #~ msgid "Service URL"
 #~ msgstr "URL del servicio"

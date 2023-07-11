@@ -137,7 +137,7 @@ function direve_page_admin() {
                         <th scope="row"><?php _e('Sidebar order', 'direve');?>:</th>
 
                         <?php
-                            $available_filters = 'Subjects;Event type;Thematic area;Publication year';
+                            $available_filters = 'Subjects;Event type;Thematic area;Event year';
                             $available_filter_list = explode(';', $available_filters);
                             if(!isset($config['available_filter'])){
                                 $order = $available_filter_list;
