@@ -179,7 +179,7 @@ $pages->paginate($page_url_params);
                                 <?php if ($resource->source_language_display): ?>
                                     <div id="conteudo-loop-idiomas" class="row-fluid">
                                         <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','direve'); ?>:</span>
-                                        <?php print_lang_value($resource->source_language_display, $site_language); ?>
+                                        <?php direve_print_lang_value($resource->source_language_display, $site_language); ?>
                                     </div>
                                 <?php endif; ?>
 
@@ -290,7 +290,7 @@ $pages->paginate($page_url_params);
                                             }
                                         ?>
                                         <li class="cat-item">
-                                            <a href='<?php echo $filter_link; ?>'><?php print_lang_value($type[0], $site_language); ?></a>
+                                            <a href='<?php echo $filter_link; ?>'><?php direve_print_lang_value($type[0], $site_language); ?></a>
                                             <span class="cat-item-count"><?php echo $type[1] ?></span>
                                         </li>
                                     <?php } ?>
@@ -315,7 +315,7 @@ $pages->paginate($page_url_params);
                                             }
                                         ?>
                                         <li class="cat-item">
-                                            <a href='<?php echo $filter_link; ?>'><?php print_lang_value($ta[0], $site_language); ?></a>
+                                            <a href='<?php echo $filter_link; ?>'><?php direve_print_lang_value($ta[0], $site_language); ?></a>
                                             <span class="cat-item-count"><?php echo $ta[1] ?></span>
                                         </li>
                                     <?php } ?>
@@ -430,7 +430,7 @@ $pages->paginate($page_url_params);
                                 <?php if ($resource->source_language_display): ?>
                                     <div id="conteudo-loop-idiomas" class="row-fluid">
                                         <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','direve'); ?>:</span>
-                                        <?php print_lang_value($resource->source_language_display, $site_language); ?>
+                                        <?php direve_print_lang_value($resource->source_language_display, $site_language); ?>
                                     </div>
                                 <?php endif; ?>
 
@@ -510,7 +510,7 @@ $pages->paginate($page_url_params);
                                             }
                                         ?>
                                         <li class="cat-item">
-                                            <a href='<?php echo $filter_link; ?>'><?php print_lang_value($type[0], $site_language); ?></a>
+                                            <a href='<?php echo $filter_link; ?>'><?php direve_print_lang_value($type[0], $site_language); ?></a>
                                             <span class="cat-item-count"><?php echo $type[1] ?></span>
                                         </li>
                                     <?php } ?>
@@ -535,7 +535,7 @@ $pages->paginate($page_url_params);
                                             }
                                         ?>
                                         <li class="cat-item">
-                                            <a href='<?php echo $filter_link; ?>'><?php print_lang_value($ta[0], $site_language); ?></a>
+                                            <a href='<?php echo $filter_link; ?>'><?php direve_print_lang_value($ta[0], $site_language); ?></a>
                                             <span class="cat-item-count"><?php echo $ta[1] ?></span>
                                         </li>
                                     <?php } ?>

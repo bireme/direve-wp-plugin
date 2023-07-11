@@ -116,7 +116,7 @@ if ($response){
                     <?php if ($resource->official_language_display): ?>
                         <div id="conteudo-loop-idiomas" class="row-fluid">
                            <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','direve'); ?>:</span>
-                           <?php print_lang_value($resource->official_language_display, $site_language); ?>
+                           <?php direve_print_lang_value($resource->official_language_display, $site_language); ?>
                         </div>
                     <?php endif; ?>
 

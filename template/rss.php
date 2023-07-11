@@ -81,7 +81,7 @@ $rss_channel_url = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query
 
                 if ($event->source_language_display){
                     $rss_description .= __('Available languages','direve') . ': ';
-                    $rss_description .= print_lang_value($event->source_language_display, $site_language);
+                    $rss_description .= direve_print_lang_value($event->source_language_display, $site_language);
                 }
 
                 if ($event->descriptor || $event->keyword ) {
