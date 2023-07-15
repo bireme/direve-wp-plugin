@@ -102,7 +102,7 @@ if ($response){
                     </div>
 
                     <?php if ($resource->link[0]): ?>
-                        <p class="row-fluid margintop05">
+                        <p class="row-fluid margintop05 event-link">
                             <a href="<?php echo $resource->link[0]; ?>"><?php echo $resource->link[0]; ?></a><br/>
                         </p>
                     <?php endif; ?>

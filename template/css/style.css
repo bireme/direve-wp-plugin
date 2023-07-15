@@ -376,6 +376,12 @@ ul.col3 {
     padding-left: 2rem;
 }
 
+.event-link {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .slick-prev:before,
 .slick-next:before {
     color: grey;
