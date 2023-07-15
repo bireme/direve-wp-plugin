@@ -18,14 +18,22 @@ $query = stripslashes($query);
 $sanitize_user_filter = ( sanitize_text_field($_GET['filter']) ) ? sanitize_text_field($_GET['filter']) : '';
 $user_filter = stripslashes($sanitize_user_filter);
 $mode_options = array('in-person', 'hybrid', 'online');
-$mode_filter = sanitize_text_field($_GET['mode']);
-$mode_filter = ( $mode_filter && in_array($mode_filter, $mode_options) ) ? 'event_modality:'.$mode_filter : '';
+$mode_filter = ( sanitize_text_field($_GET['mode']) ) ? explode(',', sanitize_text_field($_GET['mode'])) : '';
+$mode_intersect = array_intersect($mode_filter, $mode_options);
+
+if ( $mode_intersect ) {
+    $mode_intersect = preg_filter('/^/', 'event_modality:', $mode_intersect);
+    $mode_filter = implode(' OR ', $mode_intersect);
+    $mode_filter = '(' . $mode_filter . ')';
+}
 
 $start_date_filter = '';
 if ( $_GET['start_date'] ) {
-    $date = DateTime::createFromFormat('Ymd', $_GET['start_date']);
-    if ( $date ) {
-        $start_date_filter = 'start_date:[' . $date->format('Y') . '-' . $date->format('m') . '-' . $date->format('d') . 'T00:00:00Z TO *]';
+    if (($timestamp = strtotime($_GET['start_date'])) !== false) {
+        $date = DateTime::createFromFormat('Ymd', date('Ymd', $timestamp));
+        if ( $date ) {
+            $start_date_filter = 'start_date:[' . $date->format('Y') . '-' . $date->format('m') . '-' . $date->format('d') . 'T00:00:00Z TO *]';
+        }
     }
 }
 

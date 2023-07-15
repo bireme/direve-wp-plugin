@@ -32,7 +32,7 @@ Go to `Settings` in the administration panel (dashboard) and click on the newly 
 To configure the RSS feed, you can also use the following parameters and filters:
 
 * `mode` - Filter by event modality. Possible values are __in-person__, __hybrid__ and __online__
-* `start_date` - Filter by start date (format: YYYYMMDD)
+* `start_date` - Filter by start date
 
 ## Usage example
 
@@ -40,12 +40,17 @@ Filter by event modality:
 
 ```
 https://<domain>/<plugin_slug>/events-feed?q=&filter=&mode=online
+https://<domain>/<plugin_slug>/events-feed?q=&filter=&mode=online,hibrid
 ```
 
 Filter by start date:
 
 ```
 https://<domain>/<plugin_slug>/events-feed?q=&filter=&start_date=20230101
+https://<domain>/<plugin_slug>/events-feed?q=&filter=&start_date=2023-01-01
+https://<domain>/<plugin_slug>/events-feed?q=&filter=&start_date=+2 days
+https://<domain>/<plugin_slug>/events-feed?q=&filter=&start_date=+2 weeks
+https://<domain>/<plugin_slug>/events-feed?q=&filter=&start_date=+2 months
 ```
 
 Filter by event modality and start date:
