@@ -103,7 +103,7 @@ if ($response){
 
                     <?php if ($resource->link[0]): ?>
                         <p class="row-fluid margintop05 event-link">
-                            <a href="<?php echo $resource->link[0]; ?>"><?php echo $resource->link[0]; ?></a><br/>
+                            <a href="<?php echo $resource->link[0]; ?>" target="_blank"><?php echo $resource->link[0]; ?></a><br/>
                         </p>
                     <?php endif; ?>
 
