@@ -67,7 +67,9 @@ if ($response){
     $event_type_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->event_type;
     $thematic_area_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->thematic_area_display;
     $publication_year_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->publication_year;
-    usort($publication_year_list, fn($a, $b) => $b[0] <=> $a[0]);
+    usort($publication_year_list, function($a, $b) {
+        return $b[0] <=> $a[0];
+    });
 
     $facet_fields = $response_json->diaServerResponse[0]->facet_counts->facet_fields;
     // echo "<pre>"; print_r($facet_fields); echo "</pre>"; die();
