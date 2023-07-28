@@ -18,7 +18,7 @@ $query = stripslashes($query);
 $sanitize_user_filter = ( sanitize_text_field($_GET['filter']) ) ? sanitize_text_field($_GET['filter']) : '';
 $user_filter = stripslashes($sanitize_user_filter);
 $mode_options = array('in-person', 'hybrid', 'online');
-$mode_filter = ( sanitize_text_field($_GET['mode']) ) ? explode(',', sanitize_text_field($_GET['mode'])) : '';
+$mode_filter = ( sanitize_text_field($_GET['mode']) ) ? explode(',', sanitize_text_field($_GET['mode'])) : array();
 $mode_intersect = array_intersect($mode_filter, $mode_options);
 
 if ( $mode_intersect ) {
