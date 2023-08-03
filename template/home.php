@@ -362,14 +362,14 @@ $pages->paginate($page_url_params);
                     <header class="row-fluid border-bottom">
                         <div class="list-header">
                             <h1 class="h1-header"><?php _e('No results found','direve'); ?></h1>
-                            <section class="header-search">
-                                <?php if ($direve_config['show_form']) : ?>
+                            <?php if ($direve_config['show_form']) : ?>
+                                <section class="header-search">
                                     <form role="search" method="get" id="searchform" action="<?php echo real_site_url($direve_plugin_slug); ?>">
                                         <input value='<?php echo $query; ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
                                         <input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
                                     </form>
-                                <?php endif; ?>
-                            </section>
+                                </section>
+                            <?php endif; ?>
                         </div>
                     </header>
                 <?php else :?>
@@ -377,14 +377,14 @@ $pages->paginate($page_url_params);
                         <div class="list-header">
                             <h1 class="h1-header"><?php _e('Next events','direve'); ?></h1>
                             <small class="small-header"><?php _e('Resources found','direve'); ?>: <?php echo $total; ?></small>
-                            <section class="header-search">
-                                <?php if ($direve_config['show_form']) : ?>
+                            <?php if ($direve_config['show_form']) : ?>
+                                <section class="header-search">
                                     <form role="search" method="get" id="searchform" action="<?php echo real_site_url($direve_plugin_slug); ?>">
                                         <input value='<?php echo $query; ?>' name="q" class="input-search" id="s" type="text" placeholder="<?php _e('Search', 'direve'); ?>...">
                                         <input id="searchsubmit" value="<?php _e('Search', 'direve'); ?>" type="submit">
                                     </form>
-                                <?php endif; ?>
-                            </section>
+                                </section>
+                            <?php endif; ?>
                         </div>
                         <div class="pull-right">
                             <a href="<?php echo $feed_url; ?>" target="blank"><img src="<?php echo DIREVE_PLUGIN_URL; ?>template/images/icon_rss.png" class="rss_feed" ></a>
