@@ -40,21 +40,22 @@ if ($direve_initial_filter != ''){
 $start = ($page * $count) - $count;
 
 if ($query != ''){
-    $direve_search = $direve_service_url . 'api/event/search/?q=' . urlencode($query) . '&fq=' . urlencode($filter) . '&start=' . $start . '&lang=' . $lang_dir;
+    $direve_service_request = $direve_service_url . 'api/event/search/?q=' . urlencode($query) . '&fq=' . urlencode($filter) . '&start=' . $start . '&lang=' . $lang_dir;
 }else{
     $direve_next_events = $direve_service_url . 'api/event/next/?fq=' . urlencode($filter) . '&lang=' . $lang_dir . '&count=20';
-    $direve_search = $direve_service_url . 'api/event/search/?fq=' . urlencode($filter) . '&start=' . $start . '&lang=' . $lang_dir;
+    $direve_service_request = $direve_service_url . 'api/event/search/?fq=' . urlencode($filter) . '&start=' . $start . '&lang=' . $lang_dir;
 }
 
-// echo "<pre>"; print_r($direve_search); echo "</pre>"; die();
+// echo "<pre>"; print_r($direve_service_request); echo "</pre>"; die();
 // echo "<pre>"; print_r($direve_next_events); echo "</pre>"; die();
 
-$response = @file_get_contents($direve_search);
+$response = @file_get_contents($direve_service_request);
 if ($response){
     $response_json = json_decode($response);
     // echo "<pre>"; print_r($response_json); echo "</pre>"; die();
     $total = $response_json->diaServerResponse[0]->response->numFound;
     $start = $response_json->diaServerResponse[0]->response->start;
+
     if ($query != '' || $user_filter != ''){
         $event_list = $response_json->diaServerResponse[0]->response->docs;
     }else{
@@ -70,9 +71,6 @@ if ($response){
     usort($publication_year_list, function($a, $b) {
         return $b[0] <=> $a[0];
     });
-
-    $facet_fields = $response_json->diaServerResponse[0]->facet_counts->facet_fields;
-    // echo "<pre>"; print_r($facet_fields); echo "</pre>"; die();
 }
 
 $page_url_params = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query)  . '&filter=' . urlencode($filter);
@@ -140,7 +138,7 @@ $pages->paginate($page_url_params);
                                 <h3 class="h3-footer pull-right margintop15"><a href="?q=*"><?php _e('See all events','direve'); ?></a></h3>
                             </div>
                         <?php endif; ?>
-                        <?php foreach ( $event_list as $resource) { ?>
+                        <?php foreach ( $event_list as $resource ) { ?>
                             <article class="conteudo-loop">
 
                                 <div class="row-fluid">
@@ -252,8 +250,8 @@ $pages->paginate($page_url_params);
                                 <header class="row-fluid border-bottom marginbottom15">
                                     <h1 class="h1-header"><?php _e('Subjects','direve'); ?></h1>
                                 </header>
-                                <ul>
-                                    <?php foreach ( $descriptor_list as $descriptor) { ?>
+                                <ul class="filter-list">
+                                    <?php foreach ( $descriptor_list as $descriptor ) { ?>
                                         <?php
                                             $filter_link = '?';
                                             if ($query != ''){
@@ -264,14 +262,19 @@ $pages->paginate($page_url_params);
                                                 $filter_link .= ' AND ' . $user_filter ;
                                             }
                                         ?>
-                                        <?php if ( filter_var($descriptor[0], FILTER_VALIDATE_INT) === false ) : ?>
-                                            <li class="cat-item">
-                                                <a href='<?php echo $filter_link; ?>'><?php echo $descriptor[0]; ?></a>
-                                                <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
-                                            </li>
-                                        <?php endif; ?>
+                                        <?php $class = ( filter_var($descriptor[0], FILTER_VALIDATE_INT) === false ) ? 'cat-item' : 'cat-item hide'; ?>
+                                        <li class="<?php echo $class; ?>">
+                                            <a href='<?php echo $filter_link; ?>'><?php echo $descriptor[0]; ?></a>
+                                            <span class="cat-item-count"><?php echo $descriptor[1] ?></span>
+                                        </li>
                                     <?php } ?>
                                 </ul>
+                                <?php if ( count($descriptor_list) == 20 ) : ?>
+                                <div class="show-more text-center">
+                                    <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="descriptor_filter"><?php _e('show more','direve'); ?></a>
+                                    <a href="javascript:void(0)" class="loading"><?php _e('loading','direve'); ?>...</a>
+                                </div>
+                                <?php endif; ?>
                             </section>
                         <?php } ?>
                         <?php if ( $value == 'Event type' ) { ?>
@@ -279,8 +282,8 @@ $pages->paginate($page_url_params);
                                 <header class="row-fluid border-bottom marginbottom15">
                                     <h1 class="h1-header"><?php _e('Event type','direve'); ?></h1>
                                 </header>
-                                <ul>
-                                    <?php foreach ( $event_type_list as $type) { ?>
+                                <ul class="filter-list">
+                                    <?php foreach ( $event_type_list as $type ) { ?>
                                         <?php
                                             $filter_link = '?';
                                             if ($query != ''){
@@ -297,6 +300,12 @@ $pages->paginate($page_url_params);
                                         </li>
                                     <?php } ?>
                                 </ul>
+                                <?php if ( count($event_type_list) == 20 ) : ?>
+                                <div class="show-more text-center">
+                                    <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="event_type"><?php _e('show more','direve'); ?></a>
+                                    <a href="javascript:void(0)" class="loading"><?php _e('loading','direve'); ?>...</a>
+                                </div>
+                                <?php endif; ?>
                             </section>
                         <?php } ?>
                         <?php if ( $value == 'Thematic area' ) {  ?>
@@ -304,7 +313,7 @@ $pages->paginate($page_url_params);
                                 <header class="row-fluid border-bottom marginbottom15">
                                     <h1 class="h1-header"><?php _e('Thematic area','direve'); ?></h1>
                                 </header>
-                                <ul>
+                                <ul class="filter-list">
                                     <?php foreach ( $thematic_area_list as $ta ) { ?>
                                         <?php
                                             $filter_link = '?';
@@ -322,6 +331,12 @@ $pages->paginate($page_url_params);
                                         </li>
                                     <?php } ?>
                                 </ul>
+                                <?php if ( count($thematic_area_list) == 20 ) : ?>
+                                <div class="show-more text-center">
+                                    <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="thematic_area_display"><?php _e('show more','direve'); ?></a>
+                                    <a href="javascript:void(0)" class="loading"><?php _e('loading','direve'); ?>...</a>
+                                </div>
+                                <?php endif; ?>
                             </section>
                         <?php } ?>
                         <?php if ( $value == 'Event year' ) {  ?>
@@ -329,7 +344,7 @@ $pages->paginate($page_url_params);
                                 <header class="row-fluid border-bottom marginbottom15">
                                     <h1 class="h1-header"><?php _e('Event year','direve'); ?></h1>
                                 </header>
-                                <ul>
+                                <ul class="filter-list">
                                     <?php foreach ( $publication_year_list as $year ) { ?>
                                         <?php
                                             $filter_link = '?';
@@ -347,6 +362,12 @@ $pages->paginate($page_url_params);
                                         </li>
                                     <?php } ?>
                                 </ul>
+                                <?php if ( count($publication_year_list) == 20 ) : ?>
+                                <div class="show-more text-center">
+                                    <a href="javascript:void(0)" class="btn-ajax" data-fb="30" data-cluster="publication_year"><?php _e('show more','direve'); ?></a>
+                                    <a href="javascript:void(0)" class="loading"><?php _e('loading','direve'); ?>...</a>
+                                </div>
+                                <?php endif; ?>
                             </section>
                         <?php } ?>
                     <?php
@@ -403,7 +424,7 @@ $pages->paginate($page_url_params);
                         </div>
                     <?php endif; ?>
                     <div class="row-fluid event-list marginbottom25">
-                        <?php foreach ( $event_list as $resource) { ?>
+                        <?php foreach ( $event_list as $resource ) { ?>
                             <div class="conteudo-loop">
 
                                 <div class="row-fluid">
@@ -569,9 +590,8 @@ $pages->paginate($page_url_params);
                                 </ul>
                             </section>
                         <?php } ?>
-                    <?php
-                        }
-                endif; ?>
+                    <?php } ?>
+                <?php endif; ?>
                 <?php dynamic_sidebar('direve-home');?>
             </aside>
 
@@ -580,4 +600,52 @@ $pages->paginate($page_url_params);
             <div class="spacer"></div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        jQuery(function ($) {
+            $(document).on( "click", ".btn-ajax", function(e) {
+                e.preventDefault();
+
+                var _this = $(this);
+                var fb = $(this).data('fb');
+                var cluster = $(this).data('cluster');
+
+                $(this).hide();
+                $(this).next('.loading').show();
+
+                $.ajax({ 
+                    type: "POST",
+                    url: direve_script_vars.ajaxurl,
+                    data: {
+                        action: 'direve_show_more_clusters',
+                        lang: '<?php echo $lang_dir; ?>',
+                        site_lang: '<?php echo $site_language; ?>',
+                        query: '<?php echo $query; ?>',
+                        filter: '<?php echo $filter; ?>',
+                        uf: '<?php echo $user_filter; ?>',
+                        cluster: cluster,
+                        fb: fb
+                    },
+                    success: function(response){
+                        var html = $.parseHTML( response );
+                        var this_len = _this.parent().siblings('.filter-list').find(".cat-item").length;
+                        _this.parent().siblings('.filter-list').replaceWith( response );
+                        _this.data('fb', fb+10);
+                        _this.next('.loading').hide();
+
+                        var response_len = $(html).find(".cat-item").length;
+                        var mod = parseInt(response_len % 10);
+
+                        if ( mod || response_len == this_len ) {
+                            _this.remove();
+                        } else {
+                            _this.show();
+                        }
+                    },
+                    error: function(error){ console.log(error) }
+                });
+            });
+        });
+    </script>
+
 <?php get_footer();?>

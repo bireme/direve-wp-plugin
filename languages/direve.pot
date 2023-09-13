@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DirEve 0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/direve\n"
-"POT-Creation-Date: 2023-07-11 16:46-0300\n"
+"POT-Creation-Date: 2023-09-13 11:39-0300\n"
 "PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: direve.php:89
+#: direve.php:91
 msgid "DirEVE Settings"
 msgstr ""
 
-#: direve.php:89
+#: direve.php:91
 msgid "DirEVE"
 msgstr ""
 
-#: direve.php:137
+#: direve.php:139
 msgid "DirEVE sidebar"
 msgstr ""
 
@@ -244,7 +244,7 @@ msgid "Home"
 msgstr ""
 
 #: template/detail.php:54 template/home.php:90 template/home.php:93
-#: template/rss.php:56 template/rss.php:105 template/suggest-event.php:51
+#: template/rss.php:64 template/rss.php:113 template/suggest-event.php:51
 msgid "Events Directory"
 msgstr ""
 
@@ -256,11 +256,11 @@ msgstr ""
 msgid "Event"
 msgstr ""
 
-#: template/detail.php:99 template/home.php:162 template/home.php:425
+#: template/detail.php:99 template/home.php:162 template/home.php:448
 msgid "Date"
 msgstr ""
 
-#: template/detail.php:118 template/home.php:181 template/home.php:432
+#: template/detail.php:118 template/home.php:181 template/home.php:455
 msgid "Available languages"
 msgstr ""
 
@@ -325,12 +325,12 @@ msgid "More related"
 msgstr ""
 
 #: template/detail.php:328 template/detail.php:329 template/home.php:237
-#: template/home.php:238 template/home.php:366 template/home.php:367
-#: template/home.php:381 template/home.php:382
+#: template/home.php:238 template/home.php:389 template/home.php:390
+#: template/home.php:404 template/home.php:405
 msgid "Search"
 msgstr ""
 
-#: template/detail.php:333 template/home.php:242 template/home.php:395
+#: template/detail.php:333 template/home.php:242 template/home.php:418
 #: template/suggest-event.php:52 template/suggest-event.php:57
 msgid "Suggest a event"
 msgstr ""
@@ -343,16 +343,16 @@ msgstr ""
 msgid "Search result"
 msgstr ""
 
-#: template/home.php:101 template/home.php:362
+#: template/home.php:101 template/home.php:385
 msgid "No results found"
 msgstr ""
 
-#: template/home.php:105 template/home.php:109 template/home.php:377
+#: template/home.php:105 template/home.php:109 template/home.php:400
 msgid "Resources found"
 msgstr ""
 
-#: template/home.php:108 template/home.php:376 template/rss.php:58
-#: template/rss.php:107
+#: template/home.php:108 template/home.php:399 template/rss.php:66
+#: template/rss.php:115
 msgid "Next events"
 msgstr ""
 
@@ -372,11 +372,11 @@ msgstr ""
 msgid "Most recent"
 msgstr ""
 
-#: template/home.php:138 template/home.php:201 template/home.php:400
+#: template/home.php:138 template/home.php:201 template/home.php:423
 msgid "See all events"
 msgstr ""
 
-#: template/home.php:175 template/home.php:455
+#: template/home.php:175 template/home.php:478
 msgid "See more details"
 msgstr ""
 
@@ -388,19 +388,29 @@ msgstr ""
 msgid "Next Month &raquo;"
 msgstr ""
 
-#: template/home.php:251 template/home.php:471
+#: template/home.php:251 template/home.php:494
 msgid "Subjects"
 msgstr ""
 
-#: template/home.php:278 template/home.php:498
+#: template/home.php:274 template/home.php:305 template/home.php:336
+#: template/home.php:367
+msgid "show more"
+msgstr ""
+
+#: template/home.php:275 template/home.php:306 template/home.php:337
+#: template/home.php:368
+msgid "loading"
+msgstr ""
+
+#: template/home.php:283 template/home.php:521
 msgid "Event type"
 msgstr ""
 
-#: template/home.php:303 template/home.php:523
+#: template/home.php:314 template/home.php:546
 msgid "Thematic area"
 msgstr ""
 
-#: template/home.php:328 template/home.php:548
+#: template/home.php:345 template/home.php:571
 msgid "Event year"
 msgstr ""
 
@@ -408,7 +418,7 @@ msgstr ""
 msgid "No related documents"
 msgstr ""
 
-#: template/rss.php:109
+#: template/rss.php:117
 msgid "No upcoming events."
 msgstr ""
 

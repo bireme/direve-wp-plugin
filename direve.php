@@ -52,6 +52,8 @@ if(!class_exists('DirEve_Plugin')) {
             add_filter( 'document_title_separator', array(&$this, 'title_tag_sep') );
             add_filter( 'document_title_parts', array(&$this, 'theme_slug_render_title'));
             add_filter( 'wp_title', array(&$this, 'theme_slug_render_wp_title'));
+            add_action( 'wp_ajax_direve_show_more_clusters', array($this, 'direve_show_more_clusters'));
+            add_action( 'wp_ajax_nopriv_direve_show_more_clusters', array($this, 'direve_show_more_clusters'));
 
         } // END public function __construct
 
@@ -224,13 +226,19 @@ if(!class_exists('DirEve_Plugin')) {
         }
 
         function template_styles_scripts(){
-            wp_enqueue_script('jquery');
             wp_enqueue_script('slick', '//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js');
             wp_enqueue_script('direve-page', DIREVE_PLUGIN_URL . 'template/js/functions.js', array( 'jquery' ));
             wp_enqueue_script('jquery-raty', DIREVE_PLUGIN_URL . 'template/js/jquery.raty.min.js', array( 'jquery' ));
             wp_enqueue_style('slick', '//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css');
             wp_enqueue_style('slick-theme', '//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css');
             wp_enqueue_style('direve-page', DIREVE_PLUGIN_URL . 'template/css/style.css');
+
+            wp_enqueue_script('jquery');
+            wp_localize_script('jquery', 'direve_script_vars', array(
+                    'ajaxurl' => admin_url( 'admin-ajax.php' ),
+                    'ajaxnonce' => wp_create_nonce( 'ajax_post_validation' )
+                )
+            );
         }
 
         function register_settings(){
@@ -335,6 +343,24 @@ if(!class_exists('DirEve_Plugin')) {
             }
 
             return $output;
+        }
+
+        function direve_show_more_clusters() {
+            global $direve_service_url;
+            $direve_service_url = $this->service_url;
+
+            ob_start();
+            include DIREVE_PLUGIN_PATH . '/template/cluster.php';
+            $contents = ob_get_contents();
+            ob_end_clean();
+
+            if ( $contents ) {
+                echo $contents;
+            } else {
+                echo 0;
+            }
+
+            die();
         }
     }
 }

@@ -387,6 +387,22 @@ ul.col3 {
     color: grey;
 }
 
+.text-center {
+    text-align: center;
+}
+
+.show-more {
+    clear: both;
+}
+
+.loading {
+    display: none;
+}
+
+.hide {
+    display: none;
+}
+
 /* Loader */
 .loader {
     border: 2px solid #f3f3f3; /* Light grey */
