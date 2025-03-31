@@ -619,10 +619,10 @@ $pages->paginate($page_url_params);
                     data: {
                         action: 'direve_show_more_clusters',
                         lang: '<?php echo $lang_dir; ?>',
-                        site_lang: '<?php echo $site_language; ?>',
-                        query: '<?php echo $query; ?>',
-                        filter: '<?php echo $filter; ?>',
-                        uf: '<?php echo $user_filter; ?>',
+                        site_lang: '<?php echo esc_url_raw($site_language); ?>',
+                        query: '<?php echo esc_url_raw($query); ?>',
+                        filter: '<?php echo esc_url_raw($filter); ?>',
+                        uf: '<?php echo esc_url_raw($user_filter); ?>',
                         cluster: cluster,
                         fb: fb
                     },
