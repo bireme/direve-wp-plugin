@@ -462,3 +462,6 @@ ul.col3 {
     .tablet{display:block;}
     .menu-mapa-do-site-pt-container {width:auto;}
 }
+ul{
+    display: table;
+}
