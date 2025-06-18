@@ -11,7 +11,8 @@
 }
 
 .ui-state-active{
-    background-color: greenyellow;
+    background-color: white;
+    border: 2px solid #1E90FF;
 }
 .ui-state-hover:hover{
     background-color: #1E90FF;

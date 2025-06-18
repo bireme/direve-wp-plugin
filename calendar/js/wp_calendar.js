@@ -124,6 +124,7 @@
                         });
                         $('#wp-calendar .WP-Cal-popup').each( function (){
                             var year = $(this).attr('data-year');
+                            //console.log("chegou aqui");
                             var month = $(this).attr('data-month');
                             month = parseInt( month ) + 1;
                             var day = $(this).find('a.ui-state-default').text();

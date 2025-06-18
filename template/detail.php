@@ -97,8 +97,8 @@ if ($response){
 
                     <div id="conteudo-loop-data" class="row-fluid margintop05">
                         <span class="conteudo-loop-data-tit"><?php _e('Date','direve'); ?>:</span>
-                        <?php echo format_date($resource->start_date); ?> -
-                        <?php echo format_date($resource->end_date); ?>
+                        <?php echo format_date($resource->start_date); $data = format_date($resource->start_date);?> -
+                        <?php echo format_date($resource->end_date); $datafim = format_date($resource->end_date);?>
                     </div>
 
                     <?php if ($resource->link[0]): ?>
@@ -219,10 +219,25 @@ if ($response){
                                     </div>
                                 </div>
                             </li>
+                                                <?php
+                        if ($address) {
+                            if($resource->city)
+                                $address .=  ', ' . $resource->city;
+                            if($resource->country)
+                                $address .=  ', ' . $resource->country;
+                        }
+                    ?>
                             <li class="conteudo-loop-icons-li">
-                                <!-- AddThisEvent Button BEGIN -->
+                                <i class=""></i>
+                                <!-- AddThis Button BEGIN -->
+       
+                                    <a class="addthis_button" href="https://www.google.com/calendar/render?action=TEMPLATE&text=<?=$resource->title;?>&dates=<?=$data;?>/<?=$datafim;?>&details=Descrição+do+evento&location=<?=$address;?>" target="_blank">
+  + Adicionar ao Google Calendar
+</a>
+                            </li>
+                            <!--------
+                            <li class="conteudo-loop-icons-li">
                                 <script type="text/javascript" src="https://addthisevent.com/libs/1.5.8/ate.min.js"></script>
-                                <!-- AddThisEvent Button Settings -->
                                 <script type="text/javascript">
                                     addthisevent.settings({
                                         mouse     : false,
@@ -235,6 +250,16 @@ if ($response){
                                         facebook  : {show:true, text:"Facebook Event"}
                                     });
                                 </script>
+
+                                <!---------
+                                <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Nome+do+Evento&dates=20250620T140000Z/20250620T150000Z&details=Descrição+do+evento&location=Local+do+evento" target="_blank">
+  <button>Adicionar ao Google Calendar</button>
+</a>
+
+<a href="https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&subject=Reunião%20de%20teste&body=Descrição%20do%20evento&location=Sala%20A&startdt=2025-06-20T14:00:00&enddt=2025-06-20T15:00:00" target="_blank">
+  <button>Adicionar ao Outlook</button>
+</a>---
+
                                 <a href="#" title="Add to Calendar" class="addthisevent">
                                     <?php _e('Add to Calendar','direve'); ?>
                                     <span class="_start"><?php echo date("d-m-Y", strtotime($resource->start_date)); ?></span>
@@ -268,21 +293,30 @@ if ($response){
                                     <span class="_date_format">DD/MM/YYYY</span>
                                 </a>
                                 <!-- AddThisEvent Button END -->
+                                    <?php
+                                $data =  date("Ymd", strtotime($resource->start_date));
+                                $datafim = date("Ymd", strtotime($resource->start_date));
+                                ?>
+<!---
+    <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=<?=$resource->title;?>&dates=<?=$data;?>T140000Z/<?=$datafim;?>T150000Z&details=Descrição+do+evento&location=<?=$location;?>" target="_blank">
+  <button>Adicionar ao Google Calendar</button>
+</a>----->
+
+
+
                             </li>
                         </ul>
                     </footer>
 
-                    <?php
-                        if ($address) {
-                            if($resource->city)
-                                $address .=  ', ' . $resource->city;
-                            if($resource->country)
-                                $address .=  ', ' . $resource->country;
-                        }
-                    ?>
+
+                    <!---------if para verificar se o evenot é online ou não ---------->
+                    <?php if($event_modality[$resource->event_modality[0]] == 'Online'){
+
+                    }else{ ?>
                     <div class="map">
                         <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=<?php echo $address; ?>&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width="595" height="385" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
                     </div>
+                    <?php } ?>
 
                     <?php if ($direve_disqus_id != '') :?>
                         <div id="disqus_thread" class="row-fluid margintop25"></div>

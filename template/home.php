@@ -13,9 +13,16 @@ $direve_initial_filter = $direve_config['initial_filter'];
 $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);
 
+/*
+$d = ( isset($_GET['d']) ? sanitize_text_field($_GET['d']) : '' );
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+*/
+
 $query = ( isset($_GET['s']) ? sanitize_text_field($_GET['s']) : sanitize_text_field($_GET['q']) );
 $query = stripslashes($query);
-$sanitize_user_filter = sanitize_text_field($_GET['filter']);
+$sanitize_user_filter = isset($_GET['filter']) ? sanitize_text_field($_GET['filter']) : '';
+//$sanitize_user_filter = sanitize_text_field($_GET['filter']);
 $user_filter = stripslashes($sanitize_user_filter);
 $page = ( isset($_GET['page']) ? sanitize_text_field($_GET['page']) : 1 );
 $total = 0;
@@ -46,7 +53,14 @@ if ($query != ''){
     $direve_service_request = $direve_service_url . 'api/event/search/?fq=' . urlencode($filter) . '&start=' . $start . '&lang=' . $lang_dir;
 }
 
-// echo "<pre>"; print_r($direve_service_request); echo "</pre>"; die();
+
+$selected_year = '2024';
+$selected_month = '06';
+$queryx = 'start_date:[' . $selected_year . '-' . $selected_month . '-01T00:00:00Z+TO+' . $selected_year . '-' . $selected_month . '-31T00:00:00Z]';
+//echo $queryx;
+
+
+//echo "<pre>"; print_r($direve_service_request); echo "</pre>"; //die();
 // echo "<pre>"; print_r($direve_next_events); echo "</pre>"; die();
 
 $response = @file_get_contents($direve_service_request);
@@ -170,18 +184,23 @@ $pages->paginate($page_url_params);
                                     </div>
                                 <?php endif; ?>
 
+
                                 <p class="row-fluid">
+                                    <?php if (isset($resource->abstract)):?>
                                     <?php echo ( strlen($resource->abstract) > 200 ? substr($resource->abstract,0,200) . '...' : $resource->abstract); ?><br/>
+                                    <?php endif; ?>
                                     <span class="more"><a href="<?php echo real_site_url($direve_plugin_slug); ?>resource/?id=<?php echo $resource->django_id; ?>"><?php _e('See more details','direve'); ?></a></span>
                                 </p>
 
-
+                                <?php if (isset($resource->source_language_display)):?>
                                 <?php if ($resource->source_language_display): ?>
                                     <div id="conteudo-loop-idiomas" class="row-fluid">
                                         <span class="conteudo-loop-idiomas-tit"><?php _e('Available languages','direve'); ?>:</span>
                                         <?php direve_print_lang_value($resource->source_language_display, $site_language); ?>
                                     </div>
                                 <?php endif; ?>
+                                <?php endif; ?>
+
 
                                 <?php if ($resource->descriptor || $resource->keyword ) : ?>
                                     <div id="conteudo-loop-tags" class="row-fluid margintop10">
@@ -602,6 +621,24 @@ $pages->paginate($page_url_params);
     </div>
 
     <script type="text/javascript">
+
+        /*
+    jQuery(document).ready(function($) {
+              $('#wp-calendar .WP-Cal-popup').each( function (){
+                            var year = $(this).attr('data-year');
+                            console.log("chegou aqui");
+                            var month = $(this).attr('data-month');
+                            month = parseInt( month ) + 1;
+                            var day = $(this).find('a.ui-state-default').text();
+                            var href = '?q=start_date:"'+year+'-'+month+'-'+day+'T00:00:00Z"';
+                            $(this).find('a.ui-state-default').attr('href', href);
+                            $(this).click( function (e){
+                                window.location = href;
+                            });
+                        });
+                    
+            });
+*/
         jQuery(function ($) {
             $(document).on( "click", ".btn-ajax", function(e) {
                 e.preventDefault();
