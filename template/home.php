@@ -165,9 +165,10 @@ $pages->paginate($page_url_params);
                                 <?php if ($resource->city || $resource->country): ?>
                                     <div class="row-fluid">
                                         <?php if ( $resource->city ) : ?>
-                                            <?php echo $resource->city . ' - ' . $resource->country ;?>
+                                            <?php echo $resource->city . ' - ';
+                                             direve_print_lang_value($resource->country, $site_language);?>
                                         <?php else : ?>
-                                            <?php echo $resource->country ;?>
+                                            <?php print_lang_value($resource->country, $site_language);?>
                                         <?php endif; ?>
                                     </div>
                                 <?php endif; ?>
