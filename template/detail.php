@@ -155,6 +155,13 @@ if ($response){
                     <footer class="row-fluid margintop05">
                         <ul class="conteudo-loop-icons">
                             <li class="conteudo-loop-icons-li">
+                                <a
+  href="https://www.linkedin.com/sharing/share-offsite/?url="
+  onclick="this.href += encodeURIComponent(location.href)"
+  target="_blank" rel="noopener"
+>
+  Compartilhar no LinkedIn
+</a>
                                 <i class="ico-compartilhar"> </i>
                                 <!-- AddThis Button BEGIN -->
                                 <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=<?php echo $direve_addthis_id; ?>"><?php _e('Share','direve'); ?></a>
