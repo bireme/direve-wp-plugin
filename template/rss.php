@@ -55,7 +55,6 @@ if ($response){
 }
 
 $rss_channel_url = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query) . '&filter=' . urlencode($user_filter);
-
 ?>
 
 <?php if ( $event_list ) : ?>
@@ -79,7 +78,7 @@ $rss_channel_url = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query
                 $rss_description .= ' - ' . format_date($event->end_date) . '. ';
 
                 if ($event->city || $event->country) {
-                    $rss_description .= trim($event->city) . ' - '. trim(direve_get_lang_value($event->country, $site_language));
+                    $rss_description .= trim($event->city) . ' - '. trim(direve_print_lang_value($event->country, $site_language));
 
                 }
 
