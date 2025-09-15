@@ -152,7 +152,7 @@ if ($response){
                             <i class="ico-tags"> </i> <?php echo implode(", ", array_merge( $descriptors, $keywords) ); ?>
                           </div>
                     <?php endif; ?>
-<!--
+                    <!--
                     <footer class="row-fluid margintop05">
                         <ul class="conteudo-loop-icons">
                             <li class="conteudo-loop-icons-li">
@@ -166,7 +166,7 @@ if ($response){
                         <ul class="conteudo-loop-icons">                  
                             <li class="conteudo-loop-icons-li">
                                 <span class="reportar-erro-open">
-<i class="fa-solid fa-triangle-exclamation"></i>
+                                    <i class="fa-solid fa-triangle-exclamation"></i>
                                     <?php _e('Report error','direve'); ?>
                                 </span>
 
@@ -233,53 +233,16 @@ if ($response){
                             <li class="conteudo-loop-icons-li">
                                 <i class=""></i>
                                 <!-- AddThis Button BEGIN -->
-       
                                     <a class="addthis_button" href="https://www.google.com/calendar/render?action=TEMPLATE&text=<?=$resource->title;?>&dates=<?=$data;?>/<?=$datafim;?>&details=Descrição+do+evento&location=<?=$address;?>" target="_blank">
-  + Adicionar ao Google Calendar
-</a>
+                                    + Adicionar ao Google Calendar
+                                    </a>
                             </li>
-                                      <li class="conteudo-loop-icons-li">
+                            <li class="conteudo-loop-icons-li">
 
-
-
-
-<!-- Badges -->
- <!--
-<span class="badge facebook"><i class="fa-brands fa-facebook-f"></i></span>
-<span class="badge instagram"><i class="fa-brands fa-instagram"></i></span>
-<span class="badge x"><i class="fa-brands fa-x-twitter"></i></span>
-<span class="badge linkedin"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></span>
-<span class="badge whatsapp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></span>
------>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-<style>
-.badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;              /* tamanho do círculo */
-  height: 20px;
-  border-radius: 50%;
-  color: #fff !important;
-  margin: 0.3rem;
-  font-size: 16px;  
-  background: #ddd;  
-  text-decoration: none !important;      /* tamanho do ícone */
-}
-
-.badge.facebook:hover  { background: #1877F2; }
-.badge.instagram:hover { background: #E1306C; }
-.badge.whatsapp:hover { background: #4FCE5D; }
-.badge.copy:hover { background: #1877F2; }
-.badge.x:hover         { background: #000; }
-.badge.linkedin:hover { background: #0072B1; }
-</style>
-
 
 <?php
 $urlcompartilhamento = real_site_url($direve_plugin_slug) . 'resource/?id=' . $resource->django_id;
-//$urlcompartilhamento = 'https://economia.saude.bvs.br/direve/' . 'resource/?id=' . $resource->django_id;
 //$urlcompartilhamento = rawurlencode($urlcompartilhamento);
 ?>
 
@@ -339,10 +302,6 @@ $li_fallback = "https://www.linkedin.com/shareArticle?mini=true&url={$enc}";
 </a>
 
 <!--
-<a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo rawurlencode( get_permalink() ); ?>" target="_blank" rel="noopener">Compartilhar no LinkedIn</a>
-
-<a href="https://www.linkedin.com/sharing/share-offsite/?url=" onclick="this.href = this.href + encodeURIComponent(location.href)" target="_blank" rel="noopener">Compartilhar no LinkedIn</a>
-
                                 <i class="ico-compartilhar"> </i>
                                 <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=<?php echo $direve_addthis_id; ?>"><?php _e('Share','direve'); ?></a>
                                 <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
@@ -421,7 +380,6 @@ $li_fallback = "https://www.linkedin.com/shareArticle?mini=true&url={$enc}";
                             </li>
                         </ul>
                     </footer>
-
 
                     <!---------if para verificar se o evenot é online ou não ---------->
                     <?php if($event_modality[$resource->event_modality[0]] == 'Online'){

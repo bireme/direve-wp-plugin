@@ -100,10 +100,10 @@ a:hover{color:rgb(0,153,255); text-decoration:underline;}
 #conteudo{width:629px; float:left; margin-bottom: 20px;}
 .conteudo-loop{width:597px; position:relative; float:left; background:rgb(245,245,245); border:1px solid rgb(223,223,223); padding:15px; border-radius:5px; margin-top:15px;}
 .conteudo-loop-rates{position:absolute; right:15px; top:18px; z-index:3;}
-.conteudo-loop-icons{list-style:none; float:left; width:100%; max-height:22px; margin-bottom: 12px; border-bottom: 1px solid #999; padding-bottom: 12px;}
-.conteudo-loop-icons-li{float:left; margin:0 18.3px; position:relative;}
-.conteudo-loop-icons-li:first-child{margin:0px 18.3px 0px 0px !important;}
-.conteudo-loop-icons-li:last-child{margin:0px 0px 0px 18.3px !important;}
+.conteudo-loop-icons{list-style:none; float:left; width:100%; max-height:22px; margin-bottom: 12px; border-bottom: 1px solid #999; padding-bottom: 12px; padding-left: 0px;}
+.conteudo-loop-icons-li{float:left; margin:0 0px; position:relative;}
+.conteudo-loop-icons-li:first-child{margin:0px 0px 0px 0px !important;}
+.conteudo-loop-icons-li:last-child{margin:0px 0px 0px 0px !important;}
 .conteudo-loop-icons-li a{text-decoration:none; color:rgb(0,0,0); text-transform:uppercase; font-size:11px; font-weight:600;}
 .conteudo-loop-icons-li a:hover{text-decoration:underline; color:rgb(0,0,0);}
 .conteudo-loop-data-tit, .conteudo-loop-idiomas-tit{font-weight:bold;}
@@ -465,3 +465,24 @@ ul.col3 {
 ul{
     display: table;
 }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;              /* tamanho do círculo */
+  height: 20px;
+  border-radius: 50%;
+  color: #fff !important;
+  margin: 0.3rem;
+  font-size: 16px;  
+  background: #ddd;  
+  text-decoration: none !important;      /* tamanho do ícone */
+}
+
+.badge.facebook:hover  { background: #1877F2; }
+.badge.instagram:hover { background: #E1306C; }
+.badge.whatsapp:hover { background: #4FCE5D; }
+.badge.copy:hover { background: #1877F2; }
+.badge.x:hover         { background: #000; }
+.badge.linkedin:hover { background: #0072B1; }
