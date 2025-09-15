@@ -152,9 +152,8 @@ if ($response){
                             <i class="ico-tags"> </i> <?php echo implode(", ", array_merge( $descriptors, $keywords) ); ?>
                           </div>
                     <?php endif; ?>
-
+<!--
                     <footer class="row-fluid margintop05">
-                        <!--
                         <ul class="conteudo-loop-icons">
                             <li class="conteudo-loop-icons-li">
                                 <i class="ico-compartilhar"> </i>
@@ -274,6 +273,7 @@ if ($response){
 .badge.whatsapp:hover { background: #4FCE5D; }
 .badge.copy:hover { background: #1877F2; }
 .badge.x:hover         { background: #000; }
+.badge.linkedin:hover { background: #0072B1; }
 </style>
 
 
