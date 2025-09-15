@@ -79,8 +79,7 @@ $rss_channel_url = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query
 
                 if ($event->city || $event->country) {
                     $lang_rss = substr($site_language,0,2);
-                    $rss_description .= trim($event->city) . ' - '. trim(direve_get_lang_value($event->country, $lang_rss));
-
+                    $rss_description .= trim($event->city) . ' - '. trim(direve_get_lang_value($event->country, $lang_rss)) . 'funcao(' . $lang_rss . ')';
                 }
 
                 /*
