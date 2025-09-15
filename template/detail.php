@@ -46,6 +46,7 @@ if ($response){
 ?>
 
 <?php get_header('direve'); ?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <div id="content" class="row-fluid">
     <div class="ajusta2">
@@ -153,18 +154,20 @@ if ($response){
                     <?php endif; ?>
 
                     <footer class="row-fluid margintop05">
+                        <!--
                         <ul class="conteudo-loop-icons">
                             <li class="conteudo-loop-icons-li">
                                 <i class="ico-compartilhar"> </i>
-                                <!-- AddThis Button BEGIN -->
                                 <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=<?php echo $direve_addthis_id; ?>"><?php _e('Share','direve'); ?></a>
                                 <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
                                 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $direve_addthis_id; ?>"></script>
-                                <!-- AddThis Button END -->
-                            </li>
+                                <!-- AddThis Button END 
+                            </li>-->
+                    <footer class="row-fluid margintop15">
+                        <ul class="conteudo-loop-icons">                  
                             <li class="conteudo-loop-icons-li">
                                 <span class="reportar-erro-open">
-                                    <i class="ico-reportar"></i>
+<i class="fa-solid fa-triangle-exclamation"></i>
                                     <?php _e('Report error','direve'); ?>
                                 </span>
 
@@ -235,6 +238,116 @@ if ($response){
                                     <a class="addthis_button" href="https://www.google.com/calendar/render?action=TEMPLATE&text=<?=$resource->title;?>&dates=<?=$data;?>/<?=$datafim;?>&details=Descrição+do+evento&location=<?=$address;?>" target="_blank">
   + Adicionar ao Google Calendar
 </a>
+                            </li>
+                                      <li class="conteudo-loop-icons-li">
+
+
+
+
+<!-- Badges -->
+ <!--
+<span class="badge facebook"><i class="fa-brands fa-facebook-f"></i></span>
+<span class="badge instagram"><i class="fa-brands fa-instagram"></i></span>
+<span class="badge x"><i class="fa-brands fa-x-twitter"></i></span>
+<span class="badge linkedin"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></span>
+<span class="badge whatsapp"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></span>
+----->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;              /* tamanho do círculo */
+  height: 20px;
+  border-radius: 50%;
+  color: #fff !important;
+  margin: 0.3rem;
+  font-size: 16px;  
+  background: #ddd;  
+  text-decoration: none !important;      /* tamanho do ícone */
+}
+
+.badge.facebook:hover  { background: #1877F2; }
+.badge.instagram:hover { background: #E1306C; }
+.badge.whatsapp:hover { background: #4FCE5D; }
+.badge.copy:hover { background: #1877F2; }
+.badge.x:hover         { background: #000; }
+</style>
+
+
+<?php
+$urlcompartilhamento = real_site_url($direve_plugin_slug) . 'resource/?id=' . $resource->django_id;
+//$urlcompartilhamento = 'https://economia.saude.bvs.br/direve/' . 'resource/?id=' . $resource->django_id;
+//$urlcompartilhamento = rawurlencode($urlcompartilhamento);
+?>
+
+<meta property='og:url' content='//www.example.com/URL of the article'/>
+
+<?php
+
+$url = $urlcompartilhamento ?? (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+// Encode seguro: remove encode anterior (se houver) e aplica rawurlencode uma vez
+function li_safe_encode($u){ return rawurlencode(rawurldecode($u)); }
+$enc = li_safe_encode($url);
+
+// Endpoints
+$li_primary = "https://www.linkedin.com/sharing/share-offsite/?url={$enc}";
+$li_fallback = "https://www.linkedin.com/shareArticle?mini=true&url={$enc}";
+
+?>
+<!-- Facebook -->
+<a class="badge facebook"
+   href="https://www.facebook.com/sharer/sharer.php?u=<?=urlencode($urlcompartilhamento)?>&quote=<?=urlencode('Confira isso!')?>"
+   target="_blank" rel="noopener noreferrer">
+  <i class="fa-brands fa-facebook-f"></i>
+</a>
+
+<!-- Instagram (não há compartilhamento de link) --
+<a class="badge instagram"
+   href="https://www.instagram.com/"
+   target="_blank" rel="noopener noreferrer">
+  <i class="fa-brands fa-instagram"></i>
+</a>-->
+
+<!-- X (Twitter) -->
+<a class="badge x"
+   href="https://twitter.com/intent/tweet?url=<?=urlencode($urlcompartilhamento)?>&text=<?=urlencode('Confira isso!')?>"
+   target="_blank" rel="noopener noreferrer">
+  <i class="fa-brands fa-x-twitter"></i>
+</a>
+
+<a class="badge linkedin"
+   href="javascript:void(0);"
+   onclick="navigator.clipboard.writeText(window.location.href).then(()=>alert('Link da página copiado!'))">
+  <i class="fa-brands fa-linkedin-in"></i>
+</a>
+
+<!-- WhatsApp (funciona no mobile e desktop web) -->
+<a class="badge whatsapp"
+   href="https://wa.me/?text=<?=urlencode('Confira isso: '.$urlcompartilhamento)?>"
+   target="_blank" rel="noopener noreferrer">
+  <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+</a>
+
+<a class="badge copy" 
+   href="javascript:void(0);"
+   onclick="navigator.clipboard.writeText(window.location.href).then(()=>alert('Link da página copiado!'))">
+  <i class="fa-regular fa-copy"></i>
+</a>
+
+<!--
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo rawurlencode( get_permalink() ); ?>" target="_blank" rel="noopener">Compartilhar no LinkedIn</a>
+
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=" onclick="this.href = this.href + encodeURIComponent(location.href)" target="_blank" rel="noopener">Compartilhar no LinkedIn</a>
+
+                                <i class="ico-compartilhar"> </i>
+                                <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=300&amp;pubid=<?php echo $direve_addthis_id; ?>"><?php _e('Share','direve'); ?></a>
+                                <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
+                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $direve_addthis_id; ?>"></script>
+                                <!-- AddThis Button END -->
                             </li>
                             <!--------
                             <li class="conteudo-loop-icons-li">
@@ -379,6 +492,19 @@ $url = DIREVE_PLUGIN_URL.'template/similar.php?query='.$similar_query.'&lang='.$
 ?>
 <script type="text/javascript">
     show_similar("<?php echo $url; ?>");
+</script>
+<script>
+function copiarLink() {
+  // pega a URL atual
+  const link = window.location.href;
+  
+  // copia para a área de transferência
+  navigator.clipboard.writeText(link).then(() => {
+    alert("Link copiado: " + link);
+  }).catch(err => {
+    console.error("Erro ao copiar: ", err);
+  });
+}
 </script>
         </aside>
     </div>
