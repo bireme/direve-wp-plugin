@@ -281,13 +281,13 @@ $li_fallback = "https://www.linkedin.com/shareArticle?mini=true&url={$enc}";
    target="_blank" rel="noopener noreferrer">
   <i class="fa-brands fa-x-twitter"></i>
 </a>
-
+<!--
 <a class="badge linkedin"
    href="javascript:void(0);"
    onclick="navigator.clipboard.writeText(window.location.href).then(()=>alert('Link da página copiado!'))">
   <i class="fa-brands fa-linkedin-in"></i>
 </a>
-
+                    -->
 <!-- WhatsApp (funciona no mobile e desktop web) -->
 <a class="badge whatsapp"
    href="https://wa.me/?text=<?=urlencode('Confira isso: '.$urlcompartilhamento)?>"
