@@ -172,7 +172,7 @@ if ($response){
 
                                 <div class="reportar-erro">
                                     <div class="erro-form">
-                                        <form action="<?php echo $direve_service_url ?>report-error" id="reportErrorForm">
+                                        <form action="https://fi-admin.bvsalud.org/report-error" id="reportErrorForm">
                                             <input type="hidden" name="resource_type" value="event"/>
                                             <input type="hidden" name="resource_id" value="<?php echo $event_id; ?>"/>
                                             <div class="reportar-erro-close">[X]</div>
@@ -198,12 +198,12 @@ if ($response){
                                             </div>
 
                                             <div class="row-fluid border-bottom2"></div>
-
+<!--
                                             <span class="reportar-erro-tit margintop05"><?php _e('New Link (Optional)','direve'); ?></span>
                                             <div class="row-fluid margintop05">
                                                 <textarea name="new_link" id="txtUrl" class="reportar-erro-area" cols="20" rows="2"></textarea>
                                             </div>
-
+                    -->
                                             <div class="row-fluid border-bottom2"></div>
 
                                             <div class="row-fluid margintop05">
