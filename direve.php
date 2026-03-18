@@ -81,6 +81,9 @@ if(!class_exists('DirEve_Plugin')) {
         function plugin_init() {
             $direve_config = get_option('direve_config');
 
+            load_plugin_textdomain('direve', false, dirname( plugin_basename( __FILE__ ) ) . '/languages');
+
+
             if ( $direve_config && $direve_config['plugin_slug'] != ''){
                 $this->plugin_slug = $direve_config['plugin_slug'];
             }
