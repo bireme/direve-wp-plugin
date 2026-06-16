@@ -2,7 +2,12 @@
 /*
 Template Name: DirEve Home
 */
+// Exibir todos os erros
+//error_reporting(E_ALL);
 
+// Ativar exibição de erros
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
 require_once(DIREVE_PLUGIN_PATH . '/lib/Paginator.php');
 
 global $direve_service_url, $direve_plugin_slug;
@@ -108,8 +113,7 @@ $pages->paginate($page_url_params);
                 <?php endif; ?>
             </div>
 
-<?php if ($direve_config['page_layout'] != 'whole_page' || $_GET['q'] != '' || $_GET['filter'] != '' ) : ?>
-
+<?php if ((($direve_config['page_layout'] ?? '') != 'whole_page') || !empty($_GET['q']) || !empty($_GET['filter'])) : ?>
             <section id="conteudo">
                 <?php if ( isset($total) && strval($total) == 0) :?>
                     <h1 class="h1-header"><?php _e('No results found','direve'); ?></h1>
@@ -162,16 +166,21 @@ $pages->paginate($page_url_params);
                                     <div class="star" data-score="1"></div>
                                 </div>
 
-                                <?php if ($resource->city || $resource->country): ?>
-                                    <div class="row-fluid">
-                                        <?php if ( $resource->city ) : ?>
-                                            <?php echo $resource->city . ' - ';
-                                             direve_print_lang_value($resource->country, $site_language);?>
-                                        <?php else : ?>
-                                            <?php direve_print_lang_value($resource->country, $site_language);?>
-                                        <?php endif; ?>
-                                    </div>
-                                <?php endif; ?>
+<?php
+$city = isset($resource->city) ? $resource->city : '';
+$country = isset($resource->country) ? $resource->country : '';
+
+if (!empty($city) || !empty($country)) :
+?>
+    <div class="row-fluid">
+        <?php if (!empty($city)) : ?>
+            <?php echo $city . ' - ' ;?>
+            <?php direve_print_lang_value($country, $site_language); ?>
+        <?php else : ?>
+            <?php direve_print_lang_value($country, $site_language); ?>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
 
                                 <div id="conteudo-loop-data" class="row-fluid margintop05">
                                     <span class="conteudo-loop-data-tit"><?php _e('Date','direve'); ?>:</span>
@@ -179,7 +188,7 @@ $pages->paginate($page_url_params);
                                     <?php echo format_date($resource->end_date); ?>
                                 </div>
 
-                                <?php if ($resource->event_modality): ?>
+                                <?php if (isset($resource->event_modality)): ?>
                                     <div class="row-fluid margintop05">
                                         <?php echo __('Event','direve') . ' ' . $event_modality[$resource->event_modality[0]]; ?>
                                     </div>
@@ -203,15 +212,15 @@ $pages->paginate($page_url_params);
                                 <?php endif; ?>
 
 
-                                <?php if ($resource->descriptor || $resource->keyword ) : ?>
-                                    <div id="conteudo-loop-tags" class="row-fluid margintop10">
-                                        <i class="ico-tags"> </i>
-                                            <?php
-                                                $descriptors = (array)$resource->descriptor;
-                                                $keywords = (array)$resource->keyword;
-                                            ?>
-                                            <?php echo implode(", ", array_merge( $descriptors, $keywords) ); ?>
-                                      </div>
+                                <?php
+                                $descriptors = isset($resource->descriptor) ? (array)$resource->descriptor : array();
+                                $keywords = isset($resource->keyword) ? (array)$resource->keyword : array();
+
+                                if (!empty($descriptors) || !empty($keywords)) :?>
+                                <div id="conteudo-loop-tags" class="row-fluid margintop10">
+                                <i class="ico-tags"> </i>
+                                    <?php echo implode(", ", array_merge($descriptors, $keywords)); ?>
+                                </div>
                                 <?php endif; ?>
 
                             </article>
@@ -229,6 +238,7 @@ $pages->paginate($page_url_params);
             </section>
             <aside id="sidebar">
                 <section class="row-fluid widget wp_calendar">
+                    <?php if (isset($direve_config['show_calendar'])) : ?>
                     <?php if ($direve_config['show_calendar']) : ?>
                         <div class="widget widget_calendar">
                             <div class="widget_inner">
@@ -249,6 +259,7 @@ $pages->paginate($page_url_params);
                             <div class="circle1"></div>
                         </div> -->
                         <div class="spinner"></div>
+                    <?php endif; ?>
                     <?php endif; ?>
                 </section>
                 <section class="header-search">
