@@ -13,12 +13,21 @@ $direve_initial_filter = ( $direve_config['initial_filter'] ) ? $direve_config['
 $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);
 
-$query = ( $_GET['s'] ) ? sanitize_text_field($_GET['s']) : sanitize_text_field($_GET['q']);
+$query = '';
+
+if (isset($_GET['s'])) {
+    $query = sanitize_text_field($_GET['s']);
+} elseif (isset($_GET['q'])) {
+    $query = sanitize_text_field($_GET['q']);
+}
+
+
+//$query = ( $_GET['s'] ) ? sanitize_text_field($_GET['s']) : sanitize_text_field($_GET['q']);
 $query = stripslashes($query);
 $sanitize_user_filter = ( sanitize_text_field($_GET['filter']) ) ? sanitize_text_field($_GET['filter']) : '';
 $user_filter = stripslashes($sanitize_user_filter);
 $mode_options = array('in-person', 'hybrid', 'online');
-$mode_filter = ( sanitize_text_field($_GET['mode']) ) ? explode(',', sanitize_text_field($_GET['mode'])) : array();
+$mode_filter = isset($_GET['mode']) && $_GET['mode'] ? explode(',', sanitize_text_field($_GET['mode'])) : array();
 $mode_intersect = array_intersect($mode_filter, $mode_options);
 
 if ( $mode_intersect ) {
@@ -28,10 +37,10 @@ if ( $mode_intersect ) {
 }
 
 $start_date_filter = '';
-if ( $_GET['start_date'] ) {
+if (!empty($_GET['start_date'])) {
     if (($timestamp = strtotime($_GET['start_date'])) !== false) {
         $date = DateTime::createFromFormat('Ymd', date('Ymd', $timestamp));
-        if ( $date ) {
+        if ($date) {
             $start_date_filter = 'start_date:[' . $date->format('Y') . '-' . $date->format('m') . '-' . $date->format('d') . 'T00:00:00Z TO *]';
         }
     }
@@ -77,10 +86,12 @@ $rss_channel_url = real_site_url($direve_plugin_slug) . '?q=' . urlencode($query
                 $rss_description .= format_date($event->start_date);
                 $rss_description .= ' - ' . format_date($event->end_date) . '. ';
 
-                if ($event->city || $event->country) {
-                    $lang_rss = substr($site_language,0,2);
-                    $rss_description .= trim($event->city) . ' - '. trim(direve_get_lang_value($event->country, $lang_rss));
+                $city = isset($event->city) ? trim($event->city) : '';
+                $country = isset($event->country) ? trim(direve_get_lang_value($event->country, $lang_rss)) : '';
 
+                if ($city != '' || $country != '') {
+                    $lang_rss = substr($site_language, 0, 2);
+                    $rss_description .= $city . ' - ' . $country;
                 }
 
                 /*
