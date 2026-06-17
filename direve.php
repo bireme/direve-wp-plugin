@@ -8,7 +8,7 @@ Version: 1.4.0
 Author URI: http://reddes.bvsalud.org/
 */
 
-define('DIREVE_VERSION', '1.4.0' );
+define('DIREVE_VERSION', '1.4.1' );
 
 define('DIREVE_SYMBOLIC_LINK', false );
 define('DIREVE_PLUGIN_DIRNAME', 'direve' );
