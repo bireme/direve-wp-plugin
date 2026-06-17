@@ -94,7 +94,7 @@
                 wp_cal_dates.push(check_date);
                 $.ajax({
                     type: 'POST',
-                    url : wpCalendarObj.ajaxurl,
+                    url : '/wp-admin/admin-ajax.php',
                     data: {
                         action: 'wp_calendar_get_events',
                         ajax  : 'true',

@@ -62,11 +62,12 @@ if ( !function_exists('wp_calendar_enqueue_scripts') ) {
         wp_enqueue_script('wp_calendar_datepicker');
         wp_enqueue_script('wp_calendar_js');
         wp_enqueue_style('wp_calendar_css');
-
+/*
         wp_localize_script('wp_calendar_js', 'wpCalendarObj', array(
             'ajaxurl' => admin_url('admin-ajax.php'),
             'plugin_url' => WP_CALENDAR_PLUGIN_URL
         ));
+        */
     }
 }
 
