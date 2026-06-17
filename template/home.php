@@ -8,6 +8,15 @@ Template Name: DirEve Home
 // Ativar exibição de erros
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
+
+$nonce = bin2hex(random_bytes(16));
+
+header(
+    "Content-Security-Policy: script-src 'self' 'nonce-$nonce'; script-src-elem 'self' 'nonce-$nonce';"
+);
+
+
+
 require_once(DIREVE_PLUGIN_PATH . '/lib/Paginator.php');
 
 global $direve_service_url, $direve_plugin_slug;
