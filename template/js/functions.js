@@ -200,15 +200,3 @@ function show_related(url){
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 } 
-
-function copiarLink() {
-  // pega a URL atual
-  const link = window.location.href;
-  
-  // copia para a área de transferência
-  navigator.clipboard.writeText(link).then(() => {
-    alert("Link copiado: " + link);
-  }).catch(err => {
-    console.error("Erro ao copiar: ", err);
-  });
-}
