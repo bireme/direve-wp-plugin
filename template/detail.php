@@ -2,11 +2,6 @@
 /*
 Template Name: DirEve Detail
 */
-$nonce = bin2hex(random_bytes(16));
-
-header(
-    "Content-Security-Policy: script-src 'self' 'nonce-$nonce'; script-src-elem 'self' 'nonce-$nonce';"
-);
 
 global $direve_service_url, $direve_plugin_slug, $similar_docs_url;
 
@@ -453,10 +448,10 @@ $url = DIREVE_PLUGIN_URL.'template/related.php?query='.$related_query.'&sources=
 <?php
 $url = DIREVE_PLUGIN_URL.'template/similar.php?query='.$similar_query.'&lang='.$lang_dir;
 ?>
-<script nonce="<?php echo $nonce; ?>" type="text/javascript">
+<script type="text/javascript">
     show_similar("<?php echo $url; ?>");
 </script>
-<script nonce="<?php echo $nonce; ?>">
+<script>
 function copiarLink() {
   // pega a URL atual
   const link = window.location.href;
