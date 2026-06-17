@@ -4,7 +4,7 @@ Plugin Name: DirEve
 Plugin URI: https://github.com/bireme/direve-wp-plugin/
 Description: Events Directory (DirEVE) WordPress plugin
 Author: BIREME/OPAS/OMS
-Version: 1.4.0
+Version: 1.4.1
 Author URI: http://reddes.bvsalud.org/
 */
 
