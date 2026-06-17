@@ -456,19 +456,6 @@ $url = DIREVE_PLUGIN_URL.'template/similar.php?query='.$similar_query.'&lang='.$
 <script nonce="<?php echo $nonce; ?>" type="text/javascript">
     show_similar("<?php echo $url; ?>");
 </script>
-<script nonce="<?php echo $nonce; ?>">
-function copiarLink() {
-  // pega a URL atual
-  const link = window.location.href;
-  
-  // copia para a área de transferência
-  navigator.clipboard.writeText(link).then(() => {
-    alert("Link copiado: " + link);
-  }).catch(err => {
-    console.error("Erro ao copiar: ", err);
-  });
-}
-</script>
         </aside>
     </div>
 </div>
