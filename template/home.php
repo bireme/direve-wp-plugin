@@ -32,8 +32,9 @@ $d = ( isset($_GET['d']) ? sanitize_text_field($_GET['d']) : '' );
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 */
+$qvar = ( isset($_GET['q']) ? sanitize_text_field($_GET['s']) : '' );
 
-$query = ( isset($_GET['s']) ? sanitize_text_field($_GET['s']) : sanitize_text_field($_GET['q']) );
+$query = ( isset($_GET['s']) ? sanitize_text_field($_GET['s']) : $qvar );
 $query = stripslashes($query);
 $sanitize_user_filter = isset($_GET['filter']) ? sanitize_text_field($_GET['filter']) : '';
 //$sanitize_user_filter = sanitize_text_field($_GET['filter']);
