@@ -2,20 +2,10 @@
 /*
 Template Name: DirEve Home
 */
-// Exibir todos os erros
-//error_reporting(E_ALL);
-
-// Ativar exibição de erros
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
 
 $nonce = bin2hex(random_bytes(16));
 
-header(
-    "Content-Security-Policy: script-src 'self' 'nonce-$nonce'; script-src-elem 'self' 'nonce-$nonce';"
-);
-
-
+// header("Content-Security-Policy: script-src 'self' 'nonce-$nonce'; script-src-elem 'self' 'nonce-$nonce';");
 
 require_once(DIREVE_PLUGIN_PATH . '/lib/Paginator.php');
 
@@ -27,13 +17,7 @@ $direve_initial_filter = $direve_config['initial_filter'];
 $site_language = strtolower(get_bloginfo('language'));
 $lang_dir = substr($site_language,0,2);
 
-/*
-$d = ( isset($_GET['d']) ? sanitize_text_field($_GET['d']) : '' );
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-*/
-$qvar = ( isset($_GET['q']) ? sanitize_text_field($_GET['s']) : '' );
-
+$qvar = ( isset($_GET['q']) ? sanitize_text_field($_GET['q']) : '' );
 $query = ( isset($_GET['s']) ? sanitize_text_field($_GET['s']) : $qvar );
 $query = stripslashes($query);
 $sanitize_user_filter = isset($_GET['filter']) ? sanitize_text_field($_GET['filter']) : '';
@@ -68,14 +52,7 @@ if ($query != ''){
     $direve_service_request = $direve_service_url . 'api/event/search/?fq=' . urlencode($filter) . '&start=' . $start . '&lang=' . $lang_dir;
 }
 
-
-$selected_year = '2024';
-$selected_month = '06';
-$queryx = 'start_date:[' . $selected_year . '-' . $selected_month . '-01T00:00:00Z+TO+' . $selected_year . '-' . $selected_month . '-31T00:00:00Z]';
-//echo $queryx;
-
-
-//echo "<pre>"; print_r($direve_service_request); echo "</pre>"; //die();
+// echo "<pre>"; print_r($direve_service_request); echo "</pre>"; die();
 // echo "<pre>"; print_r($direve_next_events); echo "</pre>"; die();
 
 $response = @file_get_contents($direve_service_request);
@@ -91,6 +68,7 @@ if ($response){
         $response_next_events =  @file_get_contents($direve_next_events);
         $response_next_events_json = json_decode($response_next_events);
         $event_list = $response_next_events_json->diaServerResponse[0]->response->docs;
+        $total = $response_next_events_json->diaServerResponse[0]->response->numFound;
     }
 
     $descriptor_list = $response_json->diaServerResponse[0]->facet_counts->facet_fields->descriptor_filter;
@@ -125,11 +103,15 @@ $pages->paginate($page_url_params);
 
 <?php if ((($direve_config['page_layout'] ?? '') != 'whole_page') || !empty($_GET['q']) || !empty($_GET['filter'])) : ?>
             <section id="conteudo">
-                <?php if ( isset($total) && strval($total) == 0) :?>
-                    <h1 class="h1-header"><?php _e('No results found','direve'); ?></h1>
+                <?php if ( isset($total) && strval($total) == 0 ) : ?>
+                    <?php if ( $query != '' || $user_filter != '' ) : ?>
+                        <h1 class="h1-header"><?php _e('No results found','direve'); ?></h1>
+                    <?php else: ?>
+                        <h1 class="h1-header"><?php _e('No future events are currently listed','direve'); ?></h1>
+                    <?php endif; ?>
                 <?php else :?>
                     <header class="row-fluid border-bottom">
-                        <?php if ( ( $query != '' || $user_filter != '' ) && strval($total) > 0) :?>
+                        <?php if ( ( $query != '' || $user_filter != '' ) && strval($total) > 0 ) : ?>
                             <h1 class="h1-header"><?php _e('Resources found','direve'); ?>: <?php echo $total; ?></h1>
                         <?php else: ?>
                             <div class="list-header">
@@ -140,7 +122,7 @@ $pages->paginate($page_url_params);
                         <div class="pull-right">
                             <a href="<?php echo $feed_url; ?>" target="blank"><img src="<?php echo DIREVE_PLUGIN_URL; ?>template/images/icon_rss.png" class="rss_feed" ></a>
                         </div>
-                        <!-- Not implemented yet
+                        <!-- TODO: Novos elementos de layout
                         <div class="pull-right">
                             <a href="#" class="ico-feeds"></a>
                             <form action="">
@@ -242,7 +224,7 @@ if (!empty($city) || !empty($country)) :
                         <?php endif; ?>
                     </div>
                     <div class="row-fluid">
-                        <?php if ($query != '' || $user_filter != ''){ echo $pages->display_pages(); } ?>
+                        <?php if ($query != '' || $user_filter != '') { echo $pages->display_pages(); } ?>
                     </div>
                 <?php endif; ?>
             </section>
@@ -643,23 +625,21 @@ if (!empty($city) || !empty($country)) :
     </div>
 
     <script type="text/javascript">
-
-        /*
-    jQuery(document).ready(function($) {
-              $('#wp-calendar .WP-Cal-popup').each( function (){
-                            var year = $(this).attr('data-year');
-                            console.log("chegou aqui");
-                            var month = $(this).attr('data-month');
-                            month = parseInt( month ) + 1;
-                            var day = $(this).find('a.ui-state-default').text();
-                            var href = '?q=start_date:"'+year+'-'+month+'-'+day+'T00:00:00Z"';
-                            $(this).find('a.ui-state-default').attr('href', href);
-                            $(this).click( function (e){
-                                window.location = href;
-                            });
-                        });
-                    
+/*
+        jQuery(document).ready(function($) {
+            $('#wp-calendar .WP-Cal-popup').each( function (){
+                var year = $(this).attr('data-year');
+                console.log("chegou aqui");
+                var month = $(this).attr('data-month');
+                month = parseInt( month ) + 1;
+                var day = $(this).find('a.ui-state-default').text();
+                var href = '?q=start_date:"'+year+'-'+month+'-'+day+'T00:00:00Z"';
+                $(this).find('a.ui-state-default').attr('href', href);
+                $(this).click( function (e){
+                    window.location = href;
+                });
             });
+        });
 */
         jQuery(function ($) {
             $(document).on( "click", ".btn-ajax", function(e) {
