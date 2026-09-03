@@ -29,6 +29,8 @@
      * practising this, we should strive to set a better example in our own work.
      */
 
+    const ajaxurl = wpCalendarObj.ajaxurl;
+
     var wp_cal_dates = new Array();
     var wp_cal_posts = new Array();
 
@@ -94,7 +96,7 @@
                 wp_cal_dates.push(check_date);
                 $.ajax({
                     type: 'POST',
-                    url : '/wp-admin/admin-ajax.php',
+                    url : ajaxurl,
                     data: {
                         action: 'wp_calendar_get_events',
                         ajax  : 'true',
